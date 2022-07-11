@@ -69,21 +69,21 @@ span.credits {
 <script>
   function validateForm() {
     let x =  document.forms["myForm"]["serial"].value.toUpperCase();
-    if (x.length >= 16 && x.substring(0,6) == "S01-G2" && x.substring(8,13) == "01W9D") {
+    if ( (x.length >= 16) && (x.substring(0,6) == "S01-G2") && (x.substring(8,13)) == "01W9D" ) {
     const validMonths = "123456789A"
     const month = x.substring(7,8);
 
-    if (validMonths.includes(month)){
+    if (validMonths.includes(month) && 21 >= parseInt(x.substring(5,7)) ){
       alert("Congratulations, your PS5 is 4.03 or lower.");
       document["myForm"]["coverImage"].src = "images\\goodNews.png";
       document.getElementById('result').innerHTML = '4.03 or Lower';
       return false;
-    } else if (month == "C") {
+    } else if (month == "C" && parseInt(x.substring(5,7)) >= 21 ) {
       alert("Sorry, your PS5 is 4.50 or higher :/");
       document.getElementById('result').innerHTML = '4.50 or higher';
       document["myForm"]["coverImage"].src = "images\\badNews.png";
       return false;
-    } else if (month == "B") {
+    } else if (month == "B" && 21 >= parseInt(x.substring(5,7)) ) {
       const numberThatIndicatesSomething = parseInt(x.substring(13,17));
       if (1997 >= numberThatIndicatesSomething) {
         alert("Congratulations, your PS5 is PROBABLY 4.03 or lower.");
