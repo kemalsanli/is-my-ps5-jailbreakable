@@ -105,7 +105,7 @@ span.credits {
 
   function limit(element)
 {
-    var max_chars = 20;
+    var max_chars = 21;
 
     if(element.value.length > max_chars) {
         element.value = element.value.substr(0, max_chars);
@@ -131,10 +131,13 @@ span.credits {
 <body>
 
 <h2>Is my PS5 jailbreakable?</h2>
+<span class="credits">I bought a domain, you can also access it from  <a href="https://controlserial.com"> controlserial.com</a>.</span>
+
 
 <form name="myForm" onsubmit="return validateForm()">
   <div class="imgcontainer">
     <img src="images\letsCheckFirmware.png" id="coverImage" class="image">
+    <span class="credits"><br/> Really really early stage now, gonna develop it from <a href="https://github.com/kemalsanli/is-my-ps5-jailbreakable">here</a>.</span>
   </div>
 
 
@@ -144,6 +147,8 @@ span.credits {
       <input type="text" style="text-transform: uppercase" placeholder="S01-G2X01W9DXXXX" name="serial" onkeydown="limit(this);" onkeyup="limit(this);" required>
     <button type="submit">Check</button>
     <label for="result" id="result"><b></b></label>
+    <br/>
+    <span class="credits"><br/> If you are having issues with your serial number, please consider share it with me <a href="https://forms.gle/MHnGxbQD9LAqHv4w7"> from here</a>.</span>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
