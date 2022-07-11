@@ -5,3 +5,6 @@
 Website that helps buying lower firmware PS5's with serial number.
 
 [Is My PS5 Jailbreakable?](https://kemalsanli.github.io/is-my-ps5-jailbreakable/)
+
+
+You can access it from [https://kemalsanli.github.io/is-my-ps5-jailbreakable/](https://kemalsanli.github.io/is-my-ps5-jailbreakable/) or alternative short domain [controlserial.com](https://controlserial.com)
