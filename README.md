@@ -4,3 +4,4 @@
 
 Tool that helps buying lower firmware PS5's with serial number.
 
+[Is My PS5 Jailbreakable?](https://kemalsanli.github.io/is-my-ps5-jailbreakable/)
