@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+form {border: 3px solid #f1f1f1;}
+
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.image {
+  width: 25%;
+}
+
+.container {
+  text-align: center;
+  padding: 16px;
+}
+
+span.credits {
+  text-align: center;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.credits {
+     display: block;
+     float: none;
+  }
+}
+
+
+</style>
+</head>
+
+<script>
+
+  function setElements(statusMessage,imgSrc,alertMessage) {
+    document["myForm"]["coverImage"].src = "images\\" + imgSrc;
+    document.getElementById('result').innerHTML = statusMessage;
+  }
+
+  function isFormatValid(string) {
+  let euFormat = (string.substring(0, 6) == "S01-G2") && (string.substring(8, 13) == "01W9D") && (string.length >= 16);
+  let ukFormat = false;
+  let usFormat = false;
+  let jpnFormat = false;
+  return euFormat || ukFormat || usFormat || jpnFormat;
+}
+
+function isUnder2022(string) {
+	return 21 >= parseInt(string.substring(5, 7));
+}
+function getMonth(string) {
+  return string.substring(7, 8);
+}
+
+function isMonthValid(string) {
+		const validMonths = "123456789A";
+    let month = getMonth(string);
+    return validMonths.includes(month);
+}
+
+function isLimitValid(string) {
+	let limit = 1997;
+	return limit >= parseInt(string.substring(13, 17));
+}
+
+function getInput() {
+  return document.forms["myForm"]["serial"].value.toUpperCase();
+}
+
+function validateForm() { 
+  let formattedString =  getInput();
+
+  if (isFormatValid(formattedString) && isUnder2022(formattedString)) {
+
+    if (isMonthValid(formattedString)) {
+
+      setElements("4.03 or Lower","goodNews.png");
+      alert("Congratulations, your PS5 is 4.03 or lower.");
+      
+    } else if (getMonth(formattedString) == "C" ) {
+
+      setElements("4.50 or higher","badNews.png");
+      alert("Sorry, your PS5 is 4.50 or higher :/");
+      
+    } else if (getMonth(formattedString) == "B") {
+      
+      if (isLimitValid(formattedString)) {
+
+        setElements("PROBABLY 4.03 or Lower","probablyGood.png");
+        alert("Congratulations, your PS5 is PROBABLY 4.03 or lower.");
+        
+      } else {
+
+        setElements("PROBABLY 4.50 or higher","probablyBad.jpg");
+        alert("Sorry, your PS5 is PROBABLY 4.50 or higher :/");
+
+      }
+      
+    }
+
+  } else if (!isFormatValid(formattedString)) {
+    setElements("Number Format is Incorrect, try again.","badNews.png");
+    alert("NUMBER IS INVALID. YOU HAVE TO INPUT YOUR FIRST 16 CHARACTER OF YOUR SERIAL NUMBER");
+  } else if ( !isUnder2022(formattedString)) {
+    setElements("Produced after 2021, no chance to be at 4.03.","badNews.png");
+  	alert("after 2021 :/");
+  }  else {
+    setElements("Dont know how this happened, try again.","badNews.png");
+  	alert("No one knows what cause this error, better to submit serial");
+  }
+
+}
+
+  function limit(element)
+{
+    var max_chars = 21;
+
+    if(element.value.length > max_chars) {
+        element.value = element.value.substr(0, max_chars);
+    }
+}
+  </script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/ico" href="./images/favicon.ico" />
+
+
+  <title>
+    Is my PS5 jailbreakable?
+  </title>
+
+  <meta name="description" content="Website that helps buying lower firmware PS5's with serial number.">
+  <meta name="keywords" content="PS5, PS4, HEN, JAILBREAK, CFW, 4.03, BD-JB, SERIAL" />
+</head>
+
+<body>
+<body>
+
+<h2>Is my PS5 jailbreakable?</h2>
+<span class="credits">I bought a domain, you can also access it from  <a href="https://controlserial.com"> controlserial.com</a></span>
+
+
+<form name="myForm" onSubmit="validateForm(); return false;">
+
+  <div class="imgcontainer">
+    <img src="images\letsCheckFirmware.png" id="coverImage" class="image">
+  </div>
+
+  <div class="container">
+    <label for="serial"><b>Serial Number</b></label>
+      <input type="text" style="text-transform: uppercase" placeholder="S01-G2X01W9DXXXX" name="serial" onkeydown="limit(this);" onkeyup="limit(this);" required>
+    <button type="submit">Check</button>
+    <label for="result" id="result"><b></b></label>
+    <br/>
+    <span class="credits"><br/> If you are having issues with your serial number, please consider share it with me <a href="https://forms.gle/MHnGxbQD9LAqHv4w7"> from here</a>.</span>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <span class="credits">Created with 💜 and lack of knowledge. Also big thanks to the <a href="https://www.youtube.com/channel/UCm9COMxXKm05BQWNv-IpyPg">MODDED WARFARE</a> and <a href="https://www.youtube.com/channel/UCYXUe7VF9KN-ASABNHN0pCw">Mc Kuc</a> for knowledge sharing. </span>
+    <br/>
+    <span class="credits"><br/> Really really early stage now, gonna develop it from <a href="https://github.com/kemalsanli/is-my-ps5-jailbreakable">here</a>.</span>
+    <br/><br/>
+    <img src="https://visitor-badge.deta.dev/badge?page_id=kemalsanli.is-my-ps5-jailbreakable" alt="visitor badge"/>
+    <br/><br/>
+    <span class="credits"><a href="https://github.com/kemalsanli">kemalsanli</a> 2022©</span>
+  </div>
+
+</form>
+
+
+<br/>
+<h2>Where to get serial number?</h2>
+<br/>
+
+<div class="imgcontainer">
+  <img src="images\firstStep.jpg" id="coverImage" class="image">
+  <img src="images\secondStep.png" id="coverImage" class="image">
+  <img src="images\thirdStep.png" id="coverImage" class="image">
+</div>
+
+</body>
+</html>
