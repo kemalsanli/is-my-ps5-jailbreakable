@@ -74,10 +74,11 @@ span.credits {
 
   function isFormatValid(string) {
   let euFormat = (string.substring(0, 6) == "S01-G2") && (string.substring(8, 13) == "01W9D") && (string.length >= 16);
+  let auFormat = (string.substring(0, 6) == "S01-F2") && (string.substring(8, 13) == "01BM8") && (string.length >= 16);
   let ukFormat = false;
   let usFormat = false;
   let jpnFormat = false;
-  return euFormat || ukFormat || usFormat || jpnFormat;
+  return euFormat || ukFormat || usFormat || jpnFormat || auFormat;
 }
 
 function isUnder2022(string) {
