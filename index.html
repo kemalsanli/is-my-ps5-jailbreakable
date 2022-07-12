@@ -73,8 +73,8 @@ span.credits {
   }
 
   function isFormatValid(string) {
-  let euFormat = (string.substring(0, 6) == "S01-G2") && (string.substring(8, 13) == "01W9D") && (string.length >= 16);
-  let auFormat = (string.substring(0, 6) == "S01-F2") && (string.substring(8, 13) == "01BM8") && (string.length >= 16);
+  let euFormat = (string.substring(0, 6) == "S01-") && (string.substring(8, 13) == "01") && (string.length >= 16);
+  let auFormat = true
   let ukFormat = false;
   let usFormat = false;
   let jpnFormat = false;
@@ -84,6 +84,11 @@ span.credits {
 function isUnder2022(string) {
 	return 21 >= parseInt(string.substring(5, 7));
 }
+
+function is2021(string) {
+  return 21 == parseInt(string.substring(5, 7));
+}
+
 function getMonth(string) {
   return string.substring(7, 8);
 }
@@ -113,12 +118,12 @@ function validateForm() {
       setElements("4.03 or Lower","goodNews.png");
       alert("Congratulations, your PS5 is 4.03 or lower.");
       
-    } else if (getMonth(formattedString) == "C" ) {
+    } else if (getMonth(formattedString) == "C" && is2021(formattedString)) {
 
       setElements("4.50 or higher","badNews.png");
       alert("Sorry, your PS5 is 4.50 or higher :/");
       
-    } else if (getMonth(formattedString) == "B") {
+    } else if (getMonth(formattedString) == "B" && is2021(formattedString)) {
       
       if (isLimitValid(formattedString)) {
 
@@ -132,6 +137,9 @@ function validateForm() {
 
       }
       
+    } else {
+      setElements("MAYBE 4.03 or Lower","probablyGood.png");
+      alert("Not sure about your serial number, but if its exist should be lower.");
     }
 
   } else if (!isFormatValid(formattedString)) {
