@@ -1,6 +1,10 @@
 # is-my-ps5-jailbreakable
-Tool that helps buying lower firmware PS5's with serial number.
+![visitors](https://visitor-badge.deta.dev/badge?page_id=kemalsanli.is-my-ps5-jailbreakable&left_color=red&right_color=green)
+
+Website that helps buying lower firmware PS5's with serial number.
+
+[Is My PS5 Jailbreakable?](https://kemalsanli.github.io/is-my-ps5-jailbreakable/)
 
 
+You can access it from [https://kemalsanli.github.io/is-my-ps5-jailbreakable/](https://kemalsanli.github.io/is-my-ps5-jailbreakable/) or alternative short domain [controlserial.com](https://controlserial.com)
 
-It works a bit cranky, but it works.
