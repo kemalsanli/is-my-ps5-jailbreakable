@@ -17,7 +17,8 @@ describe('Serial Validator (Integration)', () => {
     });
 
     it('should return a valid result for recognized serial formats', () => {
-      const result = checkSerial('S01-G2A211W9D1234');
+      // S01-G21B1234567 → F=G(China), C=2(CFI-11xx), Y=1(2021), M=B(Nov)
+      const result = checkSerial('S01-G21B1234567');
       if (result) {
         expect(result.status).toBeDefined();
         expect(result.firmware).toBeDefined();

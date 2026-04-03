@@ -3,123 +3,143 @@
  *
  * Based on PSDevWiki PS5 Serial Number Guide
  * https://www.psdevwiki.com/ps5/Serial_Number_guide
+ * Serial format decoded by: MCKUC (YouTube)
+ * Firmware data organized by: qtr_703 (Twitter/Discord)
  *
- * PS5 serial numbers follow this general format:
+ * PS5 serial numbers on box stickers begin with S01- prefix:
  *
- * CFI-MMMMR YYWF SSSS
+ * S01-[F][C][Y][M]xxxxxxxxxxxx
  *
- * Where:
- * - CFI     = Fixed prefix for all PS5 models
- * - MMMM    = Model number (1000, 1015, 1100, 1200, 2000, etc.)
- * - R       = Region code (A=US, B=UK, J=JP, etc.)
- * - YY      = Manufacturing year (last 2 digits, e.g. 21=2021)
- * - W       = Manufacturing week/month indicator
- * - F       = Factory identifier
- * - SSSS    = Unit serial (sequential)
+ * Where (positions are 1-indexed after S01-):
+ * - Position 5 (F): Factory/Region code (E/F/G = China, M = Malaysia, K = Japan)
+ * - Position 6 (C): Chassis class digit (1=CFI-10xx, 2=CFI-11xx, 3=CFI-12xx, 4=CFI-20xx, 5=CFI-21xx)
+ *                    Pro models: 1=CFI-70xx, 2=CFI-71xx (distinguished by year 2024+)
+ * - Position 7 (Y): Production year (1=2021, 2=2022, 3=2023, 4=2024, 5=2025, 6=2026)
+ * - Position 8 (M): Production month (1-9=Jan-Sep, A=Oct, B=Nov, C=Dec)
+ * - Position 9+: Unit-specific serial digits (not decoded)
  *
- * Alternative bar-code based format commonly found on packaging:
- *
- * S01-G2XYYF SSSS (17 characters)
- *
- * The barcode / sticker serial is what users usually enter.
- *
- * Short format (model code only): CFI-XXXXR or CF1-XXXXR
+ * Short format (model code only): CFI-XXXXR (e.g., CFI-1215A)
+ * where R is region: A=US, B=UK/Digital, J=JP, etc.
  */
 
 import type { SerialParseResult } from '@/types/serial';
 
-/**
- * Known serial number format patterns.
- * Each pattern maps a regex to the extraction logic.
- */
+// --- Patterns ---
 
 /**
  * Short model code format: e.g. "CFI-1215A" or "CF1-1215A"
- * This is a simplified lookup format (no manufacturing details)
  */
 const SHORT_MODEL_PATTERN = /^(CFI?)-?(\d{4})([A-Z])$/i;
 
 /**
- * Barcode-style format: e.g. "S01-G2121W9D1234" or similar
- * Pattern breakdown:
- *   S01-G2   = Fixed prefix (PS5 barcode identifier)
- *   X        = Model variant character
- *   YY       = Year code (21, 22, 23, 24, 25 ...)
- *   W        = Month/Week indicator (1-9, A-C for months)
- *   F        = Factory code
- *   DDDD     = Sequence digits
+ * S01 barcode serial format:
+ * S01-[F][C][Y][M][rest...]
+ * After S01-, we capture position 5 onwards.
+ * Minimum 10 characters total.
  */
-const BARCODE_PATTERN =
-  /^S01-?G2([A-Z0-9])(\d{2})([1-9A-C])(\w)(\d+[A-Z]?)(\d{4,})$/i;
+const S01_PATTERN = /^S01-?([A-Z])(\d)(\d)([1-9A-C])(.+)$/i;
+
+// --- Functions ---
 
 /**
- * CFI-based format: e.g. "CFI-1015A 21W9D 1234"
- * Users might input with or without spaces/dashes
- */
-const CFI_PATTERN =
-  /^CFI-?(\d{4})([A-Z])\s*(\d{2})(\w)(\w)[\s-]?(\d{4,})$/i;
-
-/**
- * Loose pattern: just the critical parts with any separator
- */
-const LOOSE_PATTERN =
-  /^[A-Z0-9]{3,4}[-\s]?[A-Z0-9]{2}([A-Z0-9])(\d{2})([1-9A-C])(\w)(\d?\w?)(\d{4,})$/i;
-
-/**
- * Normalize user input: uppercase, trim, remove extra spaces
+ * Normalize user input: uppercase, trim, remove spaces
  */
 export function normalizeSerial(input: string): string {
   return input.trim().toUpperCase().replace(/\s+/g, '');
 }
 
 /**
- * Format serial number as user types (auto-add dashes and group digits)
- * Examples:
- *   "CFI1215A" -> "CFI-1215A"
- *   "S01G2121W9D1234" -> "S01-G212 1W9D 1234"
+ * Format serial number for display as user types or pastes.
  */
 export function formatSerialInput(input: string): string {
-  // Remove all non-alphanumeric except dash (preserve intent)
   const cleaned = input.toUpperCase().replace(/[^A-Z0-9-]/g, '').replace(/--+/g, '-');
-  
-  // If it already looks like a formatted serial (has dash after S01 or CFI), use as-is after cleanup
-  // This handles copy-paste of formatted serials like "S01-G2A211W9D1234"
   const stripped = cleaned.replace(/[^A-Z0-9]/g, '');
-  
-  // Short model format: CFI-XXXXR or CF1-XXXXR (e.g. CFI-1215A)
+
+  // Short model format: CFI-XXXXR (e.g. CFI-1215A)
   if (stripped.match(/^(CFI?)\d{0,5}[A-Z]?$/) && stripped.length <= 9) {
     if (stripped.length <= 3) return stripped;
-    
     const prefix = stripped.startsWith('CFI') ? 'CFI' : stripped.substring(0, 3);
     const rest = stripped.substring(prefix.length);
-    
     if (rest.length === 0) return prefix;
     return `${prefix}-${rest}`;
   }
-  
-  // Barcode format: S01-G2XYYFW SSSS (e.g. S01-G2A211W9D1234)
+
+  // Barcode format: S01-XXXXX...
   if (stripped.startsWith('S01')) {
-    const parts = stripped.substring(3); // Remove S01
+    const parts = stripped.substring(3);
     if (parts.length === 0) return 'S01';
-    // Keep it clean: S01-{rest} — no extra spaces for paste compatibility
     return `S01-${parts}`;
   }
-  
-  // CFI long format: CFI-XXXXXYYYY SSSS
+
+  // CFI long format
   if (stripped.startsWith('CFI')) {
     if (stripped.length <= 3) return stripped;
     const rest = stripped.substring(3);
     if (rest.length <= 5) return `CFI-${rest}`;
     return `CFI-${rest}`;
   }
-  
+
   return input.toUpperCase().trim();
+}
+
+/**
+ * Parse month character to number.
+ * 1-9 = January-September, A=October, B=November, C=December
+ */
+export function parseMonthChar(char: string): number {
+  const upper = char.toUpperCase();
+  if (upper >= '1' && upper <= '9') {
+    return parseInt(upper, 10);
+  }
+  switch (upper) {
+    case 'A': return 10;
+    case 'B': return 11;
+    case 'C': return 12;
+    default: return 0;
+  }
+}
+
+/**
+ * Map chassis digit to CFI series string.
+ */
+function chassisToSeries(chassisDigit: number, year: number): string {
+  switch (chassisDigit) {
+    case 1:
+      // Could be CFI-10xx (FAT 1st gen) or CFI-70xx (Pro 1st gen)
+      if (year >= 2024) return 'CFI-70xx';
+      return 'CFI-10xx';
+    case 2:
+      // Could be CFI-11xx (FAT 2nd gen) or CFI-71xx (Pro 2nd gen)
+      if (year >= 2025) return 'CFI-71xx';
+      return 'CFI-11xx';
+    case 3: return 'CFI-12xx';
+    case 4: return 'CFI-20xx';
+    case 5: return 'CFI-21xx';
+    default: return `CFI-?${chassisDigit}xx`;
+  }
+}
+
+/**
+ * Map factory code to manufacturing country.
+ */
+function factoryToCountry(code: string): string {
+  switch (code.toUpperCase()) {
+    case 'E':
+    case 'F':
+    case 'G': return 'China';
+    case 'M': return 'Malaysia';
+    case 'K': return 'Japan';
+    default: return 'Unknown';
+  }
 }
 
 /**
  * Parse a PS5 serial number and extract its components.
  *
- * Tries multiple known formats (short model, barcode, CFI, loose).
+ * Supports:
+ * 1. S01 barcode format (box sticker): S01-F448xxxxxxxxx
+ * 2. Short model code: CFI-1215A
+ *
  * Returns null if none match.
  */
 export function parseSerial(raw: string): SerialParseResult | null {
@@ -133,7 +153,7 @@ export function parseSerial(raw: string): SerialParseResult | null {
       isValid: true,
       modelCode: `CFI-${modelNum}${region}`,
       modelVariant: modelNum,
-      yearManufactured: 0, // Unknown in short format
+      yearManufactured: 0,
       monthManufactured: 0,
       weekManufactured: 0,
       region: region,
@@ -142,65 +162,29 @@ export function parseSerial(raw: string): SerialParseResult | null {
     };
   }
 
-  // Try barcode format
-  const barcodeMatch = normalized.match(BARCODE_PATTERN);
-  if (barcodeMatch) {
-    const [, modelVariant, yearStr, monthChar, factory, , sequence] =
-      barcodeMatch;
-    const year = 2000 + parseInt(yearStr, 10);
+  // Try S01 barcode format
+  const s01Match = normalized.match(S01_PATTERN);
+  if (s01Match) {
+    const [, factoryCode, chassisStr, yearStr, monthChar, rest] = s01Match;
+    const chassisDigit = parseInt(chassisStr, 10);
+    const yearDigit = parseInt(yearStr, 10);
+    const year = 2020 + yearDigit;
     const month = parseMonthChar(monthChar);
+    const series = chassisToSeries(chassisDigit, year);
+
+    // Build the 3-char lookup key: [chassis][year][month]
+    // e.g. chassis=2, year=1, month=4 → "214"
+    const lookupKey = `${chassisStr}${yearStr}${monthChar.toUpperCase()}`;
 
     return {
       isValid: true,
-      modelCode: `barcode-${modelVariant}`,
-      modelVariant: modelVariant,
+      modelCode: series,
+      modelVariant: lookupKey,
       yearManufactured: year,
       monthManufactured: month,
-      weekManufactured: parseInt(sequence.slice(0, 2), 10) || 0,
-      region: modelVariant,
-      factory: factory,
-      raw: normalized,
-    };
-  }
-
-  // Try CFI format
-  const cfiMatch = normalized.match(CFI_PATTERN);
-  if (cfiMatch) {
-    const [, modelNum, region, yearStr, monthChar, factory, sequence] =
-      cfiMatch;
-    const year = 2000 + parseInt(yearStr, 10);
-    const month = parseMonthChar(monthChar);
-
-    return {
-      isValid: true,
-      modelCode: `CFI-${modelNum}`,
-      modelVariant: modelNum,
-      yearManufactured: year,
-      monthManufactured: month,
-      weekManufactured: parseInt(sequence.slice(0, 2), 10) || 0,
-      region: region,
-      factory: factory,
-      raw: normalized,
-    };
-  }
-
-  // Try loose format
-  const looseMatch = normalized.match(LOOSE_PATTERN);
-  if (looseMatch) {
-    const [, modelVariant, yearStr, monthChar, factory, , sequence] =
-      looseMatch;
-    const year = 2000 + parseInt(yearStr, 10);
-    const month = parseMonthChar(monthChar);
-
-    return {
-      isValid: true,
-      modelCode: `unknown-${modelVariant}`,
-      modelVariant: modelVariant,
-      yearManufactured: year,
-      monthManufactured: month,
-      weekManufactured: parseInt(sequence?.slice(0, 2) || '0', 10),
-      region: modelVariant,
-      factory: factory,
+      weekManufactured: 0,
+      region: factoryCode.toUpperCase(),
+      factory: factoryToCountry(factoryCode),
       raw: normalized,
     };
   }
@@ -209,37 +193,13 @@ export function parseSerial(raw: string): SerialParseResult | null {
 }
 
 /**
- * Convert month character to number.
- * 1-9 = January-September, A=October, B=November, C=December
- */
-export function parseMonthChar(char: string): number {
-  const upper = char.toUpperCase();
-  if (upper >= '1' && upper <= '9') {
-    return parseInt(upper, 10);
-  }
-  switch (upper) {
-    case 'A':
-      return 10;
-    case 'B':
-      return 11;
-    case 'C':
-      return 12;
-    default:
-      return 0;
-  }
-}
-
-/**
  * Validate that a raw serial string has a recognizable format.
- * This is a quick check before full parsing.
  */
 export function isValidFormat(raw: string): boolean {
   const normalized = normalizeSerial(raw);
   return (
     SHORT_MODEL_PATTERN.test(normalized) ||
-    BARCODE_PATTERN.test(normalized) ||
-    CFI_PATTERN.test(normalized) ||
-    LOOSE_PATTERN.test(normalized)
+    S01_PATTERN.test(normalized)
   );
 }
 
@@ -247,5 +207,5 @@ export function isValidFormat(raw: string): boolean {
  * Get a human-readable format hint for the expected serial number.
  */
 export function getFormatHint(): string {
-  return 'CFI-1215A or S01-G212 1W9D 1234';
+  return 'S01-G2A211W9D1234 or CFI-1215A';
 }
