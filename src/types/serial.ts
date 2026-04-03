@@ -43,7 +43,7 @@ export interface RegionInfo {
   factoryCode: string;
 }
 
-export type Locale = 'en' | 'tr' | 'ja' | 'de' | 'fr' | 'es' | 'it' | 'zh' | 'ru' | 'pt' | 'ko' | 'ar' | 'pl' | 'nl' | 'hi' | 'sv' | 'no' | 'fi' | 'da' | 'cs' | 'hu' | 'ro' | 'id' | 'vi' | 'th' | 'uk';
+export type Locale = 'en' | 'tr' | 'ja' | 'de' | 'fr' | 'es' | 'it' | 'zh' | 'ru' | 'pt' | 'ko' | 'ar' | 'pl' | 'nl' | 'hi' | 'sv' | 'no' | 'fi' | 'da' | 'cs' | 'hu' | 'ro' | 'id' | 'vi' | 'th' | 'uk' | 'el' | 'he' | 'fa' | 'bg' | 'sr' | 'hr' | 'sk' | 'sl' | 'lt' | 'lv';
 
 export interface LanguageInfo {
   code: Locale;

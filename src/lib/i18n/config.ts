@@ -12,7 +12,8 @@ export const SUPPORTED_LOCALES: Locale[] = [
   'en', 'tr', 'ja', 'de', 'fr', 'es', 'it',
   'zh', 'ru', 'pt', 'ko', 'ar', 'pl', 'nl',
   'hi', 'sv', 'no', 'fi', 'da', 'cs', 'hu',
-  'ro', 'id', 'vi', 'th', 'uk',
+  'ro', 'id', 'vi', 'th', 'uk', 'el', 'he',
+  'fa', 'bg', 'sr', 'hr', 'sk', 'sl', 'lt', 'lv',
 ];
 
 export const LANGUAGES: LanguageInfo[] = [
@@ -42,6 +43,16 @@ export const LANGUAGES: LanguageInfo[] = [
   { code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt', flag: '🇻🇳' },
   { code: 'th', name: 'Thai', nativeName: 'ไทย', flag: '🇹🇭' },
   { code: 'uk', name: 'Ukrainian', nativeName: 'Українська', flag: '🇺🇦' },
+  { code: 'el', name: 'Greek', nativeName: 'Ελληνικά', flag: '🇬🇷' },
+  { code: 'he', name: 'Hebrew', nativeName: 'עברית', flag: '🇮🇱', direction: 'rtl' },
+  { code: 'fa', name: 'Persian', nativeName: 'فارسی', flag: '🇮🇷', direction: 'rtl' },
+  { code: 'bg', name: 'Bulgarian', nativeName: 'Български', flag: '🇧🇬' },
+  { code: 'sr', name: 'Serbian', nativeName: 'Српски', flag: '🇷🇸' },
+  { code: 'hr', name: 'Croatian', nativeName: 'Hrvatski', flag: '🇭🇷' },
+  { code: 'sk', name: 'Slovak', nativeName: 'Slovenčina', flag: '🇸🇰' },
+  { code: 'sl', name: 'Slovenian', nativeName: 'Slovenščina', flag: '🇸🇮' },
+  { code: 'lt', name: 'Lithuanian', nativeName: 'Lietuvių', flag: '🇱🇹' },
+  { code: 'lv', name: 'Latvian', nativeName: 'Latviešu', flag: '🇱🇻' },
 ];
 
 /**
