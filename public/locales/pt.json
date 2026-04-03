@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "Digite seu\nnúmero de série.",
+    "description": "Verifique se seu PlayStation 5 pode ser desbloqueado inserindo o número de série",
+    "check": "Verificar",
+    "clear": "Limpar",
+    "loading": "Analisando...",
+    "serialNumber": "Número de Série",
+    "learnMore": "Saiba Mais"
+  },
+  "form": {
+    "label": "Digite o número de série do seu PS5",
+    "placeholder": "ex. S01-G2121W9D1234",
+    "hint": "Você encontra o número de série na parte traseira/inferior do PS5",
+    "invalidFormat": "Formato de número de série inválido. Verifique e tente novamente.",
+    "tooShort": "Número de série muito curto. Insira pelo menos 10 caracteres.",
+    "required": "Por favor, insira um número de série"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Ótimas Notícias!",
+      "firmware": "Firmware estimado: {version} ou inferior",
+      "description": "Este PS5 provavelmente pode ser desbloqueado! O firmware de fábrica estimado está dentro da faixa explorável."
+    },
+    "notJailbreakable": {
+      "title": "Não Desbloqueável",
+      "firmware": "Firmware estimado: {version}",
+      "description": "Este PS5 provavelmente veio com firmware não explorável no momento."
+    },
+    "uncertain": {
+      "title": "Incerto",
+      "firmware": "Firmware estimado: cerca de {version}",
+      "description": "Este PS5 foi fabricado durante um período de transição. O firmware pode variar. Verifique diretamente no console."
+    },
+    "confidence": {
+      "high": "Alta Confiança",
+      "medium": "Média Confiança",
+      "low": "Baixa Confiança"
+    },
+    "detectedRegion": "Região: {region}",
+    "detectedModel": "Modelo: {model}",
+    "manufacturedYear": "Fabricado em: {year}"
+  },
+  "guide": {
+    "title": "Onde encontrar o número de série?",
+    "subtitle": "Verifique o número de série antes de comprar — sem abrir a caixa",
+    "step1Title": "Passo 1: Verifique a Caixa",
+    "step1Desc": "Olhe a parte inferior da caixa do PS5. O número de série está impresso em uma etiqueta — sem necessidade de abrir.",
+    "step2Title": "Passo 2: Encontre a Etiqueta",
+    "step2Desc": "Localize a etiqueta com código de barras na caixa. Ela contém o número de série, modelo e dados de fabricação.",
+    "step3Title": "Passo 3: Digite o Serial",
+    "step3Desc": "O número de série começa com 'S01-'. Digite-o no verificador acima para saber se o PS5 pode ser desbloqueado."
+  },
+  "about": {
+    "title": "Sobre Esta Ferramenta",
+    "whatIsThis": "O que é isso?",
+    "whatIsThisDesc": "Esta ferramenta ajuda a determinar se um PlayStation 5 pode ser desbloqueado analisando seu número de série. O número de série contém informações de data de fabricação correlacionadas com a versão do firmware de fábrica.",
+    "howItWorks": "Como funciona?",
+    "howItWorksDesc": "Consoles PS5 vêm com firmware de fábrica correspondente à data de fabricação. Decodificando o número de série, estimamos a versão do firmware e verificamos se está no alcance de exploits conhecidos. Dados baseados no PSDevWiki.",
+    "disclaimer": "Aviso Legal",
+    "disclaimerDesc": "Este site não é afiliado à Sony Interactive Entertainment. PlayStation e PS5 são marcas registradas da Sony Interactive Entertainment LLC."
+  },
+  "footer": {
+    "credits": "Créditos e Colaboradores",
+    "github": "Ver no GitHub",
+    "license": "Licença MIT",
+    "madeWith": "Feito com ❤️ por",
+    "inspiredBy": "Dados inspirados por",
+    "dataFrom": "Dados de números de série de"
+  },
+  "seo": {
+    "pageTitle": "Meu PS5 é desbloqueável? | Verificador de Firmware por Número de Série",
+    "pageDescription": "Verifique se seu PlayStation 5 pode ser desbloqueado inserindo o número de série. Detecção rápida de firmware baseada em dados do PSDevWiki.",
+    "ogTitle": "PS5 Jailbreak Checker - Verifique Seu Número de Série",
+    "ogDescription": "Ferramenta gratuita para verificar se seu PS5 é desbloqueável por número de série. Estimativa instantânea de firmware."
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "시리얼 번호를\n입력하세요.",
+    "description": "시리얼 번호를 입력하여 PlayStation 5의 탈옥 가능 여부를 확인하세요",
+    "check": "확인",
+    "clear": "지우기",
+    "loading": "분석 중...",
+    "serialNumber": "시리얼 번호",
+    "learnMore": "더 알아보기"
+  },
+  "form": {
+    "label": "PS5 시리얼 번호를 입력하세요",
+    "placeholder": "예: S01-G2121W9D1234",
+    "hint": "시리얼 번호는 PS5 본체 뒷면/밑면에서 찾을 수 있습니다",
+    "invalidFormat": "잘못된 시리얼 번호 형식입니다. 확인 후 다시 시도하세요.",
+    "tooShort": "시리얼 번호가 너무 짧습니다. 최소 10자를 입력하세요.",
+    "required": "시리얼 번호를 입력해 주세요"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "좋은 소식!",
+      "firmware": "예상 펌웨어: {version} 이하",
+      "description": "이 PS5는 탈옥이 가능할 수 있습니다! 예상 공장 펌웨어가 익스플로잇 가능 범위 내에 있습니다."
+    },
+    "notJailbreakable": {
+      "title": "탈옥 불가",
+      "firmware": "예상 펌웨어: {version}",
+      "description": "이 PS5는 현재 익스플로잇할 수 없는 펌웨어 버전으로 출하되었을 가능성이 높습니다."
+    },
+    "uncertain": {
+      "title": "불확실",
+      "firmware": "예상 펌웨어: 약 {version}",
+      "description": "이 PS5는 전환 기간에 제조되었습니다. 실제 펌웨어가 다를 수 있습니다. 본체에서 직접 펌웨어 버전을 확인하세요."
+    },
+    "confidence": {
+      "high": "높은 신뢰도",
+      "medium": "중간 신뢰도",
+      "low": "낮은 신뢰도"
+    },
+    "detectedRegion": "지역: {region}",
+    "detectedModel": "모델: {model}",
+    "manufacturedYear": "제조년도: {year}"
+  },
+  "guide": {
+    "title": "시리얼 번호는 어디에 있나요?",
+    "subtitle": "구매 전 시리얼 번호를 확인하세요 — 박스를 열 필요 없습니다",
+    "step1Title": "1단계: 소매 박스 확인",
+    "step1Desc": "PS5 박스 밑면을 확인하세요. 시리얼 번호가 라벨에 인쇄되어 있습니다 — 개봉 불필요.",
+    "step2Title": "2단계: 바코드 라벨 찾기",
+    "step2Desc": "박스의 바코드 라벨을 찾으세요. 시리얼 번호, 모델 정보, 제조 세부사항이 포함되어 있습니다.",
+    "step3Title": "3단계: 시리얼 입력",
+    "step3Desc": "시리얼 번호는 'S01-'로 시작합니다. 위의 검사기에 입력하여 구매 전 PS5의 탈옥 가능 여부를 확인하세요."
+  },
+  "about": {
+    "title": "이 도구에 대해",
+    "whatIsThis": "이것은 무엇인가요?",
+    "whatIsThisDesc": "이 도구는 시리얼 번호를 분석하여 PlayStation 5 본체의 탈옥 가능 여부를 판단합니다. 시리얼 번호에는 공장 설치 펌웨어 버전과 관련된 제조 날짜 정보가 포함되어 있습니다.",
+    "howItWorks": "어떻게 작동하나요?",
+    "howItWorksDesc": "PS5 본체는 제조 날짜에 해당하는 공장 펌웨어로 출하됩니다. 시리얼 번호를 디코딩하여 펌웨어 버전을 추정하고 알려진 익스플로잇 범위에 해당하는지 확인합니다. 데이터는 PSDevWiki 기반입니다.",
+    "disclaimer": "면책 조항",
+    "disclaimerDesc": "이 사이트는 Sony Interactive Entertainment와 관련이 없습니다. PlayStation과 PS5는 Sony Interactive Entertainment LLC의 등록 상표입니다."
+  },
+  "footer": {
+    "credits": "크레딧 및 기여자",
+    "github": "GitHub에서 보기",
+    "license": "MIT 라이선스",
+    "madeWith": "❤️로 제작",
+    "inspiredBy": "데이터 출처",
+    "dataFrom": "시리얼 번호 데이터 출처"
+  },
+  "seo": {
+    "pageTitle": "내 PS5는 탈옥 가능한가요? | 시리얼 번호 펌웨어 검사기",
+    "pageDescription": "시리얼 번호를 입력하여 PlayStation 5의 탈옥 가능 여부를 확인하세요. PSDevWiki 데이터 기반의 빠르고 정확한 펌웨어 감지.",
+    "ogTitle": "PS5 탈옥 검사기 - 시리얼 번호 확인",
+    "ogDescription": "시리얼 번호로 PS5 탈옥 가능 여부를 확인하는 무료 도구. 커뮤니티 데이터 기반 즉시 펌웨어 추정."
+  }
+}

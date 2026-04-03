@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "输入你的\n序列号。",
+    "description": "输入序列号检查你的PlayStation 5是否可以越狱",
+    "check": "检查序列号",
+    "clear": "清除",
+    "loading": "分析中...",
+    "serialNumber": "序列号",
+    "learnMore": "了解更多"
+  },
+  "form": {
+    "label": "输入你的PS5序列号",
+    "placeholder": "例如 S01-G2121W9D1234",
+    "hint": "你可以在PS5主机的背面/底部找到序列号",
+    "invalidFormat": "序列号格式无效。请检查后重试。",
+    "tooShort": "序列号太短。请输入至少10个字符。",
+    "required": "请输入序列号"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "好消息！",
+      "firmware": "预估固件：{version} 或更低",
+      "description": "这台PS5很可能可以越狱！预估出厂固件在可利用范围内。"
+    },
+    "notJailbreakable": {
+      "title": "无法越狱",
+      "firmware": "预估固件：{version}",
+      "description": "这台PS5出厂固件版本目前不可利用。"
+    },
+    "uncertain": {
+      "title": "不确定",
+      "firmware": "预估固件：约 {version}",
+      "description": "这台PS5在过渡期制造。实际固件可能不同。请直接在主机上确认固件版本。"
+    },
+    "confidence": {
+      "high": "高可信度",
+      "medium": "中可信度",
+      "low": "低可信度"
+    },
+    "detectedRegion": "地区：{region}",
+    "detectedModel": "型号：{model}",
+    "manufacturedYear": "制造年份：{year}"
+  },
+  "guide": {
+    "title": "在哪里找到序列号？",
+    "subtitle": "购买前检查序列号 — 无需拆箱",
+    "step1Title": "步骤1：查看零售包装",
+    "step1Desc": "查看PS5零售包装盒底部。序列号印在标签上 — 无需拆箱或开机。",
+    "step2Title": "步骤2：找到条形码标签",
+    "step2Desc": "在盒子上找到条形码标签。上面包含序列号、型号信息和制造详情。",
+    "step3Title": "步骤3：输入序列号",
+    "step3Desc": "序列号以'S01-'开头。在上方检查器中输入，购买前查看PS5是否可以越狱。"
+  },
+  "about": {
+    "title": "关于此工具",
+    "whatIsThis": "这是什么？",
+    "whatIsThisDesc": "此工具通过分析序列号帮助您确定PlayStation 5主机是否可以越狱。序列号包含与出厂固件版本相关的制造日期信息。",
+    "howItWorks": "工作原理",
+    "howItWorksDesc": "PS5主机出厂时预装与制造日期对应的固件。通过解码序列号，我们可以估计固件版本并检查是否在已知漏洞范围内。数据基于PSDevWiki序列号指南和社区研究。",
+    "disclaimer": "免责声明",
+    "disclaimerDesc": "本站与Sony Interactive Entertainment无关。PlayStation和PS5是Sony Interactive Entertainment LLC的注册商标。"
+  },
+  "footer": {
+    "credits": "鸣谢与贡献者",
+    "github": "在GitHub上查看",
+    "license": "MIT许可证",
+    "madeWith": "用❤️制作",
+    "inspiredBy": "数据灵感来自",
+    "dataFrom": "序列号数据来自"
+  },
+  "seo": {
+    "pageTitle": "我的PS5可以越狱吗？ | 序列号固件检查器",
+    "pageDescription": "输入序列号检查你的PlayStation 5是否可以越狱。基于PSDevWiki制造数据的快速、准确的固件检测。",
+    "ogTitle": "PS5越狱检查器 - 检查你的序列号",
+    "ogDescription": "免费工具，通过序列号检查你的PS5是否可以越狱。基于社区数据的即时固件估算。"
+  }
+}

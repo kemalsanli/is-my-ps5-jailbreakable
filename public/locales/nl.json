@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "Voer uw\nserienummer in.",
+    "description": "Controleer of uw PlayStation 5 gejailbreakt kan worden door het serienummer in te voeren",
+    "check": "Controleer",
+    "clear": "Wissen",
+    "loading": "Analyseren...",
+    "serialNumber": "Serienummer",
+    "learnMore": "Meer info"
+  },
+  "form": {
+    "label": "Voer uw PS5 serienummer in",
+    "placeholder": "bijv. S01-G2121W9D1234",
+    "hint": "Het serienummer vindt u op de achter-/onderkant van uw PS5",
+    "invalidFormat": "Ongeldig serienummerformaat. Controleer en probeer opnieuw.",
+    "tooShort": "Serienummer is te kort. Voer minimaal 10 tekens in.",
+    "required": "Voer een serienummer in"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Goed nieuws!",
+      "firmware": "Geschatte firmware: {version} of lager",
+      "description": "Deze PS5 is waarschijnlijk jailbreakbaar! De geschatte fabrieksfirmware valt binnen het exploiteerbare bereik."
+    },
+    "notJailbreakable": {
+      "title": "Niet Jailbreakbaar",
+      "firmware": "Geschatte firmware: {version}",
+      "description": "Deze PS5 is waarschijnlijk geleverd met firmware die momenteel niet exploiteerbaar is."
+    },
+    "uncertain": {
+      "title": "Onzeker",
+      "firmware": "Geschatte firmware: circa {version}",
+      "description": "Deze PS5 is geproduceerd tijdens een overgangsperiode. De werkelijke firmware kan afwijken. Controleer de firmware direct op de console."
+    },
+    "confidence": {
+      "high": "Hoge betrouwbaarheid",
+      "medium": "Gemiddelde betrouwbaarheid",
+      "low": "Lage betrouwbaarheid"
+    },
+    "detectedRegion": "Regio: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Geproduceerd: {year}"
+  },
+  "guide": {
+    "title": "Waar vind ik het serienummer?",
+    "subtitle": "Controleer het serienummer vóór aankoop — doos openen niet nodig",
+    "step1Title": "Stap 1: Controleer de doos",
+    "step1Desc": "Kijk op de onderkant van de PS5-doos. Het serienummer staat op een sticker — openen is niet nodig.",
+    "step2Title": "Stap 2: Zoek het barcodelabel",
+    "step2Desc": "Zoek het barcodelabel op de doos. Het bevat het serienummer, modelinfo en productiegegevens.",
+    "step3Title": "Stap 3: Voer het serienummer in",
+    "step3Desc": "Het serienummer begint met 'S01-'. Typ het in de checker hierboven om te zien of de PS5 jailbreakbaar is."
+  },
+  "about": {
+    "title": "Over deze tool",
+    "whatIsThis": "Wat is dit?",
+    "whatIsThisDesc": "Deze tool helpt bepalen of een PlayStation 5 mogelijk gejailbreakt kan worden door het serienummer te analyseren. Het serienummer bevat productiedatuminformatie die correleert met de fabrieksfirmwareversie.",
+    "howItWorks": "Hoe werkt het?",
+    "howItWorksDesc": "PS5-consoles worden geleverd met fabrieksfirmware die overeenkomt met de productiedatum. Door het serienummer te decoderen, schatten we de firmwareversie en controleren we of deze binnen het bereik van bekende exploits valt. Gegevens gebaseerd op PSDevWiki.",
+    "disclaimer": "Disclaimer",
+    "disclaimerDesc": "Deze site is niet gelieerd aan Sony Interactive Entertainment. PlayStation en PS5 zijn geregistreerde handelsmerken van Sony Interactive Entertainment LLC."
+  },
+  "footer": {
+    "credits": "Credits & bijdragers",
+    "github": "Bekijk op GitHub",
+    "license": "MIT-licentie",
+    "madeWith": "Gemaakt met ❤️ door",
+    "inspiredBy": "Data geïnspireerd door",
+    "dataFrom": "Serienummergegevens van"
+  },
+  "seo": {
+    "pageTitle": "Is mijn PS5 jailbreakbaar? | Serienummer Firmware Checker",
+    "pageDescription": "Controleer of uw PlayStation 5 gejailbreakt kan worden door het serienummer in te voeren. Snelle firmwaredetectie op basis van PSDevWiki-gegevens.",
+    "ogTitle": "PS5 Jailbreak Checker - Controleer uw serienummer",
+    "ogDescription": "Gratis tool om te controleren of uw PS5 jailbreakbaar is op serienummer. Directe firmware-inschatting."
+  }
+}
