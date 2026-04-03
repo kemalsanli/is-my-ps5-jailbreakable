@@ -32,12 +32,19 @@ import type { SerialParseResult } from '@/types/serial';
 const SHORT_MODEL_PATTERN = /^(CFI?)-?(\d{4})([A-Z])$/i;
 
 /**
- * S01 barcode serial format:
+ * S01 barcode serial format (strict):
  * S01-[F][C][Y][M][rest...]
- * After S01-, we capture position 5 onwards.
- * Minimum 10 characters total.
+ * F = factory letter, C = chassis digit, Y = year digit, M = month code
  */
 const S01_PATTERN = /^S01-?([A-Z])(\d)(\d)([1-9A-C])(.+)$/i;
+
+/**
+ * S01 barcode serial format (loose):
+ * Accepts any alphanumeric at positions 5-8 for real-world serials
+ * that don't strictly follow the documented format.
+ * S01-[X][X][X][X][rest...]  — minimum 5+ chars after S01-
+ */
+const S01_LOOSE_PATTERN = /^S01-?([A-Z0-9])([A-Z0-9])([A-Z0-9])([A-Z0-9])(.+)$/i;
 
 // --- Functions ---
 
@@ -162,7 +169,7 @@ export function parseSerial(raw: string): SerialParseResult | null {
     };
   }
 
-  // Try S01 barcode format
+  // Try S01 barcode format (strict)
   const s01Match = normalized.match(S01_PATTERN);
   if (s01Match) {
     const [, factoryCode, chassisStr, yearStr, monthChar, rest] = s01Match;
@@ -173,7 +180,6 @@ export function parseSerial(raw: string): SerialParseResult | null {
     const series = chassisToSeries(chassisDigit, year);
 
     // Build the 3-char lookup key: [chassis][year][month]
-    // e.g. chassis=2, year=1, month=4 → "214"
     const lookupKey = `${chassisStr}${yearStr}${monthChar.toUpperCase()}`;
 
     return {
@@ -189,6 +195,54 @@ export function parseSerial(raw: string): SerialParseResult | null {
     };
   }
 
+  // Try S01 barcode format (loose) — for real-world serials like S01-G2A211W9D1234
+  // that don't follow the strict documented format
+  const s01LooseMatch = normalized.match(S01_LOOSE_PATTERN);
+  if (s01LooseMatch) {
+    const [, char1, char2, char3, char4, rest] = s01LooseMatch;
+    
+    // Try to extract what we can
+    const factoryCode = char1; // Position 5
+    const lookupKey = `${char2}${char3}${char4}`; // Positions 6-8
+    
+    // Factory country
+    const factory = factoryToCountry(factoryCode);
+    
+    // Try to parse as much as possible for year/month
+    // char2 = chassis (should be digit), char3 = year, char4 = month
+    let year = 0;
+    let month = 0;
+    let series = 'CFI-??xx';
+    
+    // If char2 is a digit, assume it's chassis
+    if (/\d/.test(char2)) {
+      const chassisDigit = parseInt(char2, 10);
+      // If char3 is a digit, assume it's year
+      if (/\d/.test(char3)) {
+        const yearDigit = parseInt(char3, 10);
+        year = 2020 + yearDigit;
+        series = chassisToSeries(chassisDigit, year);
+      } else {
+        // char3 might be a model variant letter — estimate series from chassis alone
+        series = chassisToSeries(chassisDigit, 2021);
+      }
+      // Try to parse month from char4
+      month = parseMonthChar(char4);
+    }
+
+    return {
+      isValid: true,
+      modelCode: series,
+      modelVariant: lookupKey,
+      yearManufactured: year,
+      monthManufactured: month,
+      weekManufactured: 0,
+      region: factoryCode.toUpperCase(),
+      factory: factory,
+      raw: normalized,
+    };
+  }
+
   return null;
 }
 
@@ -199,7 +253,8 @@ export function isValidFormat(raw: string): boolean {
   const normalized = normalizeSerial(raw);
   return (
     SHORT_MODEL_PATTERN.test(normalized) ||
-    S01_PATTERN.test(normalized)
+    S01_PATTERN.test(normalized) ||
+    S01_LOOSE_PATTERN.test(normalized)
   );
 }
 
