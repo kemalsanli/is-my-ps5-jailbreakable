@@ -36,7 +36,6 @@ export default function HomePage() {
               textTransform: 'uppercase',
               color: 'var(--text-color-tertiary)',
               marginBottom: '8px',
-              textAlign: 'center',
             }}
           >
             PlayStation 5
@@ -50,7 +49,6 @@ export default function HomePage() {
               letterSpacing: '-0.4px',
               lineHeight: 1.2,
               marginBottom: '32px',
-              textAlign: 'center',
             }}
           >
             {t.common.title.split('?')[0]}
