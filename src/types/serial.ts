@@ -50,6 +50,7 @@ export interface LanguageInfo {
   name: string;
   nativeName: string;
   flag: string;
+  direction?: 'ltr' | 'rtl';
 }
 
 export interface Translations {

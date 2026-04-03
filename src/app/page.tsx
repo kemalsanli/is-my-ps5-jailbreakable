@@ -5,10 +5,11 @@ import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 
 export default function HomePage() {
-  const { t } = useTranslation();
+  const { t, direction } = useTranslation();
 
   return (
     <div
+      dir={direction}
       style={{
         display: 'flex',
         alignItems: 'center',

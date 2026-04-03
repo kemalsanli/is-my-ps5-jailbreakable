@@ -9,7 +9,7 @@
 
 import { useState, useEffect, useCallback, createContext, useContext } from 'react';
 import type { Locale, Translations } from '@/types/serial';
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES, getStoredLocale, setStoredLocale } from './config';
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, getStoredLocale, setStoredLocale, getLocaleDirection } from './config';
 import enTranslations from '../../../public/locales/en.json';
 
 const fallbackTranslations = enTranslations as unknown as Translations;
@@ -19,6 +19,7 @@ interface I18nContextValue {
   translations: Translations;
   setLocale: (locale: Locale) => void;
   t: Translations;
+  direction: 'ltr' | 'rtl';
 }
 
 const I18nContext = createContext<I18nContextValue | null>(null);
@@ -92,13 +93,16 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       setLocaleState(newLocale);
       setStoredLocale(newLocale);
       loadTranslations(newLocale);
-      // Update html lang attribute
+      // Update html lang and dir attributes
       if (typeof document !== 'undefined') {
         document.documentElement.lang = newLocale;
+        document.documentElement.dir = getLocaleDirection(newLocale);
       }
     },
     [loadTranslations]
   );
+
+  const direction = getLocaleDirection(locale);
 
   // Wait for translations to load
   const isLoaded = Object.keys(translations).length > 0;
@@ -108,7 +112,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <I18nContext.Provider
-      value={{ locale, translations, setLocale, t: translations }}
+      value={{ locale, translations, setLocale, t: translations, direction }}
     >
       {children}
     </I18nContext.Provider>
@@ -127,6 +131,7 @@ export function useTranslation(): I18nContextValue {
       translations: fallbackTranslations,
       setLocale: () => {},
       t: fallbackTranslations,
+      direction: 'ltr',
     };
   }
   return context;

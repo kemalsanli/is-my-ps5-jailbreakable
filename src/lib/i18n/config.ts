@@ -27,7 +27,7 @@ export const LANGUAGES: LanguageInfo[] = [
   { code: 'ru', name: 'Russian', nativeName: 'Русский', flag: '🇷🇺' },
   { code: 'pt', name: 'Portuguese', nativeName: 'Português', flag: '🇧🇷' },
   { code: 'ko', name: 'Korean', nativeName: '한국어', flag: '🇰🇷' },
-  { code: 'ar', name: 'Arabic', nativeName: 'العربية', flag: '🇸🇦' },
+  { code: 'ar', name: 'Arabic', nativeName: 'العربية', flag: '🇸🇦', direction: 'rtl' },
   { code: 'pl', name: 'Polish', nativeName: 'Polski', flag: '🇵🇱' },
   { code: 'nl', name: 'Dutch', nativeName: 'Nederlands', flag: '🇳🇱' },
   { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', flag: '🇮🇳' },
@@ -43,6 +43,14 @@ export const LANGUAGES: LanguageInfo[] = [
   { code: 'th', name: 'Thai', nativeName: 'ไทย', flag: '🇹🇭' },
   { code: 'uk', name: 'Ukrainian', nativeName: 'Українська', flag: '🇺🇦' },
 ];
+
+/**
+ * Get text direction for a locale.
+ */
+export function getLocaleDirection(locale: Locale): 'ltr' | 'rtl' {
+  const lang = LANGUAGES.find((l) => l.code === locale);
+  return lang?.direction || 'ltr';
+}
 
 /**
  * Detect the user's preferred language from browser settings.
