@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { checkSerial } from '@/lib/serial-validator';
+import { checkSerial, formatSerialInput } from '@/lib/serial-validator';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import type { FirmwareDetectionResult } from '@/types/serial';
 
@@ -13,7 +13,8 @@ export function SerialForm() {
   const [borderColor, setBorderColor] = useState('');
 
   const handleInput = (value: string) => {
-    setSerial(value.toUpperCase());
+    const formatted = formatSerialInput(value);
+    setSerial(formatted);
     setError('');
     setBorderColor('');
     setResult(null);
@@ -23,17 +24,11 @@ export function SerialForm() {
     const v = serial.trim();
     if (!v) return;
 
-    if (v.length < 8) {
-      setBorderColor('#ff6666');
-      setError(t.form.invalidFormat);
-      return;
-    }
-
     const checkResult = checkSerial(v);
 
     if (!checkResult) {
       setBorderColor('#ff6666');
-      setError(t.form.invalidFormat);
+      setError(t.form?.invalidFormat || 'Invalid format — e.g. CFI-1215A');
       return;
     }
 
@@ -54,16 +49,16 @@ export function SerialForm() {
 
   const getResultTitle = () => {
     if (!result) return '';
-    if (result.status === 'JAILBREAKABLE') return t.results.jailbreakable.title;
-    if (result.status === 'NOT_JAILBREAKABLE') return t.results.notJailbreakable.title;
-    return t.results.uncertain.title;
+    if (result.status === 'JAILBREAKABLE') return t.results?.jailbreakable?.title || 'Jailbreakable';
+    if (result.status === 'NOT_JAILBREAKABLE') return t.results?.notJailbreakable?.title || 'Not Jailbreakable';
+    return t.results?.uncertain?.title || 'Uncertain';
   };
 
   const getResultDesc = () => {
     if (!result) return '';
-    if (result.status === 'JAILBREAKABLE') return t.results.jailbreakable.description;
-    if (result.status === 'NOT_JAILBREAKABLE') return t.results.notJailbreakable.description;
-    return t.results.uncertain.description;
+    if (result.status === 'JAILBREAKABLE') return t.results?.jailbreakable?.description || 'This serial is in the exploitable range.';
+    if (result.status === 'NOT_JAILBREAKABLE') return t.results?.notJailbreakable?.description || 'This serial is NOT in the exploitable range.';
+    return t.results?.uncertain?.description || 'Could not determine jailbreak status.';
   };
 
   return (
@@ -71,8 +66,8 @@ export function SerialForm() {
       <input
         id="si"
         type="text"
-        placeholder={t.form.placeholder}
-        maxLength={20}
+        placeholder={t.form?.placeholder || 'CFI-1215A'}
+        maxLength={24}
         autoComplete="off"
         autoCorrect="off"
         spellCheck={false}
@@ -145,7 +140,7 @@ export function SerialForm() {
           e.currentTarget.style.transform = 'scale(1)';
         }}
       >
-        {t.common.check}
+        {t.common?.check || 'Check Serial'}
       </button>
 
       {result && (
@@ -199,7 +194,7 @@ export function SerialForm() {
               }}
             >
               {result.firmware !== 'Unknown'
-                ? `${t.results.jailbreakable.firmware.split(':')[0]}: ${result.firmware}`
+                ? `Max. firmware: ${result.firmware}`
                 : ''}
             </p>
           </div>

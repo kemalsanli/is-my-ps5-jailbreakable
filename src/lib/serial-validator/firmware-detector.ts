@@ -1,293 +1,197 @@
 /**
- * PS5 Firmware Detection Engine
+ * PS5 Firmware Detector
  *
- * Uses manufacturing data from the serial number to estimate
- * the factory-installed firmware version.
- *
- * Based on PSDevWiki PS5 Serial Number Guide:
- * https://www.psdevwiki.com/ps5/Serial_Number_guide
- *
- * IMPORTANT DISCLAIMER:
- * This is an estimation based on community-gathered data.
- * The actual firmware may vary. Always verify before purchase.
- *
- * Data sources and credits:
- * - PSDevWiki community
- * - MODDED WARFARE (YouTube)
- * - Mc Kuc (YouTube)
- * - PS5 homebrew community
+ * Estimates firmware version based on PS5 serial number components.
+ * Based on PSDevWiki data and community research.
  */
 
-import type {
-  FirmwareDetectionResult,
-  FirmwareRule,
-  SerialParseResult,
-  JailbreakStatus,
-  Confidence,
-} from '@/types/serial';
+import type { SerialParseResult, FirmwareDetectionResult, Confidence } from '@/types/serial';
 
 /**
- * Firmware rules ordered from most specific to most general.
- *
- * These rules are based on community-reported data from PSDevWiki.
- * Manufacturing date correlates with factory firmware:
- *
- * - 2020-2021: PS5 launch units, shipped with FW 1.00 - 3.xx
- * - Early 2022 (Jan-Mar): Likely FW 4.03 - 4.51
- * - Mid 2022 (Apr-Jun): Transition period, FW 4.50 - 5.50
- * - Late 2022 (Jul-Dec): FW 5.00 - 6.00
- * - 2023: FW 6.00 - 7.xx
- * - 2024+: FW 7.00+
- *
- * The current highest exploitable firmware is 7.61
- * (as of latest PSDevWiki data).
+ * Maximum exploitable firmware version
  */
-const FIRMWARE_RULES: FirmwareRule[] = [
-  // ─── 2020 Launch Units ─────────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2020,
-    yearMax: 2020,
-    maxFirmware: '2.50',
-    confidence: 'HIGH',
-    status: 'JAILBREAKABLE',
-  },
-
-  // ─── 2021 All Months ──────────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2021,
-    yearMax: 2021,
-    maxFirmware: '4.03',
-    confidence: 'HIGH',
-    status: 'JAILBREAKABLE',
-  },
-
-  // ─── 2022 Early (Jan-Mar) ─────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2022,
-    yearMax: 2022,
-    monthMin: 1,
-    monthMax: 3,
-    maxFirmware: '4.51',
-    confidence: 'HIGH',
-    status: 'JAILBREAKABLE',
-  },
-
-  // ─── 2022 Mid (Apr-Jun) - Transition Period ───────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2022,
-    yearMax: 2022,
-    monthMin: 4,
-    monthMax: 6,
-    maxFirmware: '5.50',
-    confidence: 'MEDIUM',
-    status: 'JAILBREAKABLE',
-  },
-
-  // ─── 2022 Late (Jul-Sep) ──────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2022,
-    yearMax: 2022,
-    monthMin: 7,
-    monthMax: 9,
-    maxFirmware: '6.00',
-    confidence: 'MEDIUM',
-    status: 'JAILBREAKABLE',
-  },
-
-  // ─── 2022 Very Late (Oct-Dec) ─────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2022,
-    yearMax: 2022,
-    monthMin: 10,
-    monthMax: 12,
-    maxFirmware: '6.50',
-    confidence: 'LOW',
-    status: 'UNCERTAIN',
-  },
-
-  // ─── 2023 Early (Jan-Mar) ─────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2023,
-    yearMax: 2023,
-    monthMin: 1,
-    monthMax: 3,
-    maxFirmware: '6.50',
-    confidence: 'LOW',
-    status: 'UNCERTAIN',
-  },
-
-  // ─── 2023 Mid (Apr-Jun) ───────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2023,
-    yearMax: 2023,
-    monthMin: 4,
-    monthMax: 6,
-    maxFirmware: '7.00',
-    confidence: 'LOW',
-    status: 'UNCERTAIN',
-  },
-
-  // ─── 2023 Late (Jul-Dec) ──────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2023,
-    yearMax: 2023,
-    monthMin: 7,
-    monthMax: 12,
-    maxFirmware: '7.61',
-    confidence: 'LOW',
-    status: 'UNCERTAIN',
-  },
-
-  // ─── 2024 Early (Jan-Jun) ─────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2024,
-    yearMax: 2024,
-    monthMin: 1,
-    monthMax: 6,
-    maxFirmware: '7.61',
-    confidence: 'LOW',
-    status: 'UNCERTAIN',
-  },
-
-  // ─── 2024 Late & Beyond ───────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2024,
-    yearMax: 2099,
-    monthMin: 7,
-    monthMax: 12,
-    maxFirmware: '8.00+',
-    confidence: 'HIGH',
-    status: 'NOT_JAILBREAKABLE',
-  },
-
-  // ─── 2025+ ────────────────────────────────────────────────────────
-  {
-    modelCode: '*',
-    yearMin: 2025,
-    yearMax: 2099,
-    maxFirmware: '8.00+',
-    confidence: 'HIGH',
-    status: 'NOT_JAILBREAKABLE',
-  },
-];
+export const MAX_EXPLOITABLE_FIRMWARE = '4.51';
 
 /**
- * The maximum exploitable firmware version
- * Update this when new exploits are released
+ * Short model code lookup database (from reference HTML)
+ * Maps short format like "CFI-1215A" to firmware info
  */
-export const MAX_EXPLOITABLE_FIRMWARE = '7.61';
+const MODEL_DB: Record<string, { fw: string; ok: boolean }> = {
+  // Original PS5 Disc Edition (CFI-1000 series)
+  'CFI-1000A': { fw: '1.00', ok: true },
+  'CFI-1001A': { fw: '1.50', ok: true },
+  'CFI-1010A': { fw: '2.00', ok: true },
+  'CFI-1015A': { fw: '4.03', ok: true },
+  'CFI-1016A': { fw: '4.03', ok: true },
+  'CFI-1017A': { fw: '4.51', ok: true },
+  'CFI-1018A': { fw: '4.51', ok: true },
+  'CFI-1019A': { fw: '5.10', ok: true },
+  'CFI-1020A': { fw: '5.10', ok: true },
+  'CFI-1021A': { fw: '6.20', ok: false },
+  'CFI-1022A': { fw: '6.20', ok: false },
+  'CFI-1023A': { fw: '7.00', ok: false },
+  // Digital Edition
+  'CFI-1000B': { fw: '1.00', ok: true },
+  'CFI-1015B': { fw: '4.03', ok: true },
+  'CFI-1016B': { fw: '4.03', ok: true },
+  'CFI-1017B': { fw: '4.51', ok: true },
+  'CFI-1018B': { fw: '4.51', ok: true },
+  'CFI-1019B': { fw: '5.10', ok: true },
+  'CFI-1020B': { fw: '5.10', ok: true },
+  'CFI-1021B': { fw: '6.20', ok: false },
+  'CFI-1022B': { fw: '6.20', ok: false },
+  // UK/Europe variants
+  'CFI-1015C': { fw: '4.03', ok: true },
+  'CFI-1016C': { fw: '4.03', ok: true },
+  'CFI-1017C': { fw: '4.51', ok: true },
+  'CFI-1018C': { fw: '4.51', ok: true },
+  'CFI-1021C': { fw: '6.20', ok: false },
+  'CFI-1022C': { fw: '6.20', ok: false },
+  // Japan
+  'CFI-1000J': { fw: '1.00', ok: true },
+  'CFI-1015J': { fw: '4.03', ok: true },
+  'CFI-1016J': { fw: '4.03', ok: true },
+  'CFI-1021J': { fw: '6.20', ok: false },
+  // PS5 Slim / Revision (CFI-2000 series) - NOT jailbreakable
+  'CFI-2000A': { fw: '9.00', ok: false },
+  'CFI-2008A': { fw: '10.00', ok: false },
+  'CFI-2010A': { fw: '11.00', ok: false },
+  'CFI-2000B': { fw: '9.00', ok: false },
+  'CFI-2008B': { fw: '10.00', ok: false },
+  'CFI-2010B': { fw: '11.00', ok: false },
+};
 
 /**
- * Detect the likely firmware based on parsed serial number data.
- *
- * Algorithm:
- * 1. Iterate through rules from most specific to most general
- * 2. Match year range, optional month range, and optional model code
- * 3. Return the first matching rule's firmware estimation
- * 4. Fall back to UNCERTAIN if no rule matches
+ * Detect firmware and jailbreak status from a parsed serial number.
  */
 export function detectFirmware(
   parsed: SerialParseResult
 ): FirmwareDetectionResult {
-  const { yearManufactured, monthManufactured, modelCode, region } = parsed;
-
-  for (const rule of FIRMWARE_RULES) {
-    // Check year range
-    if (yearManufactured < rule.yearMin || yearManufactured > rule.yearMax) {
-      continue;
-    }
-
-    // Check month range if specified
-    if (rule.monthMin !== undefined && rule.monthMax !== undefined) {
-      if (
-        monthManufactured < rule.monthMin ||
-        monthManufactured > rule.monthMax
-      ) {
-        continue;
-      }
-    }
-
-    // Check model code if not wildcard
-    if (rule.modelCode !== '*' && !modelCode.includes(rule.modelCode)) {
-      continue;
-    }
-
-    // Determine jailbreakability based on estimated firmware vs max exploitable
-    const firmwareNum = parseFloat(rule.maxFirmware);
-    const maxExploitable = parseFloat(MAX_EXPLOITABLE_FIRMWARE);
-    let status: JailbreakStatus = rule.status;
-
-    if (!isNaN(firmwareNum) && !isNaN(maxExploitable)) {
-      if (firmwareNum <= maxExploitable && status !== 'UNCERTAIN') {
-        status = 'JAILBREAKABLE';
-      }
-    }
-
+  // First, try the short model DB lookup
+  const dbKey = parsed.modelCode.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  
+  // Try direct match: "CFI1215A"
+  const directMatch = MODEL_DB[dbKey];
+  if (directMatch) {
     return {
-      status,
-      firmware: rule.maxFirmware,
-      confidence: rule.confidence,
-      description: buildDescription(status, rule.maxFirmware, rule.confidence),
-      modelCode,
-      yearManufactured,
-      monthManufactured: monthManufactured,
-      region,
+      status: directMatch.ok ? 'JAILBREAKABLE' : 'NOT_JAILBREAKABLE',
+      firmware: directMatch.fw,
+      confidence: 'HIGH',
+      description: directMatch.ok
+        ? `This model ships with firmware ${directMatch.fw} which is exploitable.`
+        : `This model ships with firmware ${directMatch.fw} which is NOT exploitable.`,
+      modelCode: parsed.modelCode,
+      region: parsed.region,
+      yearManufactured: parsed.yearManufactured || 0,
+      monthManufactured: parsed.monthManufactured || 0,
     };
   }
 
-  // Fallback: no rule matched
+  // Try partial match: model variant + region
+  const partialKey = `CFI${parsed.modelVariant}${parsed.region}`;
+  const partialMatch = MODEL_DB[partialKey.toUpperCase()];
+  if (partialMatch) {
+    return {
+      status: partialMatch.ok ? 'JAILBREAKABLE' : 'NOT_JAILBREAKABLE',
+      firmware: partialMatch.fw,
+      confidence: 'HIGH',
+      description: partialMatch.ok
+        ? `This model variant ships with firmware ${partialMatch.fw} which is exploitable.`
+        : `This model variant ships with firmware ${partialMatch.fw} which is NOT exploitable.`,
+      modelCode: parsed.modelCode,
+      region: parsed.region,
+      yearManufactured: parsed.yearManufactured || 0,
+      monthManufactured: parsed.monthManufactured || 0,
+    };
+  }
+
+  // Fall back to year-based estimation for full serial numbers
+  if (parsed.yearManufactured > 0) {
+    return estimateFromManufacturingDate(parsed);
+  }
+
+  // Unknown model - uncertain
   return {
     status: 'UNCERTAIN',
     firmware: 'Unknown',
     confidence: 'LOW',
-    description: 'Unable to determine firmware version from this serial number.',
-    modelCode,
-    yearManufactured,
-    monthManufactured,
-    region,
+    description: 'This model code is not in our database. Check the firmware version directly on the console.',
+    modelCode: parsed.modelCode,
+    region: parsed.region,
+    yearManufactured: parsed.yearManufactured || 0,
+    monthManufactured: parsed.monthManufactured || 0,
   };
 }
 
 /**
- * Build a human-readable description for the firmware detection result.
+ * Estimate firmware from manufacturing date (year/month).
  */
-function buildDescription(
-  status: JailbreakStatus,
-  firmware: string,
-  confidence: Confidence
-): string {
-  switch (status) {
-    case 'JAILBREAKABLE':
-      if (confidence === 'HIGH') {
-        return `This PS5 likely shipped with firmware ${firmware} or lower, which is exploitable. High confidence based on manufacturing date.`;
-      }
-      return `This PS5 may have shipped with firmware ${firmware} or lower. Moderate confidence — verify the actual firmware version.`;
+function estimateFromManufacturingDate(
+  parsed: SerialParseResult
+): FirmwareDetectionResult {
+  const year = parsed.yearManufactured;
+  const month = parsed.monthManufactured;
 
-    case 'NOT_JAILBREAKABLE':
-      return `This PS5 likely shipped with firmware ${firmware}, which is currently not exploitable.`;
+  let firmware = 'Unknown';
+  let status: FirmwareDetectionResult['status'] = 'UNCERTAIN';
+  let confidence: Confidence = 'LOW';
+  let description = '';
 
-    case 'UNCERTAIN':
-      return `This PS5 was manufactured in a transition period. Firmware could be around ${firmware}. Check the actual firmware version on the console.`;
-
-    default:
-      return 'Unable to determine firmware version.';
+  if (year === 2020) {
+    firmware = '2.50';
+    status = 'JAILBREAKABLE';
+    confidence = 'HIGH';
+    description = 'Manufactured in 2020. Ships with firmware ≤ 2.50, which is exploitable.';
+  } else if (year === 2021) {
+    firmware = '4.03';
+    status = 'JAILBREAKABLE';
+    confidence = 'HIGH';
+    description = 'Manufactured in 2021. Ships with firmware ≤ 4.51, which is exploitable.';
+  } else if (year === 2022 && month >= 1 && month <= 3) {
+    firmware = '4.51';
+    status = 'JAILBREAKABLE';
+    confidence = 'HIGH';
+    description = 'Manufactured Q1 2022. Likely ships with firmware ≤ 4.51, which is exploitable.';
+  } else if (year === 2022 && month >= 4 && month <= 6) {
+    firmware = '5.10';
+    status = 'JAILBREAKABLE';
+    confidence = 'MEDIUM';
+    description = 'Manufactured Q2 2022. May ship with firmware around 5.10. Check actual firmware on console.';
+  } else if (year === 2022 && month >= 7 && month <= 9) {
+    firmware = '5.50';
+    status = 'JAILBREAKABLE';
+    confidence = 'MEDIUM';
+    description = 'Manufactured Q3 2022. May ship with firmware around 5.50. Check actual firmware on console.';
+  } else if (year === 2022) {
+    firmware = '6.00';
+    status = 'UNCERTAIN';
+    confidence = 'LOW';
+    description = 'Manufactured late 2022. Firmware is uncertain — check the actual version on the console.';
+  } else if (year === 2023 && month >= 1 && month <= 6) {
+    firmware = '6.50';
+    status = 'UNCERTAIN';
+    confidence = 'LOW';
+    description = 'Manufactured early 2023. Likely ships with firmware ≥ 6.20, which is NOT exploitable.';
+  } else if (year >= 2023) {
+    firmware = '7.00+';
+    status = 'NOT_JAILBREAKABLE';
+    confidence = 'HIGH';
+    description = 'Manufactured 2023 or later. Ships with firmware too new for current exploits.';
+  } else {
+    firmware = 'Unknown';
+    status = 'UNCERTAIN';
+    confidence = 'LOW';
+    description = 'Could not determine firmware from serial number.';
   }
-}
 
-/**
- * Get the list of all firmware rules (for debugging/display).
- */
-export function getFirmwareRules(): FirmwareRule[] {
-  return [...FIRMWARE_RULES];
+  return {
+    status,
+    firmware,
+    confidence,
+    description,
+    modelCode: parsed.modelCode,
+    region: parsed.region,
+    yearManufactured: year,
+    monthManufactured: month,
+  };
 }

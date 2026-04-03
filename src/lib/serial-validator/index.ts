@@ -1,78 +1,48 @@
 /**
  * PS5 Serial Number Validator
  *
- * Main entry point for the serial number validation library.
+ * Main API for checking PS5 serial numbers.
  * Combines format parsing, region detection, and firmware estimation.
- *
- * Data based on PSDevWiki PS5 Serial Number Guide:
- * https://www.psdevwiki.com/ps5/Serial_Number_guide
- *
- * Credits:
- * - PSDevWiki community for serial number research
- * - MODDED WARFARE for PS5 jailbreak information
- * - Mc Kuc for technical documentation
- * - The PS5 homebrew community
  */
 
+import { parseSerial, normalizeSerial } from './formats';
+import { detectFirmware } from './firmware-detector';
 import type { FirmwareDetectionResult } from '@/types/serial';
-import { parseSerial, isValidFormat, normalizeSerial } from './formats';
-import { detectFirmware, MAX_EXPLOITABLE_FIRMWARE } from './firmware-detector';
-import { getRegionInfo } from './regions';
 
-export {
-  parseSerial,
-  isValidFormat,
-  normalizeSerial,
-  detectFirmware,
-  getRegionInfo,
-  MAX_EXPLOITABLE_FIRMWARE,
-};
+export { normalizeSerial, parseSerial, isValidFormat } from './formats';
+export { formatSerialInput } from './formats';
+export { detectFirmware, MAX_EXPLOITABLE_FIRMWARE } from './firmware-detector';
 
 /**
- * Perform a complete serial number check.
- *
- * This is the main function used by the UI.
- * It validates format, parses components, and detects firmware.
- *
- * @param rawSerial - The raw serial number string from user input
- * @returns Firmware detection result, or null if format is invalid
+ * Quick check if a serial string has a valid format.
  */
-export function checkSerial(
-  rawSerial: string
-): FirmwareDetectionResult | null {
-  const normalized = normalizeSerial(rawSerial);
+export function isSerialValid(raw: string): boolean {
+  return isValidFormat(raw);
+}
 
-  if (!normalized || normalized.length < 10) {
-    return null;
-  }
+/**
+ * Get the maximum firmware version that can be exploited.
+ */
+export function getMaxExploitableFirmware(): string {
+  return MAX_EXPLOITABLE_FIRMWARE;
+}
 
-  const parsed = parseSerial(normalized);
-
+/**
+ * Check a PS5 serial number and return firmware/jailbreak status.
+ *
+ * This is the main function users should call. It:
+ * 1. Normalizes the input
+ * 2. Parses the serial number format
+ * 3. Detects the firmware version
+ *
+ * @param rawSerial - The user-provided serial number string
+ * @returns FirmwareDetectionResult or null if format is invalid
+ */
+export function checkSerial(rawSerial: string): FirmwareDetectionResult | null {
+  const parsed = parseSerial(rawSerial);
   if (!parsed || !parsed.isValid) {
     return null;
   }
 
-  const result = detectFirmware(parsed);
-
-  // Enrich with region info
-  const regionInfo = getRegionInfo(parsed.region);
-  if (regionInfo) {
-    result.region = regionInfo.name;
-  }
-
-  return result;
-}
-
-/**
- * Quick validation check - returns true if the serial looks valid.
- */
-export function isSerialValid(rawSerial: string): boolean {
-  return isValidFormat(rawSerial);
-}
-
-/**
- * Get the current maximum exploitable firmware version.
- */
-export function getMaxExploitableFirmware(): string {
-  return MAX_EXPLOITABLE_FIRMWARE;
+  return detectFirmware(parsed);
 }

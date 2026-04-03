@@ -22,6 +22,8 @@
  * S01-G2XYYF SSSS (17 characters)
  *
  * The barcode / sticker serial is what users usually enter.
+ *
+ * Short format (model code only): CFI-XXXXR or CF1-XXXXR
  */
 
 import type { SerialParseResult } from '@/types/serial';
@@ -30,6 +32,12 @@ import type { SerialParseResult } from '@/types/serial';
  * Known serial number format patterns.
  * Each pattern maps a regex to the extraction logic.
  */
+
+/**
+ * Short model code format: e.g. "CFI-1215A" or "CF1-1215A"
+ * This is a simplified lookup format (no manufacturing details)
+ */
+const SHORT_MODEL_PATTERN = /^(CFI?)-?(\d{4})([A-Z])$/i;
 
 /**
  * Barcode-style format: e.g. "S01-G2121W9D1234" or similar
@@ -42,7 +50,7 @@ import type { SerialParseResult } from '@/types/serial';
  *   DDDD     = Sequence digits
  */
 const BARCODE_PATTERN =
-  /^S01-G2([A-Z0-9])(\d{2})([1-9A-C])(\w)(\d+[A-Z]?)(\d{4,})$/i;
+  /^S01-?G2([A-Z0-9])(\d{2})([1-9A-C])(\w)(\d+[A-Z]?)(\d{4,})$/i;
 
 /**
  * CFI-based format: e.g. "CFI-1015A 21W9D 1234"
@@ -65,15 +73,76 @@ export function normalizeSerial(input: string): string {
 }
 
 /**
+ * Format serial number as user types (auto-add dashes and group digits)
+ * Examples:
+ *   "CFI1215A" -> "CFI-1215A"
+ *   "S01G2121W9D1234" -> "S01-G212 1W9D 1234"
+ */
+export function formatSerialInput(input: string): string {
+  // Remove all non-alphanumeric
+  const cleaned = input.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  
+  // Short model format: CFI-XXXXR or CF1-XXXXR
+  if (cleaned.match(/^(CFI?)\d{0,5}$/)) {
+    if (cleaned.length <= 3) return cleaned;
+    if (cleaned.length === 4 && cleaned.startsWith('CFI')) return cleaned;
+    
+    const prefix = cleaned.startsWith('CFI') ? 'CFI' : cleaned.substring(0, 3);
+    const rest = cleaned.substring(prefix.length);
+    
+    if (rest.length === 0) return prefix;
+    return `${prefix}-${rest}`;
+  }
+  
+  // Barcode format: S01-G2XX XXXX XXXX
+  if (cleaned.startsWith('S01')) {
+    const parts = cleaned.substring(3); // Remove S01
+    if (parts.length === 0) return 'S01';
+    if (parts.length <= 2) return `S01-${parts}`;
+    if (parts.length <= 6) return `S01-${parts.substring(0, 4)} ${parts.substring(4)}`;
+    if (parts.length <= 10) return `S01-${parts.substring(0, 4)} ${parts.substring(4, 8)} ${parts.substring(8)}`;
+    return `S01-${parts.substring(0, 4)} ${parts.substring(4, 8)} ${parts.substring(8, 12)}`;
+  }
+  
+  // CFI long format: CFI-XXXXX XXXX XXXX
+  if (cleaned.startsWith('CFI')) {
+    if (cleaned.length <= 3) return cleaned;
+    const rest = cleaned.substring(3);
+    if (rest.length <= 5) return `CFI-${rest}`;
+    if (rest.length <= 9) return `CFI-${rest.substring(0, 5)} ${rest.substring(5)}`;
+    return `CFI-${rest.substring(0, 5)} ${rest.substring(5, 9)} ${rest.substring(9)}`;
+  }
+  
+  return input.toUpperCase();
+}
+
+/**
  * Parse a PS5 serial number and extract its components.
  *
- * Tries multiple known formats (barcode, CFI, loose).
+ * Tries multiple known formats (short model, barcode, CFI, loose).
  * Returns null if none match.
  */
 export function parseSerial(raw: string): SerialParseResult | null {
   const normalized = normalizeSerial(raw);
 
-  // Try barcode format first (most common user input)
+  // Try short model format first (e.g., CFI-1215A)
+  const shortMatch = normalized.match(SHORT_MODEL_PATTERN);
+  if (shortMatch) {
+    const [, , modelNum, region] = shortMatch;
+    return {
+      isValid: true,
+      modelCode: `CFI-${modelNum}${region}`,
+      modelVariant: modelNum,
+      yearManufactured: 0, // Unknown in short format
+      monthManufactured: 0,
+      weekManufactured: 0,
+      region: region,
+      factory: 'unknown',
+      raw: normalized,
+    };
+  }
+
+  // Try barcode format
   const barcodeMatch = normalized.match(BARCODE_PATTERN);
   if (barcodeMatch) {
     const [, modelVariant, yearStr, monthChar, factory, , sequence] =
@@ -167,6 +236,7 @@ export function parseMonthChar(char: string): number {
 export function isValidFormat(raw: string): boolean {
   const normalized = normalizeSerial(raw);
   return (
+    SHORT_MODEL_PATTERN.test(normalized) ||
     BARCODE_PATTERN.test(normalized) ||
     CFI_PATTERN.test(normalized) ||
     LOOSE_PATTERN.test(normalized)
@@ -177,5 +247,5 @@ export function isValidFormat(raw: string): boolean {
  * Get a human-readable format hint for the expected serial number.
  */
 export function getFormatHint(): string {
-  return 'S01-G2X01W9DXXXX (barcode label) or CFI-XXXXR YYWD SSSS';
+  return 'CFI-1215A or S01-G212 1W9D 1234';
 }

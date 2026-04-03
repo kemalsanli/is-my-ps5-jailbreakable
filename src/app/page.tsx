@@ -22,12 +22,11 @@ export default function HomePage() {
           flexDirection: 'column',
           width: '100%',
           maxWidth: '440px',
-          minHeight: '100vh',
-          padding: '56px 32px 32px',
+          padding: '24px 32px 32px',
         }}
       >
         {/* Main */}
-        <div style={{ flex: 1 }}>
+        <div>
           <p
             style={{
               fontSize: '11px',
@@ -48,7 +47,7 @@ export default function HomePage() {
               color: 'var(--text-color-primary)',
               letterSpacing: '-0.4px',
               lineHeight: 1.2,
-              marginBottom: '32px',
+              marginBottom: '8px',
             }}
           >
             {t.common.title.split('?')[0]}
