@@ -21,9 +21,9 @@ export default function HomePage() {
           display: 'flex',
           flexDirection: 'column',
           width: '100%',
-          maxWidth: '360px',
+          maxWidth: '440px',
           minHeight: '100vh',
-          padding: '56px 24px 32px',
+          padding: '56px 32px 32px',
         }}
       >
         {/* Main */}
@@ -36,6 +36,7 @@ export default function HomePage() {
               textTransform: 'uppercase',
               color: 'var(--text-color-tertiary)',
               marginBottom: '8px',
+              textAlign: 'center',
             }}
           >
             PlayStation 5
@@ -49,6 +50,7 @@ export default function HomePage() {
               letterSpacing: '-0.4px',
               lineHeight: 1.2,
               marginBottom: '32px',
+              textAlign: 'center',
             }}
           >
             {t.common.title.split('?')[0]}
@@ -72,7 +74,7 @@ export default function HomePage() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
-              marginBottom: '8px',
+              marginBottom: '10px',
             }}
           >
             <span style={{ fontSize: '11px', color: '#444' }}>
@@ -98,7 +100,7 @@ export default function HomePage() {
               lineHeight: 1.5,
             }}
           >
-            {t.about.disclaimerDesc}
+            Bu site Sony Interactive Entertainment ile bağlantılı değildir. PlayStation ve PS5, Sony Interactive Entertainment LLC&apos;nin tescilli markalarıdır.
           </p>
         </div>
       </div>
