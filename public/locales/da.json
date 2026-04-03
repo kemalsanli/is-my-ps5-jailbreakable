@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "Indtast dit\nserienummer.",
+    "description": "Tjek om din PlayStation 5 kan jailbreakes ved at indtaste serienummeret",
+    "check": "Tjek",
+    "clear": "Ryd",
+    "loading": "Analyserer...",
+    "serialNumber": "Serienummer",
+    "learnMore": "Læs mere"
+  },
+  "form": {
+    "label": "Indtast dit PS5-serienummer",
+    "placeholder": "f.eks. S01-G2121W9D1234",
+    "hint": "Serienummeret findes på bagsiden/bunden af din PS5",
+    "invalidFormat": "Ugyldigt serienummerformat. Kontrollér og prøv igen.",
+    "tooShort": "Serienummeret er for kort. Indtast mindst 10 tegn.",
+    "required": "Indtast venligst et serienummer"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Gode nyheder!",
+      "firmware": "Estimeret firmware: {version} eller lavere",
+      "description": "Denne PS5 er sandsynligvis jailbreakbar! Den estimerede fabriksfirmware er inden for det udnyttelige område."
+    },
+    "notJailbreakable": {
+      "title": "Ikke Jailbreakbar",
+      "firmware": "Estimeret firmware: {version}",
+      "description": "Denne PS5 blev sandsynligvis leveret med firmware, der i øjeblikket ikke kan udnyttes."
+    },
+    "uncertain": {
+      "title": "Usikker",
+      "firmware": "Estimeret firmware: omkring {version}",
+      "description": "Denne PS5 blev produceret i en overgangsperiode. Den faktiske firmware kan variere. Kontrollér direkte på konsollen."
+    },
+    "confidence": {
+      "high": "Høj sikkerhed",
+      "medium": "Middel sikkerhed",
+      "low": "Lav sikkerhed"
+    },
+    "detectedRegion": "Region: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Produceret: {year}"
+  },
+  "guide": {
+    "title": "Hvor finder jeg serienummeret?",
+    "subtitle": "Tjek serienummeret før køb — du behøver ikke åbne kassen",
+    "step1Title": "Trin 1: Tjek kassen",
+    "step1Desc": "Se på bunden af PS5-kassen. Serienummeret er trykt på en etiket — du behøver ikke åbne kassen.",
+    "step2Title": "Trin 2: Find stregkodeetiketten",
+    "step2Desc": "Find stregkodeetiketten på kassen. Den indeholder serienummeret, modeloplysninger og produktionsdetaljer.",
+    "step3Title": "Trin 3: Indtast serienummeret",
+    "step3Desc": "Serienummeret starter med 'S01-'. Skriv det i kontrollen ovenfor for at se om PS5 er jailbreakbar."
+  },
+  "about": {
+    "title": "Om dette værktøj",
+    "whatIsThis": "Hvad er dette?",
+    "whatIsThisDesc": "Dette værktøj hjælper med at afgøre, om en PlayStation 5 kan jailbreakes ved at analysere serienummeret.",
+    "howItWorks": "Hvordan virker det?",
+    "howItWorksDesc": "PS5-konsoller leveres med fabriksfirmware, der svarer til produktionsdatoen. Ved at afkode serienummeret estimerer vi firmwareversionen.",
+    "disclaimer": "Ansvarsfraskrivelse",
+    "disclaimerDesc": "Denne hjemmeside er ikke tilknyttet Sony Interactive Entertainment. PlayStation og PS5 er registrerede varemærker tilhørende Sony Interactive Entertainment LLC."
+  },
+  "footer": {
+    "credits": "Bidragsydere",
+    "github": "Se på GitHub",
+    "license": "MIT-licens",
+    "madeWith": "Lavet med ❤️ af",
+    "inspiredBy": "Data inspireret af",
+    "dataFrom": "Serienummerdata fra"
+  },
+  "seo": {
+    "pageTitle": "Er min PS5 jailbreakbar? | Serienummer Firmware-tjek",
+    "pageDescription": "Tjek om din PlayStation 5 kan jailbreakes ved at indtaste serienummeret.",
+    "ogTitle": "PS5 Jailbreak Checker - Tjek dit serienummer",
+    "ogDescription": "Gratis værktøj til at tjekke om din PS5 er jailbreakbar via serienummer."
+  }
+}
