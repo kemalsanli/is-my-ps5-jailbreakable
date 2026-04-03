@@ -1,0 +1,61 @@
+{
+  "common": {
+    "title": "Írd be a\nsorozatszámot.",
+    "description": "Ellenőrizd, hogy a PlayStation 5 jailbreakelhetõ-e a sorozatszám megadásával",
+    "check": "Ellenőrzés",
+    "clear": "Törlés",
+    "loading": "Elemzés...",
+    "serialNumber": "Sorozatszám",
+    "learnMore": "Tudj meg többet"
+  },
+  "form": {
+    "label": "Add meg a PS5 sorozatszámát",
+    "placeholder": "pl. S01-G2121W9D1234",
+    "hint": "A sorozatszám a PS5 hátulján/alján található",
+    "invalidFormat": "Érvénytelen sorozatszám formátum. Ellenőrizd és próbáld újra.",
+    "tooShort": "A sorozatszám túl rövid. Adj meg legalább 10 karaktert.",
+    "required": "Kérjük, add meg a sorozatszámot"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Remek hír!",
+      "firmware": "Becsült firmware: {version} vagy alacsonyabb",
+      "description": "Ez a PS5 valószínűleg jailbreakelhető! A becsült gyári firmware a kihasználható tartományon belül van."
+    },
+    "notJailbreakable": {
+      "title": "Nem Jailbreakelhető",
+      "firmware": "Becsült firmware: {version}",
+      "description": "Ez a PS5 valószínűleg olyan firmware-rel érkezett, amely jelenleg nem kihasználható."
+    },
+    "uncertain": {
+      "title": "Bizonytalan",
+      "firmware": "Becsült firmware: körülbelül {version}",
+      "description": "Ezt a PS5-öt átmeneti időszakban gyártották. A tényleges firmware eltérhet. Ellenőrizd közvetlenül a konzolon."
+    },
+    "confidence": { "high": "Magas bizonyosság", "medium": "Közepes bizonyosság", "low": "Alacsony bizonyosság" },
+    "detectedRegion": "Régió: {region}",
+    "detectedModel": "Modell: {model}",
+    "manufacturedYear": "Gyártási év: {year}"
+  },
+  "guide": {
+    "title": "Hol találom a sorozatszámot?",
+    "subtitle": "Vásárlás előtt ellenőrizd a sorozatszámot — nem kell kinyitni a dobozt",
+    "step1Title": "1. lépés: Ellenőrizd a dobozt",
+    "step1Desc": "Nézd meg a PS5 dobozának alját. A sorozatszám egy címkén van nyomtatva.",
+    "step2Title": "2. lépés: Keresd a vonalkód-címkét",
+    "step2Desc": "Keresd a vonalkód-címkét a dobozon. Tartalmazza a sorozatszámot, modell információkat és gyártási adatokat.",
+    "step3Title": "3. lépés: Add meg a sorozatszámot",
+    "step3Desc": "A sorozatszám 'S01-' karakterekkel kezdődik. Írd be az ellenőrzőbe fent."
+  },
+  "about": {
+    "title": "Az eszközről",
+    "whatIsThis": "Mi ez?",
+    "whatIsThisDesc": "Ez az eszköz segít meghatározni, hogy egy PlayStation 5 jailbreakelhető-e a sorozatszám elemzésével.",
+    "howItWorks": "Hogyan működik?",
+    "howItWorksDesc": "A PS5 konzolok gyári firmware-rel érkeznek, amely megfelel a gyártási dátumnak. A sorozatszám dekódolásával becsüljük a firmware verziót.",
+    "disclaimer": "Jogi nyilatkozat",
+    "disclaimerDesc": "Ez az oldal nem áll kapcsolatban a Sony Interactive Entertainment-tel. A PlayStation és PS5 a Sony Interactive Entertainment LLC bejegyzett védjegyei."
+  },
+  "footer": { "credits": "Készítők és közreműködők", "github": "Megtekintés GitHubon", "license": "MIT Licenc", "madeWith": "Készítette ❤️-vel", "inspiredBy": "Adatok inspirálva", "dataFrom": "Sorozatszám adatok forrása" },
+  "seo": { "pageTitle": "Jailbreakelhető a PS5-öm? | Sorozatszám Firmware Ellenőrző", "pageDescription": "Ellenőrizd, hogy a PS5 jailbreakelhető-e a sorozatszám megadásával.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Ingyenes eszköz a PS5 jailbreakelhetőségének ellenőrzéséhez." }
+}

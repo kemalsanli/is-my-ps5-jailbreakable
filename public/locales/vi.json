@@ -1,0 +1,61 @@
+{
+  "common": {
+    "title": "Nhập số\nsê-ri của bạn.",
+    "description": "Kiểm tra PlayStation 5 có thể jailbreak được không bằng cách nhập số sê-ri",
+    "check": "Kiểm tra",
+    "clear": "Xóa",
+    "loading": "Đang phân tích...",
+    "serialNumber": "Số sê-ri",
+    "learnMore": "Tìm hiểu thêm"
+  },
+  "form": {
+    "label": "Nhập số sê-ri PS5 của bạn",
+    "placeholder": "VD: S01-G2121W9D1234",
+    "hint": "Số sê-ri ở mặt sau/dưới máy PS5",
+    "invalidFormat": "Định dạng số sê-ri không hợp lệ. Kiểm tra và thử lại.",
+    "tooShort": "Số sê-ri quá ngắn. Nhập ít nhất 10 ký tự.",
+    "required": "Vui lòng nhập số sê-ri"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Tin tốt!",
+      "firmware": "Firmware ước tính: {version} trở xuống",
+      "description": "PS5 này có thể jailbreak được! Firmware gốc ước tính nằm trong phạm vi khai thác được."
+    },
+    "notJailbreakable": {
+      "title": "Không Jailbreak Được",
+      "firmware": "Firmware ước tính: {version}",
+      "description": "PS5 này có thể đã xuất xưởng với firmware hiện không khai thác được."
+    },
+    "uncertain": {
+      "title": "Không Chắc Chắn",
+      "firmware": "Firmware ước tính: khoảng {version}",
+      "description": "PS5 này được sản xuất trong giai đoạn chuyển tiếp. Firmware thực tế có thể khác. Kiểm tra trực tiếp trên máy."
+    },
+    "confidence": { "high": "Độ tin cậy cao", "medium": "Độ tin cậy trung bình", "low": "Độ tin cậy thấp" },
+    "detectedRegion": "Khu vực: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Sản xuất: {year}"
+  },
+  "guide": {
+    "title": "Tìm số sê-ri ở đâu?",
+    "subtitle": "Kiểm tra số sê-ri trước khi mua — không cần mở hộp",
+    "step1Title": "Bước 1: Kiểm tra hộp",
+    "step1Desc": "Nhìn dưới đáy hộp PS5. Số sê-ri được in trên nhãn.",
+    "step2Title": "Bước 2: Tìm nhãn mã vạch",
+    "step2Desc": "Tìm nhãn mã vạch trên hộp. Nó chứa số sê-ri, thông tin model và chi tiết sản xuất.",
+    "step3Title": "Bước 3: Nhập số sê-ri",
+    "step3Desc": "Số sê-ri bắt đầu bằng 'S01-'. Nhập vào bộ kiểm tra ở trên."
+  },
+  "about": {
+    "title": "Về công cụ này",
+    "whatIsThis": "Đây là gì?",
+    "whatIsThisDesc": "Công cụ này giúp xác định PlayStation 5 có thể jailbreak được không bằng cách phân tích số sê-ri.",
+    "howItWorks": "Hoạt động như thế nào?",
+    "howItWorksDesc": "Máy PS5 xuất xưởng với firmware tương ứng ngày sản xuất. Bằng cách giải mã số sê-ri, chúng tôi ước tính phiên bản firmware.",
+    "disclaimer": "Tuyên bố miễn trừ",
+    "disclaimerDesc": "Trang web này không liên kết với Sony Interactive Entertainment. PlayStation và PS5 là nhãn hiệu đã đăng ký của Sony Interactive Entertainment LLC."
+  },
+  "footer": { "credits": "Tín dụng & Người đóng góp", "github": "Xem trên GitHub", "license": "Giấy phép MIT", "madeWith": "Được tạo với ❤️ bởi", "inspiredBy": "Dữ liệu lấy cảm hứng từ", "dataFrom": "Dữ liệu số sê-ri từ" },
+  "seo": { "pageTitle": "PS5 có jailbreak được không? | Kiểm tra Firmware Số Sê-ri", "pageDescription": "Kiểm tra PS5 có thể jailbreak được không bằng cách nhập số sê-ri.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Công cụ miễn phí kiểm tra PS5 có jailbreak được không." }
+}

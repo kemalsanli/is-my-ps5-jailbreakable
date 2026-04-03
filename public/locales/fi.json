@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "Syötä\nsarjanumerosi.",
+    "description": "Tarkista, voidaanko PlayStation 5 jailbreakata syöttämällä sarjanumero",
+    "check": "Tarkista",
+    "clear": "Tyhjennä",
+    "loading": "Analysoidaan...",
+    "serialNumber": "Sarjanumero",
+    "learnMore": "Lisätietoja"
+  },
+  "form": {
+    "label": "Syötä PS5-sarjanumerosi",
+    "placeholder": "esim. S01-G2121W9D1234",
+    "hint": "Sarjanumero löytyy PS5-konsolin takaa/alapuolelta",
+    "invalidFormat": "Virheellinen sarjanumeromuoto. Tarkista ja yritä uudelleen.",
+    "tooShort": "Sarjanumero on liian lyhyt. Syötä vähintään 10 merkkiä.",
+    "required": "Anna sarjanumero"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Hienoja uutisia!",
+      "firmware": "Arvioitu laiteohjelmisto: {version} tai alempi",
+      "description": "Tämä PS5 on todennäköisesti jailbreakattava! Arvioitu tehdasohjelmisto on hyödyntettävällä alueella."
+    },
+    "notJailbreakable": {
+      "title": "Ei Jailbreakattava",
+      "firmware": "Arvioitu laiteohjelmisto: {version}",
+      "description": "Tämä PS5 tuli todennäköisesti laiteohjelmistolla, jota ei voida tällä hetkellä hyödyntää."
+    },
+    "uncertain": {
+      "title": "Epävarma",
+      "firmware": "Arvioitu laiteohjelmisto: noin {version}",
+      "description": "Tämä PS5 valmistettiin siirtymäkaudella. Todellinen laiteohjelmisto voi vaihdella. Tarkista versio suoraan konsolista."
+    },
+    "confidence": {
+      "high": "Korkea luotettavuus",
+      "medium": "Keskitaso luotettavuus",
+      "low": "Matala luotettavuus"
+    },
+    "detectedRegion": "Alue: {region}",
+    "detectedModel": "Malli: {model}",
+    "manufacturedYear": "Valmistettu: {year}"
+  },
+  "guide": {
+    "title": "Mistä löydän sarjanumeron?",
+    "subtitle": "Tarkista sarjanumero ennen ostoa — pakkausta ei tarvitse avata",
+    "step1Title": "Vaihe 1: Tarkista pakkaus",
+    "step1Desc": "Katso PS5-pakkauksen pohjaa. Sarjanumero on painettu tarraan — pakkausta ei tarvitse avata.",
+    "step2Title": "Vaihe 2: Etsi viivakooditarra",
+    "step2Desc": "Etsi viivakooditarra pakkauksesta. Se sisältää sarjanumeron, mallitiedot ja valmistustiedot.",
+    "step3Title": "Vaihe 3: Syötä sarjanumero",
+    "step3Desc": "Sarjanumero alkaa 'S01-'. Kirjoita se yllä olevaan tarkistimeen nähdäksesi, voidaanko PS5 jailbreakata."
+  },
+  "about": {
+    "title": "Tietoa tästä työkalusta",
+    "whatIsThis": "Mikä tämä on?",
+    "whatIsThisDesc": "Tämä työkalu auttaa määrittämään, voidaanko PlayStation 5 jailbreakata analysoimalla sen sarjanumeroa.",
+    "howItWorks": "Miten se toimii?",
+    "howItWorksDesc": "PS5-konsolit toimitetaan tehdasohjelmistolla, joka vastaa valmistuspäivää. Purkamalla sarjanumeron voimme arvioida laiteohjelmistoversiota.",
+    "disclaimer": "Vastuuvapauslauseke",
+    "disclaimerDesc": "Tämä sivusto ei ole sidoksissa Sony Interactive Entertainment -yhtiöön. PlayStation ja PS5 ovat Sony Interactive Entertainment LLC:n rekisteröityjä tavaramerkkejä."
+  },
+  "footer": {
+    "credits": "Tekijät ja avustajat",
+    "github": "Näytä GitHubissa",
+    "license": "MIT-lisenssi",
+    "madeWith": "Tehty ❤️:llä",
+    "inspiredBy": "Data inspiraationa",
+    "dataFrom": "Sarjanumerotiedot lähteestä"
+  },
+  "seo": {
+    "pageTitle": "Voidaanko PS5 jailbreakata? | Sarjanumeron laiteohjelmistotarkistus",
+    "pageDescription": "Tarkista, voidaiko PlayStation 5 jailbreakata syöttämällä sarjanumero.",
+    "ogTitle": "PS5 Jailbreak Checker - Tarkista sarjanumerosi",
+    "ogDescription": "Ilmainen työkalu PS5:n jailbreakattavuuden tarkistamiseen sarjanumerolla."
+  }
+}

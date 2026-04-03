@@ -1,7 +1,7 @@
 /**
  * i18n Configuration
  *
- * Supports 14 languages for maximum PS5 market coverage.
+ * Supports 26 languages for maximum global PS5 market coverage.
  */
 
 import type { Locale, LanguageInfo } from '@/types/serial';
@@ -11,6 +11,8 @@ export const DEFAULT_LOCALE: Locale = 'en';
 export const SUPPORTED_LOCALES: Locale[] = [
   'en', 'tr', 'ja', 'de', 'fr', 'es', 'it',
   'zh', 'ru', 'pt', 'ko', 'ar', 'pl', 'nl',
+  'hi', 'sv', 'no', 'fi', 'da', 'cs', 'hu',
+  'ro', 'id', 'vi', 'th', 'uk',
 ];
 
 export const LANGUAGES: LanguageInfo[] = [
@@ -28,6 +30,18 @@ export const LANGUAGES: LanguageInfo[] = [
   { code: 'ar', name: 'Arabic', nativeName: 'العربية', flag: '🇸🇦' },
   { code: 'pl', name: 'Polish', nativeName: 'Polski', flag: '🇵🇱' },
   { code: 'nl', name: 'Dutch', nativeName: 'Nederlands', flag: '🇳🇱' },
+  { code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', flag: '🇮🇳' },
+  { code: 'sv', name: 'Swedish', nativeName: 'Svenska', flag: '🇸🇪' },
+  { code: 'no', name: 'Norwegian', nativeName: 'Norsk', flag: '🇳🇴' },
+  { code: 'fi', name: 'Finnish', nativeName: 'Suomi', flag: '🇫🇮' },
+  { code: 'da', name: 'Danish', nativeName: 'Dansk', flag: '🇩🇰' },
+  { code: 'cs', name: 'Czech', nativeName: 'Čeština', flag: '🇨🇿' },
+  { code: 'hu', name: 'Hungarian', nativeName: 'Magyar', flag: '🇭🇺' },
+  { code: 'ro', name: 'Romanian', nativeName: 'Română', flag: '🇷🇴' },
+  { code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia', flag: '🇮🇩' },
+  { code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt', flag: '🇻🇳' },
+  { code: 'th', name: 'Thai', nativeName: 'ไทย', flag: '🇹🇭' },
+  { code: 'uk', name: 'Ukrainian', nativeName: 'Українська', flag: '🇺🇦' },
 ];
 
 /**

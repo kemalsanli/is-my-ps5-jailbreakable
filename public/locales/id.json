@@ -1,0 +1,61 @@
+{
+  "common": {
+    "title": "Masukkan nomor\nseri Anda.",
+    "description": "Periksa apakah PlayStation 5 Anda bisa di-jailbreak dengan memasukkan nomor seri",
+    "check": "Periksa",
+    "clear": "Hapus",
+    "loading": "Menganalisis...",
+    "serialNumber": "Nomor Seri",
+    "learnMore": "Pelajari Lebih Lanjut"
+  },
+  "form": {
+    "label": "Masukkan nomor seri PS5 Anda",
+    "placeholder": "cth. S01-G2121W9D1234",
+    "hint": "Nomor seri ada di bagian belakang/bawah konsol PS5 Anda",
+    "invalidFormat": "Format nomor seri tidak valid. Periksa dan coba lagi.",
+    "tooShort": "Nomor seri terlalu pendek. Masukkan minimal 10 karakter.",
+    "required": "Silakan masukkan nomor seri"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Kabar Bagus!",
+      "firmware": "Estimasi firmware: {version} atau lebih rendah",
+      "description": "PS5 ini kemungkinan bisa di-jailbreak! Firmware pabrik yang diestimasi berada dalam rentang yang bisa dieksploitasi."
+    },
+    "notJailbreakable": {
+      "title": "Tidak Bisa Di-jailbreak",
+      "firmware": "Estimasi firmware: {version}",
+      "description": "PS5 ini kemungkinan dikirim dengan firmware yang saat ini tidak bisa dieksploitasi."
+    },
+    "uncertain": {
+      "title": "Tidak Pasti",
+      "firmware": "Estimasi firmware: sekitar {version}",
+      "description": "PS5 ini diproduksi selama periode transisi. Firmware sebenarnya bisa berbeda. Periksa langsung di konsol."
+    },
+    "confidence": { "high": "Keyakinan Tinggi", "medium": "Keyakinan Sedang", "low": "Keyakinan Rendah" },
+    "detectedRegion": "Wilayah: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Diproduksi: {year}"
+  },
+  "guide": {
+    "title": "Di mana menemukan nomor seri?",
+    "subtitle": "Periksa nomor seri sebelum membeli — tidak perlu membuka kotak",
+    "step1Title": "Langkah 1: Periksa Kotak",
+    "step1Desc": "Lihat bagian bawah kotak PS5. Nomor seri tercetak di label.",
+    "step2Title": "Langkah 2: Temukan Label Barcode",
+    "step2Desc": "Cari label barcode di kotak. Berisi nomor seri, info model, dan detail produksi.",
+    "step3Title": "Langkah 3: Masukkan Serial",
+    "step3Desc": "Nomor seri dimulai dengan 'S01-'. Ketik di pemeriksa di atas."
+  },
+  "about": {
+    "title": "Tentang Alat Ini",
+    "whatIsThis": "Apa ini?",
+    "whatIsThisDesc": "Alat ini membantu menentukan apakah PlayStation 5 bisa di-jailbreak dengan menganalisis nomor serinya.",
+    "howItWorks": "Bagaimana cara kerjanya?",
+    "howItWorksDesc": "Konsol PS5 dikirim dengan firmware pabrik sesuai tanggal produksi. Dengan mendekode nomor seri, kami memperkirakan versi firmware.",
+    "disclaimer": "Penafian",
+    "disclaimerDesc": "Situs ini tidak berafiliasi dengan Sony Interactive Entertainment. PlayStation dan PS5 adalah merek dagang terdaftar dari Sony Interactive Entertainment LLC."
+  },
+  "footer": { "credits": "Kredit & Kontributor", "github": "Lihat di GitHub", "license": "Lisensi MIT", "madeWith": "Dibuat dengan ❤️ oleh", "inspiredBy": "Data terinspirasi dari", "dataFrom": "Data nomor seri dari" },
+  "seo": { "pageTitle": "Apakah PS5 saya bisa di-jailbreak? | Pemeriksa Firmware Nomor Seri", "pageDescription": "Periksa apakah PS5 Anda bisa di-jailbreak dengan memasukkan nomor seri.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Alat gratis untuk memeriksa apakah PS5 Anda bisa di-jailbreak." }
+}

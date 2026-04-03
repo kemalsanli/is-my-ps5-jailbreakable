@@ -1,0 +1,61 @@
+{
+  "common": {
+    "title": "Zadejte\nsériové číslo.",
+    "description": "Zkontrolujte, zda lze váš PlayStation 5 jailbreaknout zadáním sériového čísla",
+    "check": "Zkontrolovat",
+    "clear": "Vymazat",
+    "loading": "Analyzuji...",
+    "serialNumber": "Sériové číslo",
+    "learnMore": "Zjistit více"
+  },
+  "form": {
+    "label": "Zadejte sériové číslo PS5",
+    "placeholder": "např. S01-G2121W9D1234",
+    "hint": "Sériové číslo najdete na zadní/spodní straně PS5",
+    "invalidFormat": "Neplatný formát sériového čísla. Zkontrolujte a zkuste znovu.",
+    "tooShort": "Sériové číslo je příliš krátké. Zadejte alespoň 10 znaků.",
+    "required": "Zadejte prosím sériové číslo"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Skvělá zpráva!",
+      "firmware": "Odhadovaný firmware: {version} nebo nižší",
+      "description": "Tento PS5 je pravděpodobně jailbreakovatelný! Odhadovaný tovární firmware je v rozsahu exploitů."
+    },
+    "notJailbreakable": {
+      "title": "Nelze Jailbreaknout",
+      "firmware": "Odhadovaný firmware: {version}",
+      "description": "Tento PS5 byl pravděpodobně dodán s firmwarem, který v současnosti nelze exploitovat."
+    },
+    "uncertain": {
+      "title": "Nejisté",
+      "firmware": "Odhadovaný firmware: přibližně {version}",
+      "description": "Tento PS5 byl vyroben v přechodném období. Skutečný firmware se může lišit. Ověřte přímo na konzoli."
+    },
+    "confidence": { "high": "Vysoká jistota", "medium": "Střední jistota", "low": "Nízká jistota" },
+    "detectedRegion": "Region: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Vyrobeno: {year}"
+  },
+  "guide": {
+    "title": "Kde najdu sériové číslo?",
+    "subtitle": "Zkontrolujte sériové číslo před nákupem — krabici nemusíte otevírat",
+    "step1Title": "Krok 1: Zkontrolujte krabici",
+    "step1Desc": "Podívejte se na spodní stranu krabice PS5. Sériové číslo je vytištěno na štítku.",
+    "step2Title": "Krok 2: Najděte štítek s čárovým kódem",
+    "step2Desc": "Najděte na krabici štítek s čárovým kódem. Obsahuje sériové číslo, informace o modelu a výrobní údaje.",
+    "step3Title": "Krok 3: Zadejte sériové číslo",
+    "step3Desc": "Sériové číslo začíná 'S01-'. Zadejte ho do kontroly výše."
+  },
+  "about": {
+    "title": "O tomto nástroji",
+    "whatIsThis": "Co to je?",
+    "whatIsThisDesc": "Tento nástroj pomáhá zjistit, zda lze PlayStation 5 jailbreaknout analýzou sériového čísla.",
+    "howItWorks": "Jak to funguje?",
+    "howItWorksDesc": "Konzole PS5 jsou dodávány s továrním firmwarem odpovídajícím datu výroby. Dekódováním sériového čísla odhadujeme verzi firmwaru.",
+    "disclaimer": "Prohlášení",
+    "disclaimerDesc": "Tyto stránky nejsou spojeny se Sony Interactive Entertainment. PlayStation a PS5 jsou registrované ochranné známky Sony Interactive Entertainment LLC."
+  },
+  "footer": { "credits": "Autoři a přispěvatelé", "github": "Zobrazit na GitHubu", "license": "Licence MIT", "madeWith": "Vytvořeno s ❤️", "inspiredBy": "Data inspirována", "dataFrom": "Data sériových čísel z" },
+  "seo": { "pageTitle": "Je můj PS5 jailbreakovatelný? | Kontrola firmwaru podle sériového čísla", "pageDescription": "Zkontrolujte, zda lze váš PS5 jailbreaknout zadáním sériového čísla.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Bezplatný nástroj pro kontrolu jailbreakovatelnosti PS5." }
+}

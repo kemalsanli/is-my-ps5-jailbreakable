@@ -1,0 +1,61 @@
+{
+  "common": {
+    "title": "Introdu numărul\nde serie.",
+    "description": "Verifică dacă PlayStation 5 poate fi jailbreak-uit introducând numărul de serie",
+    "check": "Verifică",
+    "clear": "Șterge",
+    "loading": "Se analizează...",
+    "serialNumber": "Număr de serie",
+    "learnMore": "Află mai multe"
+  },
+  "form": {
+    "label": "Introdu numărul de serie PS5",
+    "placeholder": "ex. S01-G2121W9D1234",
+    "hint": "Numărul de serie se află pe spatele/fundul consolei PS5",
+    "invalidFormat": "Format invalid de număr de serie. Verifică și încearcă din nou.",
+    "tooShort": "Numărul de serie este prea scurt. Introdu cel puțin 10 caractere.",
+    "required": "Te rugăm să introduci un număr de serie"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Vești bune!",
+      "firmware": "Firmware estimat: {version} sau mai mic",
+      "description": "Acest PS5 este probabil jailbreak-uibil! Firmware-ul din fabrică estimat este în intervalul exploatabil."
+    },
+    "notJailbreakable": {
+      "title": "Nu poate fi Jailbreak-uit",
+      "firmware": "Firmware estimat: {version}",
+      "description": "Acest PS5 a fost probabil livrat cu un firmware care nu poate fi exploatat în prezent."
+    },
+    "uncertain": {
+      "title": "Incert",
+      "firmware": "Firmware estimat: aproximativ {version}",
+      "description": "Acest PS5 a fost fabricat într-o perioadă de tranziție. Firmware-ul real poate diferi. Verifică direct pe consolă."
+    },
+    "confidence": { "high": "Certitudine ridicată", "medium": "Certitudine medie", "low": "Certitudine scăzută" },
+    "detectedRegion": "Regiune: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Fabricat: {year}"
+  },
+  "guide": {
+    "title": "Unde găsesc numărul de serie?",
+    "subtitle": "Verifică numărul de serie înainte de cumpărare — nu trebuie să deschizi cutia",
+    "step1Title": "Pasul 1: Verifică cutia",
+    "step1Desc": "Uită-te pe fundul cutiei PS5. Numărul de serie este tipărit pe o etichetă.",
+    "step2Title": "Pasul 2: Găsește eticheta cu cod de bare",
+    "step2Desc": "Găsește eticheta cu cod de bare pe cutie. Conține numărul de serie, informații despre model și detalii de fabricație.",
+    "step3Title": "Pasul 3: Introdu numărul de serie",
+    "step3Desc": "Numărul de serie începe cu 'S01-'. Tastează-l în verificatorul de mai sus."
+  },
+  "about": {
+    "title": "Despre acest instrument",
+    "whatIsThis": "Ce este aceasta?",
+    "whatIsThisDesc": "Acest instrument ajută la determinarea dacă un PlayStation 5 poate fi jailbreak-uit prin analizarea numărului de serie.",
+    "howItWorks": "Cum funcționează?",
+    "howItWorksDesc": "Consolele PS5 vin cu firmware din fabrică corespunzător datei de fabricație. Decodând numărul de serie, estimăm versiunea firmware-ului.",
+    "disclaimer": "Declinare a responsabilității",
+    "disclaimerDesc": "Acest site nu este afiliat cu Sony Interactive Entertainment. PlayStation și PS5 sunt mărci comerciale înregistrate ale Sony Interactive Entertainment LLC."
+  },
+  "footer": { "credits": "Credite și contributori", "github": "Vezi pe GitHub", "license": "Licență MIT", "madeWith": "Făcut cu ❤️ de", "inspiredBy": "Date inspirate de", "dataFrom": "Date numere de serie de la" },
+  "seo": { "pageTitle": "PS5-ul meu poate fi jailbreak-uit? | Verificator Firmware Număr de Serie", "pageDescription": "Verifică dacă PlayStation 5 poate fi jailbreak-uit prin introducerea numărului de serie.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Instrument gratuit pentru verificarea jailbreak-uibilității PS5." }
+}
