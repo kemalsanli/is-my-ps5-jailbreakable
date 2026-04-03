@@ -4,19 +4,12 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://controlserial.com'),
-  title: 'Is my PS5 Jailbreakable? | Serial Number Firmware Checker',
+  title: 'PS5 Jailbreak Checker — controlserial.com',
   description:
-    'Check if your PlayStation 5 can be jailbroken by entering its serial number. Fast, accurate firmware detection based on manufacturing data from PSDevWiki.',
+    'Check if your PlayStation 5 can be jailbroken by entering its serial number. Fast, accurate firmware detection based on PSDevWiki data.',
   keywords: [
-    'PS5',
-    'jailbreak',
-    'serial number',
-    'firmware',
-    'CFW',
-    'homebrew',
-    'PlayStation 5',
-    'exploit',
-    'BD-JB',
+    'PS5', 'jailbreak', 'serial number', 'firmware', 'CFW', 'homebrew',
+    'PlayStation 5', 'exploit', 'BD-JB', 'controlserial',
   ],
   authors: [{ name: 'Kemal Sanlı', url: 'https://github.com/kemalsanli' }],
   creator: 'Kemal Sanlı',
@@ -24,36 +17,18 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://controlserial.com',
-    title: 'PS5 Jailbreak Checker - Check Your Serial Number',
-    description:
-      'Free tool to check if your PS5 is jailbreakable by serial number. Instant firmware estimation based on community data.',
-    siteName: 'PS5 Jailbreak Checker',
-    images: [
-      {
-        url: '/images/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'PS5 Jailbreak Checker',
-      },
-    ],
+    title: 'PS5 Jailbreak Checker',
+    description: 'Check if your PS5 is jailbreakable by serial number.',
+    siteName: 'controlserial.com',
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Is my PS5 Jailbreakable?',
-    description:
-      'Check if your PS5 can be jailbroken by serial number',
-    images: ['/images/og-image.png'],
+    card: 'summary',
+    title: 'PS5 Jailbreak Checker',
+    description: 'Check if your PS5 can be jailbroken by serial number',
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
   icons: {
     icon: '/images/favicon.ico',
@@ -63,7 +38,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0F0F0F',
+  themeColor: '#0c0c0f',
 };
 
 export default function RootLayout({
@@ -76,20 +51,11 @@ export default function RootLayout({
     '@type': 'WebApplication',
     name: 'PS5 Jailbreak Checker',
     url: 'https://controlserial.com',
-    description:
-      'Check if your PlayStation 5 can be jailbroken by serial number',
+    description: 'Check if your PlayStation 5 can be jailbroken by serial number',
     applicationCategory: 'UtilitiesApplication',
     operatingSystem: 'Web Browser',
-    offers: {
-      '@type': 'Offer',
-      price: '0',
-      priceCurrency: 'USD',
-    },
-    creator: {
-      '@type': 'Person',
-      name: 'Kemal Sanlı',
-      url: 'https://github.com/kemalsanli',
-    },
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    creator: { '@type': 'Person', name: 'Kemal Sanlı' },
   };
 
   return (
@@ -99,12 +65,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body className="min-h-screen bg-ps5-bg-primary text-ps5-text-primary antialiased">
+      <body>
         <I18nProvider>{children}</I18nProvider>
       </body>
     </html>

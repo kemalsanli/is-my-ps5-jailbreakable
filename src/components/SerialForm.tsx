@@ -1,125 +1,210 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Input } from './ui/Input';
-import { Button } from './ui/Button';
 import { checkSerial } from '@/lib/serial-validator';
 import { useTranslation } from '@/lib/i18n/useTranslation';
 import type { FirmwareDetectionResult } from '@/types/serial';
-import { ResultDisplay } from './ResultDisplay';
 
 export function SerialForm() {
   const { t } = useTranslation();
   const [serial, setSerial] = useState('');
-  const [isChecking, setIsChecking] = useState(false);
   const [result, setResult] = useState<FirmwareDetectionResult | null>(null);
   const [error, setError] = useState('');
+  const [borderColor, setBorderColor] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleInput = (value: string) => {
+    setSerial(value.toUpperCase());
     setError('');
+    setBorderColor('');
     setResult(null);
-
-    // Validation
-    if (!serial.trim()) {
-      setError(t.form.required);
-      return;
-    }
-
-    if (serial.trim().length < 10) {
-      setError(t.form.tooShort);
-      return;
-    }
-
-    // Check serial
-    setIsChecking(true);
-    
-    // Simulate async operation (in case we add API calls later)
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    const checkResult = checkSerial(serial);
-
-    if (!checkResult) {
-      setError(t.form.invalidFormat);
-      setIsChecking(false);
-      return;
-    }
-
-    setResult(checkResult);
-    setIsChecking(false);
   };
 
-  const handleClear = () => {
-    setSerial('');
-    setError('');
-    setResult(null);
+  const handleCheck = () => {
+    const v = serial.trim();
+    if (!v) return;
+
+    if (v.length < 8) {
+      setBorderColor('#ff6666');
+      setError(t.form.invalidFormat);
+      return;
+    }
+
+    const checkResult = checkSerial(v);
+
+    if (!checkResult) {
+      setBorderColor('#ff6666');
+      setError(t.form.invalidFormat);
+      return;
+    }
+
+    setBorderColor('#66ff66');
+    setResult(checkResult);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') handleCheck();
+  };
+
+  const getDotColor = () => {
+    if (!result) return '#666';
+    if (result.status === 'JAILBREAKABLE') return '#66ff66';
+    if (result.status === 'NOT_JAILBREAKABLE') return '#ff6666';
+    return '#ffcc00';
+  };
+
+  const getResultTitle = () => {
+    if (!result) return '';
+    if (result.status === 'JAILBREAKABLE') return t.results.jailbreakable.title;
+    if (result.status === 'NOT_JAILBREAKABLE') return t.results.notJailbreakable.title;
+    return t.results.uncertain.title;
+  };
+
+  const getResultDesc = () => {
+    if (!result) return '';
+    if (result.status === 'JAILBREAKABLE') return t.results.jailbreakable.description;
+    if (result.status === 'NOT_JAILBREAKABLE') return t.results.notJailbreakable.description;
+    return t.results.uncertain.description;
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto space-y-6">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <Input
-          type="text"
-          label={t.form.label}
-          placeholder={t.form.placeholder}
-          value={serial}
-          onChange={(e) => {
-            setSerial(e.target.value.toUpperCase());
-            setError('');
+    <>
+      <input
+        id="si"
+        type="text"
+        placeholder={t.form.placeholder}
+        maxLength={20}
+        autoComplete="off"
+        autoCorrect="off"
+        spellCheck={false}
+        value={serial}
+        onChange={(e) => handleInput(e.target.value)}
+        onKeyDown={handleKeyDown}
+        style={{
+          width: '100%',
+          background: 'var(--surface-color-secondary)',
+          border: `1px solid ${borderColor || 'var(--surface-color-primary)'}`,
+          borderRadius: '10px',
+          padding: '13px 14px',
+          fontSize: '16px',
+          fontFamily: "'SF Mono', 'Menlo', monospace",
+          color: 'var(--text-color-secondary)',
+          letterSpacing: '0.06em',
+          outline: 'none',
+          display: 'block',
+          transition: 'border-color 0.15s',
+          WebkitAppearance: 'none',
+        }}
+      />
+
+      {error && (
+        <p
+          style={{
+            fontSize: '12px',
+            color: '#ff6666',
+            marginTop: '7px',
+            paddingLeft: '2px',
           }}
-          error={error}
-          hint={!error ? t.form.hint : undefined}
-          maxLength={21}
-          autoComplete="off"
-          autoCorrect="off"
-          autoCapitalize="characters"
-          spellCheck={false}
-          icon={
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-              />
-            </svg>
-          }
-        />
+        >
+          {error}
+        </p>
+      )}
 
-        <div className="flex gap-3">
-          <Button
-            type="submit"
-            variant="primary"
-            className="flex-1"
-            isLoading={isChecking}
-            disabled={!serial.trim() || isChecking}
-          >
-            {isChecking ? t.common.loading : t.common.check}
-          </Button>
-
-          {serial && (
-            <Button
-              type="button"
-              variant="secondary"
-              onClick={handleClear}
-              disabled={isChecking}
-            >
-              {t.common.clear}
-            </Button>
-          )}
-        </div>
-      </form>
+      <button
+        onClick={handleCheck}
+        style={{
+          padding: '1rem 2rem',
+          textAlign: 'center',
+          textDecoration: 'none',
+          display: 'block',
+          cursor: 'pointer',
+          lineHeight: '2.5rem',
+          borderRadius: '1.25rem',
+          width: '100%',
+          backgroundColor: 'var(--surface-color-primary)',
+          border: 'none',
+          color: 'var(--text-color-primary)',
+          fontSize: '1.3rem',
+          fontFamily: 'Arial, sans-serif',
+          fontWeight: 800,
+          transition: 'background-color 0.25s ease, color 0.25s ease',
+          boxSizing: 'border-box',
+          marginTop: '12px',
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.backgroundColor = 'var(--surface-color-hover)';
+          e.currentTarget.style.color = 'var(--text-color-primary-hover)';
+        }}
+        onMouseOut={(e) => {
+          e.currentTarget.style.backgroundColor = 'var(--surface-color-primary)';
+          e.currentTarget.style.color = 'var(--text-color-primary)';
+        }}
+        onMouseDown={(e) => {
+          e.currentTarget.style.transform = 'scale(0.985)';
+        }}
+        onMouseUp={(e) => {
+          e.currentTarget.style.transform = 'scale(1)';
+        }}
+      >
+        {t.common.check}
+      </button>
 
       {result && (
-        <div className="animate-slide-up">
-          <ResultDisplay result={result} />
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '10px',
+            marginTop: '28px',
+            paddingTop: '24px',
+            borderTop: '1px solid var(--surface-color-primary)',
+          }}
+        >
+          <div
+            style={{
+              width: '7px',
+              height: '7px',
+              borderRadius: '50%',
+              marginTop: '6px',
+              flexShrink: 0,
+              background: getDotColor(),
+            }}
+          />
+          <div>
+            <p
+              style={{
+                fontSize: '15px',
+                fontWeight: 700,
+                color: 'var(--text-color-primary)',
+                marginBottom: '3px',
+              }}
+            >
+              {getResultTitle()}
+            </p>
+            <p
+              style={{
+                fontSize: '13px',
+                color: 'var(--text-color-tertiary)',
+                lineHeight: 1.5,
+              }}
+            >
+              {getResultDesc()}
+            </p>
+            <p
+              style={{
+                fontSize: '11px',
+                fontFamily: "'SF Mono', Menlo, monospace",
+                color: '#666',
+                marginTop: '5px',
+                letterSpacing: '0.03em',
+              }}
+            >
+              {result.firmware !== 'Unknown'
+                ? `${t.results.jailbreakable.firmware.split(':')[0]}: ${result.firmware}`
+                : ''}
+            </p>
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

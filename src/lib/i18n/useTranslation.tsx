@@ -10,6 +10,9 @@
 import { useState, useEffect, useCallback, createContext, useContext } from 'react';
 import type { Locale, Translations } from '@/types/serial';
 import { DEFAULT_LOCALE, SUPPORTED_LOCALES, getStoredLocale, setStoredLocale } from './config';
+import enTranslations from '../../../public/locales/en.json';
+
+const fallbackTranslations = enTranslations as unknown as Translations;
 
 interface I18nContextValue {
   locale: Locale;
@@ -49,19 +52,15 @@ function deepMerge(
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
-  const [translations, setTranslations] = useState<Translations>(
-    {} as Translations
-  );
-  const [enTranslations, setEnTranslations] = useState<Translations>(
-    {} as Translations
-  );
+  const [translations, setTranslations] = useState<Translations>(fallbackTranslations);
+  const [enTranslationsState, setEnTranslationsState] = useState<Translations>(fallbackTranslations);
 
   // Load translations
   const loadTranslations = useCallback(async (loc: Locale) => {
     try {
       const enModule = await import('../../../public/locales/en.json');
       const enData = enModule.default as Translations;
-      setEnTranslations(enData);
+      setEnTranslationsState(enData);
 
       if (loc === 'en') {
         setTranslations(enData);
@@ -104,7 +103,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   // Wait for translations to load
   const isLoaded = Object.keys(translations).length > 0;
   if (!isLoaded) {
-    return null; // or a loading skeleton
+    return <>{children}</>;
   }
 
   return (
@@ -122,7 +121,13 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 export function useTranslation(): I18nContextValue {
   const context = useContext(I18nContext);
   if (!context) {
-    throw new Error('useTranslation must be used within an I18nProvider');
+    // Return fallback English translations during SSR/static generation
+    return {
+      locale: DEFAULT_LOCALE,
+      translations: fallbackTranslations,
+      setLocale: () => {},
+      t: fallbackTranslations,
+    };
   }
   return context;
 }

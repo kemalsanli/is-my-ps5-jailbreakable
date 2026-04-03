@@ -2,60 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── PS5 Design System Base Styles ─────────────────────────────── */
+/* ─── PS5 Minimal Design System ────────────────────────────────── */
 
 :root {
-  /* Primary Colors */
-  --ps5-blue: #0070CC;
-  --ps5-blue-light: #3399FF;
-  --ps5-white: #FFFFFF;
-  --ps5-black: #000000;
-
-  /* Background Colors */
-  --ps5-bg-primary: #0F0F0F;
-  --ps5-bg-secondary: #1A1A1A;
-  --ps5-bg-card: #242424;
-  --ps5-bg-card-hover: #2D2D2D;
-  --ps5-bg-input: #1E1E1E;
-
-  /* Accent Colors */
-  --ps5-success: #00D660;
-  --ps5-success-dim: rgba(0, 214, 96, 0.15);
-  --ps5-warning: #FFA500;
-  --ps5-warning-dim: rgba(255, 165, 0, 0.15);
-  --ps5-error: #FF3333;
-  --ps5-error-dim: rgba(255, 51, 51, 0.15);
-
-  /* Text Colors */
-  --ps5-text-primary: #FFFFFF;
-  --ps5-text-secondary: #B3B3B3;
-  --ps5-text-muted: #666666;
-
-  /* Border */
-  --ps5-border: rgba(255, 255, 255, 0.08);
-  --ps5-border-focus: var(--ps5-blue);
-
-  /* Shadows */
-  --ps5-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --ps5-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
-  --ps5-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
-  --ps5-shadow-glow-blue: 0 0 20px rgba(0, 112, 204, 0.3);
-  --ps5-shadow-glow-success: 0 0 20px rgba(0, 214, 96, 0.2);
-  --ps5-shadow-glow-error: 0 0 20px rgba(255, 51, 51, 0.2);
-
-  /* Spacing */
-  --ps5-radius-sm: 6px;
-  --ps5-radius-md: 10px;
-  --ps5-radius-lg: 16px;
-  --ps5-radius-xl: 24px;
-
-  /* Transitions */
-  --ps5-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-  --ps5-transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
-  --ps5-transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --text-color-primary: #fff;
+  --text-color-secondary: #ccc;
+  --text-color-tertiary: #999;
+  --background-color-primary: #0c0c0f;
+  --surface-color-primary: #202125;
+  --surface-color-secondary: #15161a;
+  --surface-color-hover: #a2a2a6;
+  --text-color-primary-hover: #202020;
+  --text-color-secondary-hover: #444;
+  --border-color: #2a2a2e;
+  --green: #66ff66;
+  --red: #ff6666;
+  --yellow: #ffcc00;
 }
-
-/* ─── Global Reset & Base ───────────────────────────────────────── */
 
 * {
   box-sizing: border-box;
@@ -67,169 +30,46 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
-  background-color: var(--ps5-bg-primary);
-  color: var(--ps5-text-primary);
+  background: var(--background-color-primary);
   min-height: 100vh;
-  line-height: 1.6;
-  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  color: var(--text-color-primary);
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-/* ─── PS5 Background Pattern ─────────────────────────────────────�� */
-
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(
-      ellipse at 50% -20%,
-      rgba(0, 112, 204, 0.08) 0%,
-      transparent 60%
-    ),
-    radial-gradient(
-      ellipse at 80% 80%,
-      rgba(0, 112, 204, 0.03) 0%,
-      transparent 40%
-    );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ─── Scrollbar Styling (PS5-like) ──────────────────────────────── */
+/* ─── Scrollbar ─────────────────────────────────────────────────── */
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--ps5-bg-primary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--ps5-bg-card-hover);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--ps5-text-muted);
+  background: #333;
+  border-radius: 2px;
 }
 
 /* ─── Selection ─────────────────────────────────────────────────── */
 
 ::selection {
-  background: rgba(0, 112, 204, 0.3);
-  color: var(--ps5-text-primary);
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--text-color-primary);
 }
 
-/* ─── Focus Styles (Accessibility) ──────────────────────────────── */
+/* ─── Focus ─────────────────────────────────────────────────────── */
 
 :focus-visible {
-  outline: 2px solid var(--ps5-blue);
+  outline: 2px solid #555;
   outline-offset: 2px;
 }
 
-/* ─── Utility Classes ───────────────────────────────────────────── */
-
-@layer utilities {
-  .ps5-card {
-    background: var(--ps5-bg-card);
-    border: 1px solid var(--ps5-border);
-    border-radius: var(--ps5-radius-lg);
-    box-shadow: var(--ps5-shadow-md);
-    backdrop-filter: blur(10px);
-  }
-
-  .ps5-card-hover:hover {
-    background: var(--ps5-bg-card-hover);
-    border-color: rgba(255, 255, 255, 0.12);
-    box-shadow: var(--ps5-shadow-lg);
-    transform: translateY(-1px);
-    transition: all var(--ps5-transition-normal);
-  }
-
-  .ps5-input {
-    background: var(--ps5-bg-input);
-    border: 1px solid var(--ps5-border);
-    border-radius: var(--ps5-radius-md);
-    color: var(--ps5-text-primary);
-    font-family: 'JetBrains Mono', 'Consolas', monospace;
-    letter-spacing: 0.05em;
-    transition: all var(--ps5-transition-fast);
-  }
-
-  .ps5-input:focus {
-    border-color: var(--ps5-blue);
-    box-shadow: 0 0 0 3px rgba(0, 112, 204, 0.2);
-    outline: none;
-  }
-
-  .ps5-input::placeholder {
-    color: var(--ps5-text-muted);
-    font-family: 'Inter', 'Helvetica Neue', system-ui, sans-serif;
-    letter-spacing: 0;
-  }
-
-  .ps5-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 28px;
-    border: none;
-    border-radius: var(--ps5-radius-md);
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    transition: all var(--ps5-transition-fast);
-    user-select: none;
-    text-decoration: none;
-  }
-
-  .ps5-btn-primary {
-    background: var(--ps5-blue);
-    color: var(--ps5-white);
-    box-shadow: var(--ps5-shadow-glow-blue);
-  }
-
-  .ps5-btn-primary:hover {
-    background: var(--ps5-blue-light);
-    box-shadow: 0 0 30px rgba(0, 112, 204, 0.4);
-    transform: translateY(-1px);
-  }
-
-  .ps5-btn-primary:active {
-    transform: translateY(0);
-    box-shadow: var(--ps5-shadow-glow-blue);
-  }
-
-  .ps5-btn-secondary {
-    background: var(--ps5-bg-card);
-    color: var(--ps5-text-secondary);
-    border: 1px solid var(--ps5-border);
-  }
-
-  .ps5-btn-secondary:hover {
-    background: var(--ps5-bg-card-hover);
-    color: var(--ps5-text-primary);
-  }
-
-  .text-gradient {
-    background: linear-gradient(135deg, var(--ps5-blue-light), var(--ps5-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .glass {
-    background: rgba(36, 36, 36, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-  }
+input:focus-visible {
+  outline: none;
 }
