@@ -48,11 +48,10 @@ export default function HomePage() {
               letterSpacing: '-0.4px',
               lineHeight: 1.2,
               marginBottom: '8px',
+              whiteSpace: 'pre-line',
             }}
           >
-            {t.common.title.split('?')[0]}
-            <br />
-            {t.common.title.includes('?') ? '?' : ''}
+            {t.common.title}
           </h1>
 
           <SerialForm />
