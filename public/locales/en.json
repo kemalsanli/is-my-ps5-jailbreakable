@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "Is my PS5 Jailbreakable?",
+    "description": "Check if your PlayStation 5 can be jailbroken by entering its serial number",
+    "check": "Check Serial",
+    "clear": "Clear",
+    "loading": "Analyzing...",
+    "serialNumber": "Serial Number",
+    "learnMore": "Learn More"
+  },
+  "form": {
+    "label": "Enter your PS5 serial number",
+    "placeholder": "e.g. S01-G2121W9D1234",
+    "hint": "You can find the serial number on the back/bottom of your PS5 console",
+    "invalidFormat": "Invalid serial number format. Please check and try again.",
+    "tooShort": "Serial number is too short. Please enter at least 10 characters.",
+    "required": "Please enter a serial number"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Great News!",
+      "firmware": "Estimated Firmware: {version} or lower",
+      "description": "This PS5 is likely jailbreakable! The estimated factory firmware is within the exploitable range."
+    },
+    "notJailbreakable": {
+      "title": "Not Jailbreakable",
+      "firmware": "Estimated Firmware: {version}",
+      "description": "This PS5 likely shipped with a firmware version that is not currently exploitable."
+    },
+    "uncertain": {
+      "title": "Uncertain",
+      "firmware": "Estimated Firmware: around {version}",
+      "description": "This PS5 was manufactured during a transition period. The actual firmware could vary. Please check the firmware version directly on the console."
+    },
+    "confidence": {
+      "high": "High Confidence",
+      "medium": "Medium Confidence",
+      "low": "Low Confidence"
+    },
+    "detectedRegion": "Region: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Manufactured: {year}"
+  },
+  "guide": {
+    "title": "Where to Find the Serial Number",
+    "subtitle": "Follow these steps to locate your PS5 serial number",
+    "step1Title": "Step 1: Turn Off Your PS5",
+    "step1Desc": "Turn off and unplug your PlayStation 5 console safely.",
+    "step2Title": "Step 2: Check the Bottom",
+    "step2Desc": "Flip your PS5 and look at the bottom panel for a sticker with barcodes.",
+    "step3Title": "Step 3: Find the Serial",
+    "step3Desc": "The serial number starts with 'S01-' and is located near the barcode on the label."
+  },
+  "about": {
+    "title": "About This Tool",
+    "whatIsThis": "What is this?",
+    "whatIsThisDesc": "This tool helps you determine if a PlayStation 5 console can potentially be jailbroken by analyzing its serial number. The serial number contains manufacturing date information which correlates with the factory-installed firmware version.",
+    "howItWorks": "How does it work?",
+    "howItWorksDesc": "PS5 consoles ship with a factory firmware that corresponds to their manufacturing date. By decoding the serial number, we can estimate the firmware version and check if it falls within the range of known exploits. The data is based on the PSDevWiki Serial Number Guide and community research.",
+    "disclaimer": "Disclaimer",
+    "disclaimerDesc": "This tool provides estimations only. The actual firmware may differ from the prediction. Always verify the firmware version directly on the console before making a purchase. This tool is for educational and research purposes only."
+  },
+  "footer": {
+    "credits": "Credits & Contributors",
+    "github": "View on GitHub",
+    "license": "MIT License",
+    "madeWith": "Made with ❤️ by",
+    "inspiredBy": "Data inspired by",
+    "dataFrom": "Serial number data from"
+  },
+  "seo": {
+    "pageTitle": "Is my PS5 Jailbreakable? | Serial Number Firmware Checker",
+    "pageDescription": "Check if your PlayStation 5 can be jailbroken by entering its serial number. Fast, accurate firmware detection based on manufacturing data from PSDevWiki.",
+    "ogTitle": "PS5 Jailbreak Checker - Check Your Serial Number",
+    "ogDescription": "Free tool to check if your PS5 is jailbreakable by serial number. Instant firmware estimation based on community data."
+  }
+}

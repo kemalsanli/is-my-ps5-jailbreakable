@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "PS5'im Jailbreak Edilebilir mi?",
+    "description": "Seri numarasını girerek PlayStation 5'inizin jailbreak edilip edilemeyeceğini kontrol edin",
+    "check": "Kontrol Et",
+    "clear": "Temizle",
+    "loading": "Analiz ediliyor...",
+    "serialNumber": "Seri Numarası",
+    "learnMore": "Daha Fazla"
+  },
+  "form": {
+    "label": "PS5 seri numaranızı girin",
+    "placeholder": "örn. S01-G2121W9D1234",
+    "hint": "Seri numarasını PS5 konsolunuzun arkasında/altında bulabilirsiniz",
+    "invalidFormat": "Geçersiz seri numarası formatı. Lütfen kontrol edip tekrar deneyin.",
+    "tooShort": "Seri numarası çok kısa. Lütfen en az 10 karakter girin.",
+    "required": "Lütfen bir seri numarası girin"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Harika Haber!",
+      "firmware": "Tahmini Firmware: {version} veya altı",
+      "description": "Bu PS5 muhtemelen jailbreak edilebilir! Tahmini fabrika yazılımı, exploit edilebilir aralıkta."
+    },
+    "notJailbreakable": {
+      "title": "Jailbreak Edilemez",
+      "firmware": "Tahmini Firmware: {version}",
+      "description": "Bu PS5 muhtemelen şu anda exploit edilemeyen bir firmware sürümüyle gelmiş."
+    },
+    "uncertain": {
+      "title": "Belirsiz",
+      "firmware": "Tahmini Firmware: {version} civarı",
+      "description": "Bu PS5, bir geçiş döneminde üretilmiş. Gerçek firmware farklılık gösterebilir. Lütfen firmware sürümünü doğrudan konsoldan kontrol edin."
+    },
+    "confidence": {
+      "high": "Yüksek Güven",
+      "medium": "Orta Güven",
+      "low": "Düşük Güven"
+    },
+    "detectedRegion": "Bölge: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Üretim: {year}"
+  },
+  "guide": {
+    "title": "Seri Numarası Nerede Bulunur?",
+    "subtitle": "PS5 seri numaranızı bulmak için bu adımları izleyin",
+    "step1Title": "Adım 1: PS5'inizi Kapatın",
+    "step1Desc": "PlayStation 5 konsolunuzu güvenli bir şekilde kapatın ve fişini çekin.",
+    "step2Title": "Adım 2: Alt Kısmı Kontrol Edin",
+    "step2Desc": "PS5'inizi ters çevirin ve alt paneldeki barkod etiketine bakın.",
+    "step3Title": "Adım 3: Seri Numarasını Bulun",
+    "step3Desc": "Seri numarası 'S01-' ile başlar ve etiket üzerindeki barkodun yanında yer alır."
+  },
+  "about": {
+    "title": "Bu Araç Hakkında",
+    "whatIsThis": "Bu nedir?",
+    "whatIsThisDesc": "Bu araç, seri numarasını analiz ederek bir PlayStation 5 konsolunun potansiyel olarak jailbreak edilip edilemeyeceğini belirlemenize yardımcı olur. Seri numarası, fabrika yüklü firmware sürümüyle ilişkili üretim tarihi bilgilerini içerir.",
+    "howItWorks": "Nasıl çalışır?",
+    "howItWorksDesc": "PS5 konsolları, üretim tarihlerine karşılık gelen bir fabrika firmware'i ile gelir. Seri numarasını çözerek, firmware sürümünü tahmin edebilir ve bilinen exploitler aralığında olup olmadığını kontrol edebiliriz. Veriler PSDevWiki Seri Numarası Rehberi ve topluluk araştırmalarına dayanmaktadır.",
+    "disclaimer": "Sorumluluk Reddi",
+    "disclaimerDesc": "Bu araç yalnızca tahminler sağlar. Gerçek firmware, tahminden farklı olabilir. Satın almadan önce firmware sürümünü her zaman doğrudan konsoldan doğrulayın. Bu araç yalnızca eğitim ve araştırma amaçlıdır."
+  },
+  "footer": {
+    "credits": "Katkıda Bulunanlar",
+    "github": "GitHub'da Görüntüle",
+    "license": "MIT Lisansı",
+    "madeWith": "❤️ ile yapıldı",
+    "inspiredBy": "Veri kaynağı",
+    "dataFrom": "Seri numarası verileri"
+  },
+  "seo": {
+    "pageTitle": "PS5'im Jailbreak Edilebilir mi? | Seri Numarası Firmware Kontrolü",
+    "pageDescription": "Seri numarasını girerek PlayStation 5'inizin jailbreak edilip edilemeyeceğini kontrol edin. PSDevWiki verilerine dayalı hızlı ve doğru firmware tespiti.",
+    "ogTitle": "PS5 Jailbreak Kontrol - Seri Numaranızı Kontrol Edin",
+    "ogDescription": "PS5'inizin jailbreak edilebilir olup olmadığını seri numarasıyla kontrol etmek için ücretsiz araç. Topluluk verilerine dayalı anlık firmware tahmini."
+  }
+}

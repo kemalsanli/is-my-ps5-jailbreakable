@@ -1,0 +1,77 @@
+{
+  "common": {
+    "title": "Ist meine PS5 jailbreakbar?",
+    "description": "Überprüfen Sie anhand der Seriennummer, ob Ihre PlayStation 5 gejailbreakt werden kann",
+    "check": "Überprüfen",
+    "clear": "Löschen",
+    "loading": "Analysiere...",
+    "serialNumber": "Seriennummer",
+    "learnMore": "Mehr erfahren"
+  },
+  "form": {
+    "label": "Geben Sie Ihre PS5-Seriennummer ein",
+    "placeholder": "z.B. S01-G2121W9D1234",
+    "hint": "Die Seriennummer befindet sich auf der Rück-/Unterseite Ihrer PS5-Konsole",
+    "invalidFormat": "Ungültiges Seriennummernformat. Bitte überprüfen und erneut versuchen.",
+    "tooShort": "Seriennummer ist zu kurz. Bitte geben Sie mindestens 10 Zeichen ein.",
+    "required": "Bitte geben Sie eine Seriennummer ein"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Gute Nachrichten!",
+      "firmware": "Geschätzte Firmware: {version} oder niedriger",
+      "description": "Diese PS5 ist wahrscheinlich jailbreakbar! Die geschätzte Werksfirmware liegt im ausnutzbaren Bereich."
+    },
+    "notJailbreakable": {
+      "title": "Nicht Jailbreakbar",
+      "firmware": "Geschätzte Firmware: {version}",
+      "description": "Diese PS5 wurde wahrscheinlich mit einer Firmware-Version ausgeliefert, die derzeit nicht ausnutzbar ist."
+    },
+    "uncertain": {
+      "title": "Unsicher",
+      "firmware": "Geschätzte Firmware: ca. {version}",
+      "description": "Diese PS5 wurde in einer Übergangsphase hergestellt. Die tatsächliche Firmware kann abweichen. Bitte überprüfen Sie die Firmware-Version direkt auf der Konsole."
+    },
+    "confidence": {
+      "high": "Hohe Konfidenz",
+      "medium": "Mittlere Konfidenz",
+      "low": "Niedrige Konfidenz"
+    },
+    "detectedRegion": "Region: {region}",
+    "detectedModel": "Modell: {model}",
+    "manufacturedYear": "Hergestellt: {year}"
+  },
+  "guide": {
+    "title": "Wo finde ich die Seriennummer?",
+    "subtitle": "Folgen Sie diesen Schritten, um Ihre PS5-Seriennummer zu finden",
+    "step1Title": "Schritt 1: PS5 ausschalten",
+    "step1Desc": "Schalten Sie Ihre PlayStation 5-Konsole sicher aus und ziehen Sie den Stecker.",
+    "step2Title": "Schritt 2: Unterseite prüfen",
+    "step2Desc": "Drehen Sie Ihre PS5 um und suchen Sie den Aufkleber mit Barcodes auf der Unterseite.",
+    "step3Title": "Schritt 3: Seriennummer finden",
+    "step3Desc": "Die Seriennummer beginnt mit 'S01-' und befindet sich neben dem Barcode auf dem Etikett."
+  },
+  "about": {
+    "title": "Über dieses Tool",
+    "whatIsThis": "Was ist das?",
+    "whatIsThisDesc": "Dieses Tool hilft Ihnen festzustellen, ob eine PlayStation 5-Konsole potenziell gejailbreakt werden kann, indem es die Seriennummer analysiert. Die Seriennummer enthält Herstellungsdaten, die mit der werkseitig installierten Firmware-Version korrelieren.",
+    "howItWorks": "Wie funktioniert es?",
+    "howItWorksDesc": "PS5-Konsolen werden mit einer Werksfirmware ausgeliefert, die ihrem Herstellungsdatum entspricht. Durch Dekodierung der Seriennummer können wir die Firmware-Version schätzen und prüfen, ob sie im Bereich bekannter Exploits liegt. Die Daten basieren auf dem PSDevWiki-Seriennummernleitfaden und Community-Forschung.",
+    "disclaimer": "Haftungsausschluss",
+    "disclaimerDesc": "Dieses Tool liefert nur Schätzungen. Die tatsächliche Firmware kann von der Vorhersage abweichen. Überprüfen Sie die Firmware-Version vor dem Kauf immer direkt auf der Konsole. Dieses Tool dient nur zu Bildungs- und Forschungszwecken."
+  },
+  "footer": {
+    "credits": "Credits & Mitwirkende",
+    "github": "Auf GitHub ansehen",
+    "license": "MIT-Lizenz",
+    "madeWith": "Mit ❤️ erstellt von",
+    "inspiredBy": "Daten inspiriert von",
+    "dataFrom": "Seriennummerdaten von"
+  },
+  "seo": {
+    "pageTitle": "Ist meine PS5 jailbreakbar? | Seriennummer Firmware-Checker",
+    "pageDescription": "Überprüfen Sie anhand der Seriennummer, ob Ihre PlayStation 5 gejailbreakt werden kann. Schnelle, genaue Firmware-Erkennung basierend auf PSDevWiki-Daten.",
+    "ogTitle": "PS5 Jailbreak Checker - Seriennummer überprüfen",
+    "ogDescription": "Kostenloses Tool zur Überprüfung der Jailbreak-Fähigkeit Ihrer PS5 anhand der Seriennummer."
+  }
+}
