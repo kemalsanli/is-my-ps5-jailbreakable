@@ -58,7 +58,7 @@
     "howItWorks": "¿Cómo funciona?",
     "howItWorksDesc": "Las consolas PS5 vienen con un firmware de fábrica que corresponde a su fecha de fabricación. Al decodificar el número de serie, podemos estimar la versión del firmware y verificar si está dentro del rango de exploits conocidos. Los datos se basan en la guía de PSDevWiki y la investigación de la comunidad.",
     "disclaimer": "Aviso legal",
-    "disclaimerDesc": "Esta herramienta solo proporciona estimaciones. El firmware real puede diferir de la predicción. Siempre verifica la versión del firmware directamente en la consola antes de comprar. Esta herramienta es solo para fines educativos y de investigación."
+    "disclaimerDesc": "Este sitio no está afiliado con Sony Interactive Entertainment. PlayStation y PS5 son marcas registradas de Sony Interactive Entertainment LLC."
   },
   "footer": {
     "credits": "Créditos y Colaboradores",

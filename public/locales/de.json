@@ -58,7 +58,7 @@
     "howItWorks": "Wie funktioniert es?",
     "howItWorksDesc": "PS5-Konsolen werden mit einer Werksfirmware ausgeliefert, die ihrem Herstellungsdatum entspricht. Durch Dekodierung der Seriennummer können wir die Firmware-Version schätzen und prüfen, ob sie im Bereich bekannter Exploits liegt. Die Daten basieren auf dem PSDevWiki-Seriennummernleitfaden und Community-Forschung.",
     "disclaimer": "Haftungsausschluss",
-    "disclaimerDesc": "Dieses Tool liefert nur Schätzungen. Die tatsächliche Firmware kann von der Vorhersage abweichen. Überprüfen Sie die Firmware-Version vor dem Kauf immer direkt auf der Konsole. Dieses Tool dient nur zu Bildungs- und Forschungszwecken."
+    "disclaimerDesc": "Diese Website steht in keiner Verbindung zu Sony Interactive Entertainment. PlayStation und PS5 sind eingetragene Marken der Sony Interactive Entertainment LLC."
   },
   "footer": {
     "credits": "Credits & Mitwirkende",

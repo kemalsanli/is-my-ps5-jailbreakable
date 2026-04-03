@@ -37,7 +37,7 @@ export default function HomePage() {
               marginBottom: '8px',
             }}
           >
-            PlayStation 5
+            PlayStation 5 Jailbreak Checker
           </p>
 
           <h1
@@ -74,6 +74,15 @@ export default function HomePage() {
             }}
           >
             <span style={{ fontSize: '11px', color: '#444' }}>
+              <a
+                href="https://github.com/kemalsanli"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#444', textDecoration: 'none' }}
+              >
+                kemalsanli
+              </a>
+              {' · '}
               controlserial.com
             </span>
             <span style={{ fontSize: '11px', color: '#444' }}>
@@ -96,7 +105,7 @@ export default function HomePage() {
               lineHeight: 1.5,
             }}
           >
-            Bu site Sony Interactive Entertainment ile bağlantılı değildir. PlayStation ve PS5, Sony Interactive Entertainment LLC&apos;nin tescilli markalarıdır.
+            {t.about?.disclaimerDesc || 'This site is not affiliated with Sony Interactive Entertainment. PlayStation and PS5 are registered trademarks of Sony Interactive Entertainment LLC.'}
           </p>
         </div>
       </div>

@@ -58,7 +58,7 @@
     "howItWorks": "Nasıl çalışır?",
     "howItWorksDesc": "PS5 konsolları, üretim tarihlerine karşılık gelen bir fabrika firmware'i ile gelir. Seri numarasını çözerek, firmware sürümünü tahmin edebilir ve bilinen exploitler aralığında olup olmadığını kontrol edebiliriz. Veriler PSDevWiki Seri Numarası Rehberi ve topluluk araştırmalarına dayanmaktadır.",
     "disclaimer": "Sorumluluk Reddi",
-    "disclaimerDesc": "Bu araç yalnızca tahminler sağlar. Gerçek firmware, tahminden farklı olabilir. Satın almadan önce firmware sürümünü her zaman doğrudan konsoldan doğrulayın. Bu araç yalnızca eğitim ve araştırma amaçlıdır."
+    "disclaimerDesc": "Bu site Sony Interactive Entertainment ile bağlantılı değildir. PlayStation ve PS5, Sony Interactive Entertainment LLC'nin tescilli markalarıdır."
   },
   "footer": {
     "credits": "Katkıda Bulunanlar",
