@@ -84,16 +84,23 @@ export default function HomePage() {
                 kemalsanli
               </a>
               {' · '}
-              controlserial.com
-            </span>
-            <span style={{ fontSize: '11px', color: '#444' }}>
               <a
-                href="https://psdevwiki.com"
+                href="https://www.psdevwiki.com/ps5/Serial_Number_guide"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: '#444', textDecoration: 'none' }}
               >
                 PSDevWiki
+              </a>
+            </span>
+            <span style={{ fontSize: '11px', color: '#444' }}>
+              <a
+                href="https://www.youtube.com/@mckuc"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: '#444', textDecoration: 'none' }}
+              >
+                mckuc
               </a>
               {' · '}
               <LanguageSelector />
