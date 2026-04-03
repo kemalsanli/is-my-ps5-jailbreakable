@@ -5,12 +5,11 @@
  * Combines format parsing, region detection, and firmware estimation.
  */
 
-import { parseSerial, normalizeSerial } from './formats';
-import { detectFirmware } from './firmware-detector';
+import { parseSerial, normalizeSerial, isValidFormat } from './formats';
+import { detectFirmware, MAX_EXPLOITABLE_FIRMWARE } from './firmware-detector';
 import type { FirmwareDetectionResult } from '@/types/serial';
 
-export { normalizeSerial, parseSerial, isValidFormat } from './formats';
-export { formatSerialInput } from './formats';
+export { normalizeSerial, parseSerial, isValidFormat, formatSerialInput } from './formats';
 export { detectFirmware, MAX_EXPLOITABLE_FIRMWARE } from './firmware-detector';
 
 /**
