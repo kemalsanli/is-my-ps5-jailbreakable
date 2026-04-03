@@ -43,13 +43,13 @@
   },
   "guide": {
     "title": "Dove trovare il numero di serie?",
-    "subtitle": "Segui questi passaggi per trovare il numero di serie della tua PS5",
-    "step1Title": "Passo 1: Spegni la PS5",
-    "step1Desc": "Spegni e scollega la tua console PlayStation 5 in sicurezza.",
-    "step2Title": "Passo 2: Controlla il fondo",
-    "step2Desc": "Capovolgi la PS5 e cerca l'adesivo con i codici a barre sul pannello inferiore.",
-    "step3Title": "Passo 3: Trova il numero di serie",
-    "step3Desc": "Il numero di serie inizia con 'S01-' e si trova vicino al codice a barre sull'etichetta."
+    "subtitle": "Controlla il numero di serie prima dell'acquisto — non è necessario aprire la scatola",
+    "step1Title": "Passo 1: Controlla la confezione",
+    "step1Desc": "Guarda l'etichetta nella parte inferiore della scatola del PS5. Il numero di serie è stampato sulla confezione — non è necessario aprire o accendere la console.",
+    "step2Title": "Passo 2: Trova l'etichetta del codice a barre",
+    "step2Desc": "Individua l'etichetta del codice a barre sulla scatola. Contiene il numero di serie, le informazioni sul modello e i dettagli di produzione.",
+    "step3Title": "Passo 3: Inserisci il numero di serie",
+    "step3Desc": "Il numero di serie inizia con 'S01-'. Inseriscilo nel verificatore qui sopra prima di acquistare per scoprire se il PS5 è jailbreakabile."
   },
   "about": {
     "title": "Informazioni su questo strumento",

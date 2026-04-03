@@ -43,13 +43,13 @@
   },
   "guide": {
     "title": "Where to Find the Serial Number",
-    "subtitle": "Follow these steps to locate your PS5 serial number",
-    "step1Title": "Step 1: Turn Off Your PS5",
-    "step1Desc": "Turn off and unplug your PlayStation 5 console safely.",
-    "step2Title": "Step 2: Check the Bottom",
-    "step2Desc": "Flip your PS5 and look at the bottom panel for a sticker with barcodes.",
-    "step3Title": "Step 3: Find the Serial",
-    "step3Desc": "The serial number starts with 'S01-' and is located near the barcode on the label."
+    "subtitle": "Check the serial number before purchasing — no need to open the box",
+    "step1Title": "Step 1: Check the Retail Box",
+    "step1Desc": "Look at the bottom of the PS5 retail box. The serial number is printed on a label — no need to open or turn on the console.",
+    "step2Title": "Step 2: Find the Barcode Label",
+    "step2Desc": "Locate the barcode label on the box. It contains the serial number, model info, and manufacturing details.",
+    "step3Title": "Step 3: Enter the Serial",
+    "step3Desc": "The serial number starts with 'S01-'. Type it into the checker above to see if the PS5 is jailbreakable before you buy."
   },
   "about": {
     "title": "About This Tool",

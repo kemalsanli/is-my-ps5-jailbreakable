@@ -43,13 +43,13 @@
   },
   "guide": {
     "title": "Wo finde ich die Seriennummer?",
-    "subtitle": "Folgen Sie diesen Schritten, um Ihre PS5-Seriennummer zu finden",
-    "step1Title": "Schritt 1: PS5 ausschalten",
-    "step1Desc": "Schalten Sie Ihre PlayStation 5-Konsole sicher aus und ziehen Sie den Stecker.",
-    "step2Title": "Schritt 2: Unterseite prüfen",
-    "step2Desc": "Drehen Sie Ihre PS5 um und suchen Sie den Aufkleber mit Barcodes auf der Unterseite.",
-    "step3Title": "Schritt 3: Seriennummer finden",
-    "step3Desc": "Die Seriennummer beginnt mit 'S01-' und befindet sich neben dem Barcode auf dem Etikett."
+    "subtitle": "Seriennummer vor dem Kauf prüfen — Öffnen der Verpackung nicht erforderlich",
+    "step1Title": "Schritt 1: Verpackung prüfen",
+    "step1Desc": "Prüfen Sie das Etikett auf der Unterseite der PS5-Verpackung. Die Seriennummer steht auf der Schachtel — öffnen oder einschalten ist nicht nötig.",
+    "step2Title": "Schritt 2: Barcode-Etikett finden",
+    "step2Desc": "Finden Sie das Barcode-Etikett auf der Verpackung. Es enthält Seriennummer, Modellinformationen und Herstellungsdetails.",
+    "step3Title": "Schritt 3: Seriennummer eingeben",
+    "step3Desc": "Die Seriennummer beginnt mit 'S01-'. Geben Sie sie vor dem Kauf in die Prüfung oben ein, um die Jailbreak-Fähigkeit zu überprüfen."
   },
   "about": {
     "title": "Über dieses Tool",

@@ -43,13 +43,13 @@
   },
   "guide": {
     "title": "Seri Numarası Nerede Bulunur?",
-    "subtitle": "PS5 seri numaranızı bulmak için bu adımları izleyin",
-    "step1Title": "Adım 1: PS5'inizi Kapatın",
-    "step1Desc": "PlayStation 5 konsolunuzu güvenli bir şekilde kapatın ve fişini çekin.",
-    "step2Title": "Adım 2: Alt Kısmı Kontrol Edin",
-    "step2Desc": "PS5'inizi ters çevirin ve alt paneldeki barkod etiketine bakın.",
-    "step3Title": "Adım 3: Seri Numarasını Bulun",
-    "step3Desc": "Seri numarası 'S01-' ile başlar ve etiket üzerindeki barkodun yanında yer alır."
+    "subtitle": "Satın almadan önce seri numarasını kontrol edin — kutuyu açmanıza gerek yok",
+    "step1Title": "Adım 1: Kutuya Bakın",
+    "step1Desc": "PS5 kutusunun alt kısmındaki etikete bakın. Seri numarası kutu üzerinde yazılıdır — konsolu açmanıza veya çalıştırmanıza gerek yok.",
+    "step2Title": "Adım 2: Barkod Etiketini Bulun",
+    "step2Desc": "Kutu üzerindeki barkod etiketini bulun. Seri numarası, model bilgisi ve üretim detayları bu etikette yer alır.",
+    "step3Title": "Adım 3: Seri Numarasını Girin",
+    "step3Desc": "Seri numarası 'S01-' ile başlar. Satın almadan önce yukarıdaki kontrol aracına girerek jailbreak edilebilir olup olmadığını öğrenin."
   },
   "about": {
     "title": "Bu Araç Hakkında",
