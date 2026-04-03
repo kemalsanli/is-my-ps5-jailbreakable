@@ -20,6 +20,18 @@ export function SerialForm() {
     setResult(null);
   };
 
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pasted = e.clipboardData.getData('text');
+    // Clean pasted text: remove whitespace, zero-width chars, newlines
+    const cleaned = pasted.replace(/[\s\u200B\u200C\u200D\uFEFF\n\r\t]+/g, '');
+    const formatted = formatSerialInput(cleaned);
+    setSerial(formatted);
+    setError('');
+    setBorderColor('');
+    setResult(null);
+  };
+
   const handleCheck = () => {
     const v = serial.trim();
     if (!v) return;
@@ -73,6 +85,7 @@ export function SerialForm() {
         spellCheck={false}
         value={serial}
         onChange={(e) => handleInput(e.target.value)}
+        onPaste={handlePaste}
         onKeyDown={handleKeyDown}
         style={{
           width: '100%',

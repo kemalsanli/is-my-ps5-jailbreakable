@@ -79,41 +79,41 @@ export function normalizeSerial(input: string): string {
  *   "S01G2121W9D1234" -> "S01-G212 1W9D 1234"
  */
 export function formatSerialInput(input: string): string {
-  // Remove all non-alphanumeric
-  const cleaned = input.toUpperCase().replace(/[^A-Z0-9]/g, '');
+  // Remove all non-alphanumeric except dash (preserve intent)
+  const cleaned = input.toUpperCase().replace(/[^A-Z0-9-]/g, '').replace(/--+/g, '-');
   
-  // Short model format: CFI-XXXXR or CF1-XXXXR
-  if (cleaned.match(/^(CFI?)\d{0,5}$/)) {
-    if (cleaned.length <= 3) return cleaned;
-    if (cleaned.length === 4 && cleaned.startsWith('CFI')) return cleaned;
+  // If it already looks like a formatted serial (has dash after S01 or CFI), use as-is after cleanup
+  // This handles copy-paste of formatted serials like "S01-G2A211W9D1234"
+  const stripped = cleaned.replace(/[^A-Z0-9]/g, '');
+  
+  // Short model format: CFI-XXXXR or CF1-XXXXR (e.g. CFI-1215A)
+  if (stripped.match(/^(CFI?)\d{0,5}[A-Z]?$/) && stripped.length <= 9) {
+    if (stripped.length <= 3) return stripped;
     
-    const prefix = cleaned.startsWith('CFI') ? 'CFI' : cleaned.substring(0, 3);
-    const rest = cleaned.substring(prefix.length);
+    const prefix = stripped.startsWith('CFI') ? 'CFI' : stripped.substring(0, 3);
+    const rest = stripped.substring(prefix.length);
     
     if (rest.length === 0) return prefix;
     return `${prefix}-${rest}`;
   }
   
-  // Barcode format: S01-G2XX XXXX XXXX
-  if (cleaned.startsWith('S01')) {
-    const parts = cleaned.substring(3); // Remove S01
+  // Barcode format: S01-G2XYYFW SSSS (e.g. S01-G2A211W9D1234)
+  if (stripped.startsWith('S01')) {
+    const parts = stripped.substring(3); // Remove S01
     if (parts.length === 0) return 'S01';
-    if (parts.length <= 2) return `S01-${parts}`;
-    if (parts.length <= 6) return `S01-${parts.substring(0, 4)} ${parts.substring(4)}`;
-    if (parts.length <= 10) return `S01-${parts.substring(0, 4)} ${parts.substring(4, 8)} ${parts.substring(8)}`;
-    return `S01-${parts.substring(0, 4)} ${parts.substring(4, 8)} ${parts.substring(8, 12)}`;
+    // Keep it clean: S01-{rest} — no extra spaces for paste compatibility
+    return `S01-${parts}`;
   }
   
-  // CFI long format: CFI-XXXXX XXXX XXXX
-  if (cleaned.startsWith('CFI')) {
-    if (cleaned.length <= 3) return cleaned;
-    const rest = cleaned.substring(3);
+  // CFI long format: CFI-XXXXXYYYY SSSS
+  if (stripped.startsWith('CFI')) {
+    if (stripped.length <= 3) return stripped;
+    const rest = stripped.substring(3);
     if (rest.length <= 5) return `CFI-${rest}`;
-    if (rest.length <= 9) return `CFI-${rest.substring(0, 5)} ${rest.substring(5)}`;
-    return `CFI-${rest.substring(0, 5)} ${rest.substring(5, 9)} ${rest.substring(9)}`;
+    return `CFI-${rest}`;
   }
   
-  return input.toUpperCase();
+  return input.toUpperCase().trim();
 }
 
 /**
