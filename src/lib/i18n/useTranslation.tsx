@@ -55,6 +55,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
   const [translations, setTranslations] = useState<Translations>(fallbackTranslations);
   const [isReady, setIsReady] = useState(false);
+  const [isFading, setIsFading] = useState(false);
 
   // Load translations
   const loadTranslations = useCallback(async (loc: Locale) => {
@@ -90,18 +91,28 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     loadTranslations(stored).then(() => setIsReady(true));
   }, [loadTranslations]);
 
-  // Change locale
+  // Change locale with smooth fade transition
   const setLocale = useCallback(
     (newLocale: Locale) => {
       if (!SUPPORTED_LOCALES.includes(newLocale)) return;
-      setLocaleState(newLocale);
-      setStoredLocale(newLocale);
-      loadTranslations(newLocale);
-      // Update html lang and dir attributes
-      if (typeof document !== 'undefined') {
-        document.documentElement.lang = newLocale;
-        document.documentElement.dir = getLocaleDirection(newLocale);
-      }
+      
+      // Fade out
+      setIsFading(true);
+      
+      // Wait for fade-out animation, then switch language
+      setTimeout(() => {
+        setLocaleState(newLocale);
+        setStoredLocale(newLocale);
+        loadTranslations(newLocale).then(() => {
+          // Update html lang and dir attributes
+          if (typeof document !== 'undefined') {
+            document.documentElement.lang = newLocale;
+            document.documentElement.dir = getLocaleDirection(newLocale);
+          }
+          // Fade back in
+          setIsFading(false);
+        });
+      }, 200); // Fade-out duration
     },
     [loadTranslations]
   );
@@ -119,7 +130,15 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     <I18nContext.Provider
       value={{ locale, translations, setLocale, t: translations, direction }}
     >
-      {children}
+      <div
+        className="i18n-wrapper"
+        style={{
+          opacity: isFading ? 0 : 1,
+          transition: 'opacity 0.3s ease-in-out',
+        }}
+      >
+        {children}
+      </div>
     </I18nContext.Provider>
   );
 }

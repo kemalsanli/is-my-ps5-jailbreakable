@@ -41,6 +41,23 @@ body {
   -webkit-user-select: none;
 }
 
+/* ─── Smooth fade-in on page load (PS5-style) ──────────────────── */
+
+@keyframes fadeInContent {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.i18n-wrapper {
+  animation: fadeInContent 0.4s ease-out;
+}
+
 /* ─── Scrollbar ─────────────────────────────────────────────────── */
 
 ::-webkit-scrollbar {
