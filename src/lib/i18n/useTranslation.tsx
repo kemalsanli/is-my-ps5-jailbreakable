@@ -54,14 +54,13 @@ function deepMerge(
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
   const [translations, setTranslations] = useState<Translations>(fallbackTranslations);
-  const [enTranslationsState, setEnTranslationsState] = useState<Translations>(fallbackTranslations);
+  const [isReady, setIsReady] = useState(false);
 
   // Load translations
   const loadTranslations = useCallback(async (loc: Locale) => {
     try {
       const enModule = await import('../../../public/locales/en.json');
       const enData = enModule.default as Translations;
-      setEnTranslationsState(enData);
 
       if (loc === 'en') {
         setTranslations(enData);
@@ -79,11 +78,16 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  // Initialize locale on mount
+  // Initialize locale on mount — detect and load before showing anything
   useEffect(() => {
     const stored = getStoredLocale();
     setLocaleState(stored);
-    loadTranslations(stored);
+    // Update html lang and dir attributes immediately on initialization
+    if (typeof document !== 'undefined') {
+      document.documentElement.lang = stored;
+      document.documentElement.dir = getLocaleDirection(stored);
+    }
+    loadTranslations(stored).then(() => setIsReady(true));
   }, [loadTranslations]);
 
   // Change locale
@@ -104,10 +108,11 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   const direction = getLocaleDirection(locale);
 
-  // Wait for translations to load
-  const isLoaded = Object.keys(translations).length > 0;
-  if (!isLoaded) {
-    return <>{children}</>;
+  // Don't render until the correct locale's translations are loaded.
+  // This prevents the "flash of English content" when the user's locale
+  // is not English — content only appears once the right language is ready.
+  if (!isReady) {
+    return null;
   }
 
   return (
