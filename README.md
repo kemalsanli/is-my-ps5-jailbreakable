@@ -13,7 +13,7 @@
 ## ✨ Features
 
 - **Serial Number Analysis** — Enter your PS5 serial number and instantly get a firmware estimation
-- **Multi-language Support** — Available in 7 languages: English, Türkçe, 日本語, Deutsch, Français, Español, Italiano
+- **Multi-language Support** — Available in 36 languages including English, Türkçe, 日本語, Deutsch, Français, Español, العربية, 中文, and more
 - **PS5-inspired UI** — Dark theme design inspired by the PlayStation 5 interface
 - **Offline Capable** — All logic runs client-side, no data is sent to any server
 - **Mobile Friendly** — Fully responsive design that works on all devices
@@ -123,17 +123,46 @@ public/
 
 ## 🌍 Translations
 
-Currently supported languages:
+Currently supported 36 languages:
 
 | Language | Code | Status |
 |----------|------|--------|
+| العربية (Arabic) | `ar` | ✅ Complete |
+| Български (Bulgarian) | `bg` | ✅ Complete |
+| Čeština (Czech) | `cs` | ✅ Complete |
+| Dansk (Danish) | `da` | ✅ Complete |
+| Deutsch (German) | `de` | ✅ Complete |
+| Ελληνικά (Greek) | `el` | ✅ Complete |
 | English | `en` | ✅ Complete |
-| Türkçe | `tr` | ✅ Complete |
-| 日本語 | `ja` | ✅ Complete |
-| Deutsch | `de` | ✅ Complete |
-| Français | `fr` | ✅ Complete |
-| Español | `es` | ✅ Complete |
-| Italiano | `it` | ✅ Complete |
+| Español (Spanish) | `es` | ✅ Complete |
+| فارسی (Persian) | `fa` | ✅ Complete |
+| Suomi (Finnish) | `fi` | ✅ Complete |
+| Français (French) | `fr` | ✅ Complete |
+| עברית (Hebrew) | `he` | ✅ Complete |
+| हिन्दी (Hindi) | `hi` | ✅ Complete |
+| Hrvatski (Croatian) | `hr` | ✅ Complete |
+| Magyar (Hungarian) | `hu` | ✅ Complete |
+| Bahasa Indonesia | `id` | ✅ Complete |
+| Italiano (Italian) | `it` | ✅ Complete |
+| 日本語 (Japanese) | `ja` | ✅ Complete |
+| 한국어 (Korean) | `ko` | ✅ Complete |
+| Lietuvių (Lithuanian) | `lt` | ✅ Complete |
+| Latviešu (Latvian) | `lv` | ✅ Complete |
+| Nederlands (Dutch) | `nl` | ✅ Complete |
+| Norsk (Norwegian) | `no` | ✅ Complete |
+| Polski (Polish) | `pl` | ✅ Complete |
+| Português (Portuguese) | `pt` | ✅ Complete |
+| Română (Romanian) | `ro` | ✅ Complete |
+| Русский (Russian) | `ru` | ✅ Complete |
+| Slovenčina (Slovak) | `sk` | ✅ Complete |
+| Slovenščina (Slovenian) | `sl` | ✅ Complete |
+| Српски (Serbian) | `sr` | ✅ Complete |
+| Svenska (Swedish) | `sv` | ✅ Complete |
+| ไทย (Thai) | `th` | ✅ Complete |
+| Türkçe (Turkish) | `tr` | ✅ Complete |
+| Українська (Ukrainian) | `uk` | ✅ Complete |
+| Tiếng Việt (Vietnamese) | `vi` | ✅ Complete |
+| 中文 (Chinese) | `zh` | ✅ Complete |
 
 Want to add a new language? See [Contributing](docs/CONTRIBUTING.md).
 
