@@ -2,6 +2,15 @@ export type Confidence = 'HIGH' | 'MEDIUM' | 'LOW';
 
 export type JailbreakStatus = 'JAILBREAKABLE' | 'NOT_JAILBREAKABLE' | 'UNCERTAIN';
 
+export type JBQuality = 'BEST' | 'GOOD' | 'OK' | 'PARTIAL' | 'NONE';
+
+export interface JailbreakExploitInfo {
+  kernelExploit: string;
+  hasFullJB: boolean;
+  exploits: string[];
+  quality: JBQuality;
+}
+
 export interface SerialParseResult {
   isValid: boolean;
   modelCode: string;
@@ -23,6 +32,14 @@ export interface FirmwareDetectionResult {
   yearManufactured: number;
   monthManufactured: number;
   region: string;
+  // Detailed jailbreak info
+  modelName: string;
+  modelType: string;
+  factoryCountry: string;
+  productionMonthName: string;
+  firmwareRange: string;
+  jailbreakInfo: JailbreakExploitInfo;
+  warning: string;
 }
 
 export interface FirmwareRule {
@@ -95,6 +112,26 @@ export interface Translations {
     detectedRegion: string;
     detectedModel: string;
     manufacturedYear: string;
+    details?: {
+      model: string;
+      production: string;
+      factoryFirmware: string;
+      kernelExploit: string;
+      availableExploits: string;
+      warning: string;
+      warningFactory: string;
+      warningPSN: string;
+      warningRefurbished: string;
+      qualityBest: string;
+      qualityGood: string;
+      qualityOk: string;
+      qualityPartial: string;
+      qualityNone: string;
+      usermodeOnly: string;
+      noRecord: string;
+    };
+    months?: string[];
+    countries?: { China: string; Malaysia: string; Japan: string; Unknown: string };
   };
   guide: {
     title: string;
