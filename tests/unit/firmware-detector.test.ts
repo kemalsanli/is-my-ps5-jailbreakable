@@ -50,9 +50,8 @@ function makeModelResult(
 
 describe('Firmware Detector', () => {
   describe('MAX_EXPLOITABLE_FIRMWARE', () => {
-    it('should be defined', () => {
-      expect(MAX_EXPLOITABLE_FIRMWARE).toBeDefined();
-      expect(typeof MAX_EXPLOITABLE_FIRMWARE).toBe('string');
+    it('should be 12.00', () => {
+      expect(MAX_EXPLOITABLE_FIRMWARE).toBe('12.00');
     });
   });
 
@@ -73,39 +72,107 @@ describe('Firmware Detector', () => {
         expect(result.firmware).toBe('4.50');
       });
 
-      it('should detect FAT CFI-11xx Nov 2022 (22B) as exploitable', () => {
-        // 22B → FW 6.02 — may or may not be exploitable depending on MAX
+      it('should detect FAT CFI-11xx Nov 2022 (22B) as JAILBREAKABLE', () => {
+        // 22B → FW 6.02 — exploitable (≤ 12.00)
         const result = detectFirmware(makeBarcodeResult('22B', 'CFI-11xx', 2022, 11));
-        expect(result).toBeDefined();
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('6.02');
       });
 
-      it('should detect FAT CFI-12xx Aug 2023 (338) as exploitable', () => {
-        // 338 → FW 7.60 / 7.61 — at the edge
+      it('should detect FAT CFI-12xx Aug 2023 (338) as JAILBREAKABLE', () => {
+        // 338 → FW 7.60 / 7.61 — exploitable (≤ 12.00)
         const result = detectFirmware(makeBarcodeResult('338', 'CFI-12xx', 2023, 8));
-        expect(result).toBeDefined();
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('7.60');
       });
 
-      it('should detect Slim CFI-20xx Aug 2024 (448) as NOT_JAILBREAKABLE', () => {
-        // 448 → FW 9.40 / 9.60
+      it('should detect Slim CFI-20xx Aug 2024 (448) as JAILBREAKABLE', () => {
+        // 448 → FW 9.40 / 9.60 — now exploitable with Lapse kernel exploit (≤ 12.00)
         const result = detectFirmware(makeBarcodeResult('448', 'CFI-20xx', 2024, 8));
-        expect(result.status).toBe('NOT_JAILBREAKABLE');
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('9.40');
       });
 
-      it('should detect Slim CFI-20xx earliest (434) as at edge', () => {
-        // 434 → FW 7.00
+      it('should detect Slim CFI-20xx earliest (434) as JAILBREAKABLE', () => {
+        // 434 → FW 7.00 — exploitable
         const result = detectFirmware(makeBarcodeResult('434', 'CFI-20xx', 2023, 4));
-        expect(result).toBeDefined();
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('7.00');
       });
 
-      it('should detect Pro CFI-70xx (145) as NOT_JAILBREAKABLE', () => {
-        // 145 → FW 9.05
+      it('should detect Pro CFI-70xx (145) as JAILBREAKABLE', () => {
+        // 145 → FW 9.05 — now exploitable with Lapse kernel exploit
         const result = detectFirmware(makeBarcodeResult('145', 'CFI-70xx', 2024, 5));
-        expect(result.status).toBe('NOT_JAILBREAKABLE');
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('9.05');
+      });
+
+      it('should detect Pro 2nd gen CFI-71xx (25B) as UNCERTAIN', () => {
+        // 25B → FW 12.00 / 12.02 — crosses the 12.00 boundary
+        const result = detectFirmware(makeBarcodeResult('25B', 'CFI-71xx', 2025, 11));
+        expect(result.status).toBe('UNCERTAIN');
+        expect(result.firmware).toContain('12.00');
+        expect(result.firmware).toContain('12.02');
+      });
+
+      it('should detect Pro 2nd gen CFI-71xx (25C) as NOT_JAILBREAKABLE', () => {
+        // 25C → FW 12.02 / 12.20 — both > 12.00
+        const result = detectFirmware(makeBarcodeResult('25C', 'CFI-71xx', 2025, 12));
+        expect(result.status).toBe('NOT_JAILBREAKABLE');
+        expect(result.firmware).toContain('12.02');
+      });
+
+      it('should detect Slim 2nd gen CFI-21xx (55B) as NOT_JAILBREAKABLE', () => {
+        // 55B → FW 12.02 / 12.20 — both > 12.00
+        const result = detectFirmware(makeBarcodeResult('55B', 'CFI-21xx', 2025, 11));
+        expect(result.status).toBe('NOT_JAILBREAKABLE');
+      });
+    });
+
+    describe('Detailed jailbreak info', () => {
+      it('should return BEST quality for FW 3.00-4.51 range', () => {
+        const result = detectFirmware(makeBarcodeResult('21B', 'CFI-11xx', 2021, 11));
+        expect(result.jailbreakInfo).toBeDefined();
+        expect(result.jailbreakInfo.quality).toBe('BEST');
+        expect(result.jailbreakInfo.kernelExploit).toContain('IPV6');
+        expect(result.jailbreakInfo.hasFullJB).toBe(true);
+        expect(result.jailbreakInfo.exploits.length).toBeGreaterThan(3);
+      });
+
+      it('should return GOOD quality for FW 5.00-5.50 range', () => {
+        const result = detectFirmware(makeBarcodeResult('226', 'CFI-11xx', 2022, 6));
+        expect(result.jailbreakInfo.quality).toBe('GOOD');
+        expect(result.jailbreakInfo.kernelExploit).toBe('UMTX');
+      });
+
+      it('should return OK quality for FW 6.00-7.61 range', () => {
+        const result = detectFirmware(makeBarcodeResult('22A', 'CFI-11xx', 2022, 10));
+        expect(result.jailbreakInfo.quality).toBe('OK');
+      });
+
+      it('should return OK quality for FW 8.00-10.01 (Lapse exploit)', () => {
+        const result = detectFirmware(makeBarcodeResult('441', 'CFI-20xx', 2024, 1));
+        expect(result.jailbreakInfo.quality).toBe('OK');
+        expect(result.jailbreakInfo.kernelExploit).toBe('Lapse');
+      });
+
+      it('should return OK quality for FW 10.20-12.00 (NetControl UAF)', () => {
+        const result = detectFirmware(makeBarcodeResult('44B', 'CFI-20xx', 2024, 11));
+        expect(result.jailbreakInfo.quality).toBe('OK');
+        expect(result.jailbreakInfo.kernelExploit).toBe('NetControl UAF');
+      });
+
+      it('should include model type info', () => {
+        const result = detectFirmware(makeBarcodeResult('434', 'CFI-20xx', 2023, 4));
+        expect(result.modelType).toBe('Slim');
+        expect(result.modelName).toBe('CFI-20xx');
+      });
+
+      it('should include production info', () => {
+        const result = detectFirmware(makeBarcodeResult('434', 'CFI-20xx', 2023, 4));
+        expect(result.productionMonthName).toContain('April');
+        expect(result.productionMonthName).toContain('2023');
+        expect(result.factoryCountry).toBe('China');
       });
     });
 
@@ -129,15 +196,17 @@ describe('Firmware Detector', () => {
         expect(result.firmware).toBe('6.50');
       });
 
-      it('should detect CFI-2008A as NOT_JAILBREAKABLE', () => {
+      it('should detect CFI-2008A as JAILBREAKABLE (FW 10.00, Lapse exploit)', () => {
+        // With MAX=12.00, FW 10.00 is exploitable
         const result = detectFirmware(makeModelResult('CFI-2008A'));
-        expect(result.status).toBe('NOT_JAILBREAKABLE');
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toBe('10.00');
       });
 
-      it('should detect CFI-2010A as NOT_JAILBREAKABLE', () => {
+      it('should detect CFI-2010A as JAILBREAKABLE (FW 11.00, NetControl UAF)', () => {
+        // With MAX=12.00, FW 11.00 is exploitable
         const result = detectFirmware(makeModelResult('CFI-2010A'));
-        expect(result.status).toBe('NOT_JAILBREAKABLE');
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toBe('11.00');
       });
     });
