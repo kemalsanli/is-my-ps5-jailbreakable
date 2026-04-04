@@ -39,7 +39,45 @@
     },
     "detectedRegion": "Region: {region}",
     "detectedModel": "Modell: {model}",
-    "manufacturedYear": "Hergestellt: {year}"
+    "manufacturedYear": "Hergestellt: {year}",
+    "details": {
+      "model": "Modell",
+      "production": "Produktion",
+      "factoryFirmware": "Werks-Firmware",
+      "kernelExploit": "Kernel-Exploit",
+      "availableExploits": "Verfügbare Exploits",
+      "warning": "Wichtiger Hinweis",
+      "warningFactory": "Die Seriennummer zeigt nur die WERKS-Firmware an. Die Konsole könnte aktualisiert worden sein.",
+      "warningPSN": "Verbinden Sie sich NICHT mit PSN bevor Sie die Firmware überprüft haben — es löst ein Auto-Update aus.",
+      "warningRefurbished": "Generalüberholte / erneuerte Geräte folgen nicht dieser Tabelle.",
+      "qualityBest": "Beste Stufe — volles JB mit allen Exploits",
+      "qualityGood": "Gute Stufe — volles JB mit mehreren Exploits",
+      "qualityOk": "Jailbreakbar — Kernel-Exploit verfügbar",
+      "qualityPartial": "Teilweise — nur Usermode, kein volles JB",
+      "qualityNone": "Kein Jailbreak verfügbar",
+      "usermodeOnly": "Nur Usermode-Zugriff (mast1c0re, Lua). Noch kein Kernel-Level-Jailbreak.",
+      "noRecord": "Kein Eintrag in der Datenbank"
+    },
+    "months": [
+      "Januar",
+      "Februar",
+      "März",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Dezember"
+    ],
+    "countries": {
+      "China": "China",
+      "Malaysia": "Malaysia",
+      "Japan": "Japan",
+      "Unknown": "Unbekannt"
+    }
   },
   "guide": {
     "title": "Wo finde ich die Seriennummer?",

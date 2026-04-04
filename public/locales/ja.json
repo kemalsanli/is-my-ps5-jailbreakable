@@ -39,7 +39,45 @@
     },
     "detectedRegion": "地域: {region}",
     "detectedModel": "モデル: {model}",
-    "manufacturedYear": "製造年: {year}"
+    "manufacturedYear": "製造年: {year}",
+    "details": {
+      "model": "モデル",
+      "production": "製造",
+      "factoryFirmware": "工場出荷FW",
+      "kernelExploit": "カーネルExploit",
+      "availableExploits": "利用可能なExploit",
+      "warning": "重要な警告",
+      "warningFactory": "シリアルナンバーは工場出荷時のFWのみ表示します。コンソールが更新されている場合があります。",
+      "warningPSN": "ファームウェアを確認する前にPSNに接続しないでください — 自動更新が実行されます。",
+      "warningRefurbished": "リファービッシュ品はこの表に従いません。",
+      "qualityBest": "最高ランク — 全エクスプロイトで完全JB",
+      "qualityGood": "良好 — 複数エクスプロイトで完全JB",
+      "qualityOk": "JB可能 — カーネルエクスプロイト利用可能",
+      "qualityPartial": "部分的 — ユーザーモードのみ、完全JBなし",
+      "qualityNone": "ジェイルブレイク不可",
+      "usermodeOnly": "ユーザーモードアクセスのみ（mast1c0re、Lua）。カーネルレベルのJBはまだありません。",
+      "noRecord": "データベースに記録なし"
+    },
+    "months": [
+      "1月",
+      "2月",
+      "3月",
+      "4月",
+      "5月",
+      "6月",
+      "7月",
+      "8月",
+      "9月",
+      "10月",
+      "11月",
+      "12月"
+    ],
+    "countries": {
+      "China": "中国",
+      "Malaysia": "マレーシア",
+      "Japan": "日本",
+      "Unknown": "不明"
+    }
   },
   "guide": {
     "title": "シリアルナンバーの場所",

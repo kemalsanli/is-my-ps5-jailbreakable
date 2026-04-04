@@ -39,7 +39,45 @@
     },
     "detectedRegion": "Region: {region}",
     "detectedModel": "Modell: {model}",
-    "manufacturedYear": "Tillverkad: {year}"
+    "manufacturedYear": "Tillverkad: {year}",
+    "details": {
+      "model": "Modell",
+      "production": "Produktion",
+      "factoryFirmware": "Fabriksfirmware",
+      "kernelExploit": "Kernel-exploit",
+      "availableExploits": "Tillgängliga exploits",
+      "warning": "Viktig varning",
+      "warningFactory": "Serienumret visar bara FABRIKENS firmware. Konsolen kan ha uppdaterats.",
+      "warningPSN": "Anslut INTE till PSN innan verifiering — det utlöser automatisk uppdatering.",
+      "warningRefurbished": "Renoverade enheter följer inte denna tabell.",
+      "qualityBest": "Bästa intervall — full JB med alla exploits",
+      "qualityGood": "Bra intervall — full JB med flera exploits",
+      "qualityOk": "Jailbreakbar — kernel-exploit tillgänglig",
+      "qualityPartial": "Delvis — endast användarläge, ingen full JB",
+      "qualityNone": "Ingen jailbreak tillgänglig",
+      "usermodeOnly": "Endast användarlägesåtkomst (mast1c0re, Lua). Ingen kernel-nivå JB ännu.",
+      "noRecord": "Inget register i databasen"
+    },
+    "months": [
+      "Januari",
+      "Februari",
+      "Mars",
+      "April",
+      "Maj",
+      "Juni",
+      "Juli",
+      "Augusti",
+      "September",
+      "Oktober",
+      "November",
+      "December"
+    ],
+    "countries": {
+      "China": "Kina",
+      "Malaysia": "Malaysia",
+      "Japan": "Japan",
+      "Unknown": "Okänd"
+    }
   },
   "guide": {
     "title": "Var hittar jag serienumret?",

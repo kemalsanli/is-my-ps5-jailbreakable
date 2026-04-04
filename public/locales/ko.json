@@ -39,7 +39,45 @@
     },
     "detectedRegion": "지역: {region}",
     "detectedModel": "모델: {model}",
-    "manufacturedYear": "제조년도: {year}"
+    "manufacturedYear": "제조년도: {year}",
+    "details": {
+      "model": "모델",
+      "production": "생산",
+      "factoryFirmware": "출고 펌웨어",
+      "kernelExploit": "커널 익스플로잇",
+      "availableExploits": "사용 가능한 익스플로잇",
+      "warning": "중요 경고",
+      "warningFactory": "시리얼 번호는 출고 펌웨어만 표시합니다. 콘솔이 업데이트되었을 수 있습니다.",
+      "warningPSN": "확인 전 PSN에 연결하지 마세요 — 자동 업데이트가 시작됩니다.",
+      "warningRefurbished": "리퍼/갱신 제품은 이 표를 따르지 않습니다.",
+      "qualityBest": "최고 등급 — 모든 익스플로잇으로 완전 JB",
+      "qualityGood": "양호 — 여러 익스플로잇으로 완전 JB",
+      "qualityOk": "탈옥 가능 — 커널 익스플로잇 이용 가능",
+      "qualityPartial": "부분적 — 유저모드만, 완전 JB 없음",
+      "qualityNone": "탈옥 불가",
+      "usermodeOnly": "유저모드 접근만 가능 (mast1c0re, Lua). 아직 커널 레벨 JB 없음.",
+      "noRecord": "데이터베이스에 기록 없음"
+    },
+    "months": [
+      "1월",
+      "2월",
+      "3월",
+      "4월",
+      "5월",
+      "6월",
+      "7월",
+      "8월",
+      "9월",
+      "10월",
+      "11월",
+      "12월"
+    ],
+    "countries": {
+      "China": "중국",
+      "Malaysia": "말레이시아",
+      "Japan": "일본",
+      "Unknown": "알 수 없음"
+    }
   },
   "guide": {
     "title": "시리얼 번호는 어디에 있나요?",

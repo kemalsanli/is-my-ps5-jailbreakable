@@ -1,1 +1,115 @@
-{"common":{"title":"Unesite svoj\nserijski broj.","description":"Provjerite može li vaš PlayStation 5 biti jailbreakan unosom serijskog broja","check":"Provjeri","clear":"Obriši","loading":"Analiziram...","serialNumber":"Serijski broj","learnMore":"Saznajte više"},"form":{"label":"Unesite serijski broj PS5","placeholder":"npr. S01-G2121W9D1234","hint":"Serijski broj se nalazi na stražnjoj/donjoj strani PS5","invalidFormat":"Nevažeći format serijskog broja.","tooShort":"Serijski broj je prekratak. Unesite najmanje 10 znakova.","required":"Molimo unesite serijski broj"},"results":{"jailbreakable":{"title":"Dobre vijesti!","firmware":"Procijenjeni firmware: {version} ili niži","description":"Ovaj PS5 se vjerojatno može jailbreakati!"},"notJailbreakable":{"title":"Ne može se Jailbreakati","firmware":"Procijenjeni firmware: {version}","description":"Ovaj PS5 se vjerojatno trenutno ne može jailbreakati."},"uncertain":{"title":"Nesigurno","firmware":"Procijenjeni firmware: oko {version}","description":"Ovaj PS5 je proizveden u prijelaznom razdoblju. Provjerite izravno na konzoli."},"confidence":{"high":"Visoka sigurnost","medium":"Srednja sigurnost","low":"Niska sigurnost"},"detectedRegion":"Regija: {region}","detectedModel":"Model: {model}","manufacturedYear":"Proizvedeno: {year}"},"guide":{"title":"Gdje pronaći serijski broj?","subtitle":"Provjerite serijski broj prije kupnje","step1Title":"Korak 1: Provjerite kutiju","step1Desc":"Pogledajte dno kutije PS5. Serijski broj je otisnut na naljepnici.","step2Title":"Korak 2: Pronađite naljepnicu s barkodom","step2Desc":"Pronađite naljepnicu s barkodom na kutiji.","step3Title":"Korak 3: Unesite serijski broj","step3Desc":"Serijski broj počinje s 'S01-'. Unesite ga u provjeru gore."},"about":{"title":"O ovom alatu","whatIsThis":"Što je ovo?","whatIsThisDesc":"Ovaj alat pomaže odrediti može li se PS5 jailbreakati.","howItWorks":"Kako radi?","howItWorksDesc":"PS5 konzole se isporučuju s tvornički firmwareom koji odgovara datumu proizvodnje.","disclaimer":"Odricanje odgovornosti","disclaimerDesc":"Ova stranica nije povezana sa Sony Interactive Entertainment. PlayStation i PS5 su registrirani zaštitni znakovi Sony Interactive Entertainment LLC."},"footer":{"credits":"Zasluge i suradnici","github":"Pogledajte na GitHub","license":"MIT Licenca","madeWith":"Napravljeno s ❤️","inspiredBy":"Podaci inspirirani","dataFrom":"Podaci serijskih brojeva od"},"seo":{"pageTitle":"Može li se moj PS5 jailbreakati?","pageDescription":"Provjerite može li se PS5 jailbreakati.","ogTitle":"PS5 Jailbreak Checker","ogDescription":"Besplatni alat za provjeru jailbreaka PS5."}}
+{
+  "common": {
+    "title": "Unesite svoj\nserijski broj.",
+    "description": "Provjerite može li vaš PlayStation 5 biti jailbreakan unosom serijskog broja",
+    "check": "Provjeri",
+    "clear": "Obriši",
+    "loading": "Analiziram...",
+    "serialNumber": "Serijski broj",
+    "learnMore": "Saznajte više"
+  },
+  "form": {
+    "label": "Unesite serijski broj PS5",
+    "placeholder": "npr. S01-G2121W9D1234",
+    "hint": "Serijski broj se nalazi na stražnjoj/donjoj strani PS5",
+    "invalidFormat": "Nevažeći format serijskog broja.",
+    "tooShort": "Serijski broj je prekratak. Unesite najmanje 10 znakova.",
+    "required": "Molimo unesite serijski broj"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Dobre vijesti!",
+      "firmware": "Procijenjeni firmware: {version} ili niži",
+      "description": "Ovaj PS5 se vjerojatno može jailbreakati!"
+    },
+    "notJailbreakable": {
+      "title": "Ne može se Jailbreakati",
+      "firmware": "Procijenjeni firmware: {version}",
+      "description": "Ovaj PS5 se vjerojatno trenutno ne može jailbreakati."
+    },
+    "uncertain": {
+      "title": "Nesigurno",
+      "firmware": "Procijenjeni firmware: oko {version}",
+      "description": "Ovaj PS5 je proizveden u prijelaznom razdoblju. Provjerite izravno na konzoli."
+    },
+    "confidence": {
+      "high": "Visoka sigurnost",
+      "medium": "Srednja sigurnost",
+      "low": "Niska sigurnost"
+    },
+    "detectedRegion": "Regija: {region}",
+    "detectedModel": "Model: {model}",
+    "manufacturedYear": "Proizvedeno: {year}",
+    "details": {
+      "model": "Model",
+      "production": "Proizvodnja",
+      "factoryFirmware": "Tvornički firmware",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Dostupni exploiti",
+      "warning": "Važno upozorenje",
+      "warningFactory": "Serijski broj prikazuje samo TVORNIČKI firmware. Konzola je možda ažurirana.",
+      "warningPSN": "NE povezujte se na PSN prije provjere — pokreće automatsko ažuriranje.",
+      "warningRefurbished": "Obnovljeni uređaji ne slijede ovu tablicu.",
+      "qualityBest": "Najbolji raspon — puni JB sa svim exploitima",
+      "qualityGood": "Dobar raspon — puni JB s više exploita",
+      "qualityOk": "Moguć jailbreak — kernel exploit dostupan",
+      "qualityPartial": "Djelomičan — samo usermode, nema punog JB",
+      "qualityNone": "Nema dostupnog jailbreaka",
+      "usermodeOnly": "Samo usermode pristup (mast1c0re, Lua). Još nema JB na razini kernela.",
+      "noRecord": "Nema zapisa u bazi podataka"
+    },
+    "months": [
+      "Siječanj",
+      "Veljača",
+      "Ožujak",
+      "Travanj",
+      "Svibanj",
+      "Lipanj",
+      "Srpanj",
+      "Kolovoz",
+      "Rujan",
+      "Listopad",
+      "Studeni",
+      "Prosinac"
+    ],
+    "countries": {
+      "China": "Kina",
+      "Malaysia": "Malezija",
+      "Japan": "Japan",
+      "Unknown": "Nepoznato"
+    }
+  },
+  "guide": {
+    "title": "Gdje pronaći serijski broj?",
+    "subtitle": "Provjerite serijski broj prije kupnje",
+    "step1Title": "Korak 1: Provjerite kutiju",
+    "step1Desc": "Pogledajte dno kutije PS5. Serijski broj je otisnut na naljepnici.",
+    "step2Title": "Korak 2: Pronađite naljepnicu s barkodom",
+    "step2Desc": "Pronađite naljepnicu s barkodom na kutiji.",
+    "step3Title": "Korak 3: Unesite serijski broj",
+    "step3Desc": "Serijski broj počinje s 'S01-'. Unesite ga u provjeru gore."
+  },
+  "about": {
+    "title": "O ovom alatu",
+    "whatIsThis": "Što je ovo?",
+    "whatIsThisDesc": "Ovaj alat pomaže odrediti može li se PS5 jailbreakati.",
+    "howItWorks": "Kako radi?",
+    "howItWorksDesc": "PS5 konzole se isporučuju s tvornički firmwareom koji odgovara datumu proizvodnje.",
+    "disclaimer": "Odricanje odgovornosti",
+    "disclaimerDesc": "Ova stranica nije povezana sa Sony Interactive Entertainment. PlayStation i PS5 su registrirani zaštitni znakovi Sony Interactive Entertainment LLC."
+  },
+  "footer": {
+    "credits": "Zasluge i suradnici",
+    "github": "Pogledajte na GitHub",
+    "license": "MIT Licenca",
+    "madeWith": "Napravljeno s ❤️",
+    "inspiredBy": "Podaci inspirirani",
+    "dataFrom": "Podaci serijskih brojeva od"
+  },
+  "seo": {
+    "pageTitle": "Može li se moj PS5 jailbreakati?",
+    "pageDescription": "Provjerite može li se PS5 jailbreakati.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Besplatni alat za provjeru jailbreaka PS5."
+  }
+}

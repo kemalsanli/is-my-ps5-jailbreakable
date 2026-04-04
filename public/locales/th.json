@@ -32,10 +32,52 @@
       "firmware": "เฟิร์มแวร์โดยประมาณ: ประมาณ {version}",
       "description": "PS5 เครื่องนี้ผลิตในช่วงเปลี่ยนผ่าน เฟิร์มแวร์จริงอาจแตกต่าง ตรวจสอบโดยตรงบนเครื่อง"
     },
-    "confidence": { "high": "ความมั่นใจสูง", "medium": "ความมั่นใจปานกลาง", "low": "ความมั่นใจต่ำ" },
+    "confidence": {
+      "high": "ความมั่นใจสูง",
+      "medium": "ความมั่นใจปานกลาง",
+      "low": "ความมั่นใจต่ำ"
+    },
     "detectedRegion": "ภูมิภาค: {region}",
     "detectedModel": "รุ่น: {model}",
-    "manufacturedYear": "ผลิตเมื่อ: {year}"
+    "manufacturedYear": "ผลิตเมื่อ: {year}",
+    "details": {
+      "model": "รุ่น",
+      "production": "การผลิต",
+      "factoryFirmware": "เฟิร์มแวร์โรงงาน",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Exploit ที่ใช้ได้",
+      "warning": "คำเตือนสำคัญ",
+      "warningFactory": "หมายเลขซีเรียลแสดงเฉพาะเฟิร์มแวร์จากโรงงาน คอนโซลอาจถูกอัปเดตแล้ว",
+      "warningPSN": "อย่าเชื่อมต่อ PSN ก่อนตรวจสอบ — จะเรียกใช้การอัปเดตอัตโนมัติ",
+      "warningRefurbished": "เครื่องรีเฟอร์บิชไม่เป็นไปตามตารางนี้",
+      "qualityBest": "ช่วงดีที่สุด — JB เต็มรูปแบบพร้อม exploit ทั้งหมด",
+      "qualityGood": "ช่วงดี — JB เต็มรูปแบบพร้อม exploit หลายตัว",
+      "qualityOk": "เจลเบรคได้ — kernel exploit พร้อมใช้งาน",
+      "qualityPartial": "บางส่วน — เฉพาะ usermode ไม่มี JB เต็มรูปแบบ",
+      "qualityNone": "ไม่มีเจลเบรคที่พร้อมใช้งาน",
+      "usermodeOnly": "เข้าถึง usermode เท่านั้น (mast1c0re, Lua) ยังไม่มี JB ระดับ kernel",
+      "noRecord": "ไม่มีบันทึกในฐานข้อมูล"
+    },
+    "months": [
+      "มกราคม",
+      "กุมภาพันธ์",
+      "มีนาคม",
+      "เมษายน",
+      "พฤษภาคม",
+      "มิถุนายน",
+      "กรกฎาคม",
+      "สิงหาคม",
+      "กันยายน",
+      "ตุลาคม",
+      "พฤศจิกายน",
+      "ธันวาคม"
+    ],
+    "countries": {
+      "China": "จีน",
+      "Malaysia": "มาเลเซีย",
+      "Japan": "ญี่ปุ่น",
+      "Unknown": "ไม่ทราบ"
+    }
   },
   "guide": {
     "title": "หาหมายเลขซีเรียลได้ที่ไหน?",
@@ -56,6 +98,18 @@
     "disclaimer": "ข้อจำกัดความรับผิดชอบ",
     "disclaimerDesc": "เว็บไซต์นี้ไม่เกี่ยวข้องกับ Sony Interactive Entertainment PlayStation และ PS5 เป็นเครื่องหมายการค้าจดทะเบียนของ Sony Interactive Entertainment LLC"
   },
-  "footer": { "credits": "เครดิตและผู้มีส่วนร่วม", "github": "ดูบน GitHub", "license": "สัญญาอนุญาต MIT", "madeWith": "สร้างด้วย ❤️ โดย", "inspiredBy": "ข้อมูลได้แรงบันดาลใจจาก", "dataFrom": "ข้อมูลหมายเลขซีเรียลจาก" },
-  "seo": { "pageTitle": "PS5 เจลเบรกได้ไหม? | ตรวจสอบเฟิร์มแวร์หมายเลขซีเรียล", "pageDescription": "ตรวจสอบว่า PS5 เจลเบรกได้หรือไม่โดยป้อนหมายเลขซีเรียล", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "เครื่องมือฟรีตรวจสอบ PS5 เจลเบรกได้หรือไม่" }
+  "footer": {
+    "credits": "เครดิตและผู้มีส่วนร่วม",
+    "github": "ดูบน GitHub",
+    "license": "สัญญาอนุญาต MIT",
+    "madeWith": "สร้างด้วย ❤️ โดย",
+    "inspiredBy": "ข้อมูลได้แรงบันดาลใจจาก",
+    "dataFrom": "ข้อมูลหมายเลขซีเรียลจาก"
+  },
+  "seo": {
+    "pageTitle": "PS5 เจลเบรกได้ไหม? | ตรวจสอบเฟิร์มแวร์หมายเลขซีเรียล",
+    "pageDescription": "ตรวจสอบว่า PS5 เจลเบรกได้หรือไม่โดยป้อนหมายเลขซีเรียล",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "เครื่องมือฟรีตรวจสอบ PS5 เจลเบรกได้หรือไม่"
+  }
 }

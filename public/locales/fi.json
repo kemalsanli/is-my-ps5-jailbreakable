@@ -39,7 +39,45 @@
     },
     "detectedRegion": "Alue: {region}",
     "detectedModel": "Malli: {model}",
-    "manufacturedYear": "Valmistettu: {year}"
+    "manufacturedYear": "Valmistettu: {year}",
+    "details": {
+      "model": "Malli",
+      "production": "Tuotanto",
+      "factoryFirmware": "Tehdasfirmware",
+      "kernelExploit": "Kernel-exploit",
+      "availableExploits": "Saatavilla olevat exploitit",
+      "warning": "Tärkeä varoitus",
+      "warningFactory": "Sarjanumero näyttää vain TEHDAS-firmwaren. Konsoli on voitu päivittää.",
+      "warningPSN": "ÄLÄ yhdistä PSN:ään ennen varmistusta — se käynnistää automaattisen päivityksen.",
+      "warningRefurbished": "Kunnostetut laitteet eivät noudata tätä taulukkoa.",
+      "qualityBest": "Paras alue — täysi JB kaikilla exploiteilla",
+      "qualityGood": "Hyvä alue — täysi JB useilla exploiteilla",
+      "qualityOk": "Jailbreakattava — kernel-exploit saatavilla",
+      "qualityPartial": "Osittainen — vain käyttäjätila, ei täyttä JB:tä",
+      "qualityNone": "Jailbreakia ei saatavilla",
+      "usermodeOnly": "Vain käyttäjätilayhteys (mast1c0re, Lua). Ei kernel-tason JB:tä vielä.",
+      "noRecord": "Ei tietuetta tietokannassa"
+    },
+    "months": [
+      "Tammikuu",
+      "Helmikuu",
+      "Maaliskuu",
+      "Huhtikuu",
+      "Toukokuu",
+      "Kesäkuu",
+      "Heinäkuu",
+      "Elokuu",
+      "Syyskuu",
+      "Lokakuu",
+      "Marraskuu",
+      "Joulukuu"
+    ],
+    "countries": {
+      "China": "Kiina",
+      "Malaysia": "Malesia",
+      "Japan": "Japani",
+      "Unknown": "Tuntematon"
+    }
   },
   "guide": {
     "title": "Mistä löydän sarjanumeron?",

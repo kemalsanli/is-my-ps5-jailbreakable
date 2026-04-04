@@ -32,10 +32,52 @@
       "firmware": "Odhadovaný firmware: přibližně {version}",
       "description": "Tento PS5 byl vyroben v přechodném období. Skutečný firmware se může lišit. Ověřte přímo na konzoli."
     },
-    "confidence": { "high": "Vysoká jistota", "medium": "Střední jistota", "low": "Nízká jistota" },
+    "confidence": {
+      "high": "Vysoká jistota",
+      "medium": "Střední jistota",
+      "low": "Nízká jistota"
+    },
     "detectedRegion": "Region: {region}",
     "detectedModel": "Model: {model}",
-    "manufacturedYear": "Vyrobeno: {year}"
+    "manufacturedYear": "Vyrobeno: {year}",
+    "details": {
+      "model": "Model",
+      "production": "Výroba",
+      "factoryFirmware": "Tovární firmware",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Dostupné exploity",
+      "warning": "Důležité upozornění",
+      "warningFactory": "Sériové číslo ukazuje pouze TOVÁRNÍ firmware. Konzole mohla být aktualizována.",
+      "warningPSN": "NEPŘIPOJUJTE se k PSN před ověřením — spustí automatickou aktualizaci.",
+      "warningRefurbished": "Repasovaná zařízení se neřídí touto tabulkou.",
+      "qualityBest": "Nejlepší rozsah — plný JB se všemi exploity",
+      "qualityGood": "Dobrý rozsah — plný JB s více exploity",
+      "qualityOk": "Jailbreaknutelné — kernel exploit dostupný",
+      "qualityPartial": "Částečný — pouze usermode, žádný plný JB",
+      "qualityNone": "Žádný jailbreak k dispozici",
+      "usermodeOnly": "Pouze přístup v režimu uživatele (mast1c0re, Lua). Zatím žádný JB na úrovni jádra.",
+      "noRecord": "Žádný záznam v databázi"
+    },
+    "months": [
+      "Leden",
+      "Únor",
+      "Březen",
+      "Duben",
+      "Květen",
+      "Červen",
+      "Červenec",
+      "Srpen",
+      "Září",
+      "Říjen",
+      "Listopad",
+      "Prosinec"
+    ],
+    "countries": {
+      "China": "Čína",
+      "Malaysia": "Malajsie",
+      "Japan": "Japonsko",
+      "Unknown": "Neznámý"
+    }
   },
   "guide": {
     "title": "Kde najdu sériové číslo?",
@@ -56,6 +98,18 @@
     "disclaimer": "Prohlášení",
     "disclaimerDesc": "Tyto stránky nejsou spojeny se Sony Interactive Entertainment. PlayStation a PS5 jsou registrované ochranné známky Sony Interactive Entertainment LLC."
   },
-  "footer": { "credits": "Autoři a přispěvatelé", "github": "Zobrazit na GitHubu", "license": "Licence MIT", "madeWith": "Vytvořeno s ❤️", "inspiredBy": "Data inspirována", "dataFrom": "Data sériových čísel z" },
-  "seo": { "pageTitle": "Je můj PS5 jailbreakovatelný? | Kontrola firmwaru podle sériového čísla", "pageDescription": "Zkontrolujte, zda lze váš PS5 jailbreaknout zadáním sériového čísla.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Bezplatný nástroj pro kontrolu jailbreakovatelnosti PS5." }
+  "footer": {
+    "credits": "Autoři a přispěvatelé",
+    "github": "Zobrazit na GitHubu",
+    "license": "Licence MIT",
+    "madeWith": "Vytvořeno s ❤️",
+    "inspiredBy": "Data inspirována",
+    "dataFrom": "Data sériových čísel z"
+  },
+  "seo": {
+    "pageTitle": "Je můj PS5 jailbreakovatelný? | Kontrola firmwaru podle sériového čísla",
+    "pageDescription": "Zkontrolujte, zda lze váš PS5 jailbreaknout zadáním sériového čísla.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Bezplatný nástroj pro kontrolu jailbreakovatelnosti PS5."
+  }
 }

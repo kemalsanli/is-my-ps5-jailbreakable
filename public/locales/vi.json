@@ -32,10 +32,52 @@
       "firmware": "Firmware ước tính: khoảng {version}",
       "description": "PS5 này được sản xuất trong giai đoạn chuyển tiếp. Firmware thực tế có thể khác. Kiểm tra trực tiếp trên máy."
     },
-    "confidence": { "high": "Độ tin cậy cao", "medium": "Độ tin cậy trung bình", "low": "Độ tin cậy thấp" },
+    "confidence": {
+      "high": "Độ tin cậy cao",
+      "medium": "Độ tin cậy trung bình",
+      "low": "Độ tin cậy thấp"
+    },
     "detectedRegion": "Khu vực: {region}",
     "detectedModel": "Model: {model}",
-    "manufacturedYear": "Sản xuất: {year}"
+    "manufacturedYear": "Sản xuất: {year}",
+    "details": {
+      "model": "Model",
+      "production": "Sản xuất",
+      "factoryFirmware": "Firmware nhà máy",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Exploit có sẵn",
+      "warning": "Cảnh báo quan trọng",
+      "warningFactory": "Số serial chỉ hiển thị firmware NHÀ MÁY. Console có thể đã được cập nhật.",
+      "warningPSN": "KHÔNG kết nối PSN trước khi xác minh — sẽ kích hoạt cập nhật tự động.",
+      "warningRefurbished": "Máy tân trang không theo bảng này.",
+      "qualityBest": "Tốt nhất — JB đầy đủ với tất cả exploit",
+      "qualityGood": "Tốt — JB đầy đủ với nhiều exploit",
+      "qualityOk": "Có thể jailbreak — kernel exploit khả dụng",
+      "qualityPartial": "Một phần — chỉ usermode, không JB đầy đủ",
+      "qualityNone": "Không có jailbreak",
+      "usermodeOnly": "Chỉ truy cập usermode (mast1c0re, Lua). Chưa có JB cấp kernel.",
+      "noRecord": "Không có bản ghi trong cơ sở dữ liệu"
+    },
+    "months": [
+      "Tháng 1",
+      "Tháng 2",
+      "Tháng 3",
+      "Tháng 4",
+      "Tháng 5",
+      "Tháng 6",
+      "Tháng 7",
+      "Tháng 8",
+      "Tháng 9",
+      "Tháng 10",
+      "Tháng 11",
+      "Tháng 12"
+    ],
+    "countries": {
+      "China": "Trung Quốc",
+      "Malaysia": "Malaysia",
+      "Japan": "Nhật Bản",
+      "Unknown": "Không xác định"
+    }
   },
   "guide": {
     "title": "Tìm số sê-ri ở đâu?",
@@ -56,6 +98,18 @@
     "disclaimer": "Tuyên bố miễn trừ",
     "disclaimerDesc": "Trang web này không liên kết với Sony Interactive Entertainment. PlayStation và PS5 là nhãn hiệu đã đăng ký của Sony Interactive Entertainment LLC."
   },
-  "footer": { "credits": "Tín dụng & Người đóng góp", "github": "Xem trên GitHub", "license": "Giấy phép MIT", "madeWith": "Được tạo với ❤️ bởi", "inspiredBy": "Dữ liệu lấy cảm hứng từ", "dataFrom": "Dữ liệu số sê-ri từ" },
-  "seo": { "pageTitle": "PS5 có jailbreak được không? | Kiểm tra Firmware Số Sê-ri", "pageDescription": "Kiểm tra PS5 có thể jailbreak được không bằng cách nhập số sê-ri.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Công cụ miễn phí kiểm tra PS5 có jailbreak được không." }
+  "footer": {
+    "credits": "Tín dụng & Người đóng góp",
+    "github": "Xem trên GitHub",
+    "license": "Giấy phép MIT",
+    "madeWith": "Được tạo với ❤️ bởi",
+    "inspiredBy": "Dữ liệu lấy cảm hứng từ",
+    "dataFrom": "Dữ liệu số sê-ri từ"
+  },
+  "seo": {
+    "pageTitle": "PS5 có jailbreak được không? | Kiểm tra Firmware Số Sê-ri",
+    "pageDescription": "Kiểm tra PS5 có thể jailbreak được không bằng cách nhập số sê-ri.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Công cụ miễn phí kiểm tra PS5 có jailbreak được không."
+  }
 }

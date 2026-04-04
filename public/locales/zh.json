@@ -39,7 +39,45 @@
     },
     "detectedRegion": "地区：{region}",
     "detectedModel": "型号：{model}",
-    "manufacturedYear": "制造年份：{year}"
+    "manufacturedYear": "制造年份：{year}",
+    "details": {
+      "model": "型号",
+      "production": "生产",
+      "factoryFirmware": "出厂固件",
+      "kernelExploit": "内核漏洞",
+      "availableExploits": "可用漏洞",
+      "warning": "重要警告",
+      "warningFactory": "序列号仅显示出厂固件。主机可能已被更新。",
+      "warningPSN": "验证前请勿连接PSN — 会触发自动更新。",
+      "warningRefurbished": "翻新/二手设备不遵循此表。",
+      "qualityBest": "最佳范围 — 所有漏洞完整越狱",
+      "qualityGood": "良好范围 — 多个漏洞完整越狱",
+      "qualityOk": "可越狱 — 内核漏洞可用",
+      "qualityPartial": "部分 — 仅用户模式，无完整越狱",
+      "qualityNone": "无可用越狱",
+      "usermodeOnly": "仅用户模式访问（mast1c0re、Lua）。暂无内核级越狱。",
+      "noRecord": "数据库中无记录"
+    },
+    "months": [
+      "一月",
+      "二月",
+      "三月",
+      "四月",
+      "五月",
+      "六月",
+      "七月",
+      "八月",
+      "九月",
+      "十月",
+      "十一月",
+      "十二月"
+    ],
+    "countries": {
+      "China": "中国",
+      "Malaysia": "马来西亚",
+      "Japan": "日本",
+      "Unknown": "未知"
+    }
   },
   "guide": {
     "title": "在哪里找到序列号？",

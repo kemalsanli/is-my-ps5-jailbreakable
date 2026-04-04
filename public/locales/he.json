@@ -1,1 +1,115 @@
-{"common":{"title":"הזן את\nהמספר הסידורי.","description":"בדוק אם ה-PlayStation 5 ניתן ל-jailbreak על ידי הזנת המספר הסידורי","check":"בדוק","clear":"נקה","loading":"מנתח...","serialNumber":"מספר סידורי","learnMore":"למד עוד"},"form":{"label":"הזן את המספר הסידורי של PS5","placeholder":"לדוגמה S01-G2121W9D1234","hint":"המספר הסידורי נמצא בגב/תחתית של ה-PS5","invalidFormat":"פורמט מספר סידורי לא חוקי.","tooShort":"המספר הסידורי קצר מדי. הזן לפחות 10 תווים.","required":"אנא הזן מספר סידורי"},"results":{"jailbreakable":{"title":"חדשות טובות!","firmware":"קושחה משוערת: {version} או נמוך יותר","description":"ה-PS5 הזה כנראה ניתן ל-jailbreak!"},"notJailbreakable":{"title":"לא ניתן ל-Jailbreak","firmware":"קושחה משוערת: {version}","description":"ה-PS5 הזה כנראה לא ניתן ל-jailbreak כרגע."},"uncertain":{"title":"לא וודאי","firmware":"קושחה משוערת: בערך {version}","description":"ה-PS5 הזה יוצר בתקופת מעבר. בדוק ישירות בקונסולה."},"confidence":{"high":"ודאות גבוהה","medium":"ודאות בינונית","low":"ודאות נמוכה"},"detectedRegion":"אזור: {region}","detectedModel":"דגם: {model}","manufacturedYear":"יוצר: {year}"},"guide":{"title":"איפה למצוא את המספר הסידורי?","subtitle":"בדוק את המספר הסידורי לפני הקנייה","step1Title":"שלב 1: בדוק את הקופסה","step1Desc":"הסתכל בתחתית הקופסה של PS5. המספר הסידורי מודפס על תווית.","step2Title":"שלב 2: מצא את תווית הברקוד","step2Desc":"מצא את תווית הברקוד על הקופסה.","step3Title":"שלב 3: הזן את המספר הסידורי","step3Desc":"המספר הסידורי מתחיל ב-'S01-'. הקלד אותו במ��קר למעלה."},"about":{"title":"אודות כלי זה","whatIsThis":"מה זה?","whatIsThisDesc":"כלי זה עוזר לקבוע אם PS5 ניתן ל-jailbreak.","howItWorks":"איך זה עובד?","howItWorksDesc":"מכשירי PS5 נשלחים עם קושחה שמתאימה לתאריך הייצור.","disclaimer":"כתב ויתור","disclaimerDesc":"אתר זה אינו מזוהה עם Sony Interactive Entertainment. PlayStation ו-PS5 הם סימנים מסחריים רשומים של Sony Interactive Entertainment LLC."},"footer":{"credits":"קרדיטים ותורמים","github":"צפה ב-GitHub","license":"רישיון MIT","madeWith":"נוצר עם ❤️","inspiredBy":"נתונים בהשראת","dataFrom":"נתוני מספרים סידוריים מ"},"seo":{"pageTitle":"האם ה-PS5 שלי ניתן ל-jailbreak?","pageDescription":"בדוק אם ה-PS5 ניתן ל-jailbreak.","ogTitle":"בודק Jailbreak PS5","ogDescription":"כלי חינמי לבדיקת jailbreak PS5."}}
+{
+  "common": {
+    "title": "הזן את\nהמספר הסידורי.",
+    "description": "בדוק אם ה-PlayStation 5 ניתן ל-jailbreak על ידי הזנת המספר הסידורי",
+    "check": "בדוק",
+    "clear": "נקה",
+    "loading": "מנתח...",
+    "serialNumber": "מספר סידורי",
+    "learnMore": "למד עוד"
+  },
+  "form": {
+    "label": "הזן את המספר הסידורי של PS5",
+    "placeholder": "לדוגמה S01-G2121W9D1234",
+    "hint": "המספר הסידורי נמצא בגב/תחתית של ה-PS5",
+    "invalidFormat": "פורמט מספר סידורי לא חוקי.",
+    "tooShort": "המספר הסידורי קצר מדי. הזן לפחות 10 תווים.",
+    "required": "אנא הזן מספר סידורי"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "חדשות טובות!",
+      "firmware": "קושחה משוערת: {version} או נמוך יותר",
+      "description": "ה-PS5 הזה כנראה ניתן ל-jailbreak!"
+    },
+    "notJailbreakable": {
+      "title": "לא ניתן ל-Jailbreak",
+      "firmware": "קושחה משוערת: {version}",
+      "description": "ה-PS5 הזה כנראה לא ניתן ל-jailbreak כרגע."
+    },
+    "uncertain": {
+      "title": "לא וודאי",
+      "firmware": "קושחה משוערת: בערך {version}",
+      "description": "ה-PS5 הזה יוצר בתקופת מעבר. בדוק ישירות בקונסולה."
+    },
+    "confidence": {
+      "high": "ודאות גבוהה",
+      "medium": "ודאות בינונית",
+      "low": "ודאות נמוכה"
+    },
+    "detectedRegion": "אזור: {region}",
+    "detectedModel": "דגם: {model}",
+    "manufacturedYear": "יוצר: {year}",
+    "details": {
+      "model": "דגם",
+      "production": "ייצור",
+      "factoryFirmware": "קושחת מפעל",
+      "kernelExploit": "אקספלויט קרנל",
+      "availableExploits": "אקספלויטים זמינים",
+      "warning": "אזהרה חשובה",
+      "warningFactory": "המספר הסידורי מציג רק את קושחת המפעל. הקונסולה עשויה להיות מעודכנת.",
+      "warningPSN": "אל תתחבר ל-PSN לפני אימות — זה מפעיל עדכון אוטומטי.",
+      "warningRefurbished": "מכשירים מחודשים אינם עוקבים אחר טבלה זו.",
+      "qualityBest": "טווח הכי טוב — JB מלא עם כל האקספלויטים",
+      "qualityGood": "טווח טוב — JB מלא עם מספר אקספלויטים",
+      "qualityOk": "ניתן לפריצה — אקספלויט קרנל זמין",
+      "qualityPartial": "חלקי — רק usermode, ללא JB מלא",
+      "qualityNone": "אין פריצה זמינה",
+      "usermodeOnly": "גישת usermode בלבד (mast1c0re, Lua). עדיין אין JB ברמת קרנל.",
+      "noRecord": "אין רשומה במסד הנתונים"
+    },
+    "months": [
+      "ינואר",
+      "פברואר",
+      "מרץ",
+      "אפריל",
+      "מאי",
+      "יוני",
+      "יולי",
+      "אוגוסט",
+      "ספטמבר",
+      "אוקטובר",
+      "נובמבר",
+      "דצמבר"
+    ],
+    "countries": {
+      "China": "סין",
+      "Malaysia": "מלזיה",
+      "Japan": "יפן",
+      "Unknown": "לא ידוע"
+    }
+  },
+  "guide": {
+    "title": "איפה למצוא את המספר הסידורי?",
+    "subtitle": "בדוק את המספר הסידורי לפני הקנייה",
+    "step1Title": "שלב 1: בדוק את הקופסה",
+    "step1Desc": "הסתכל בתחתית הקופסה של PS5. המספר הסידורי מודפס על תווית.",
+    "step2Title": "שלב 2: מצא את תווית הברקוד",
+    "step2Desc": "מצא את תווית הברקוד על הקופסה.",
+    "step3Title": "שלב 3: הזן את המספר הסידורי",
+    "step3Desc": "המספר הסידורי מתחיל ב-'S01-'. הקלד אותו במ��קר למעלה."
+  },
+  "about": {
+    "title": "אודות כלי זה",
+    "whatIsThis": "מה זה?",
+    "whatIsThisDesc": "כלי זה עוזר לקבוע אם PS5 ניתן ל-jailbreak.",
+    "howItWorks": "איך זה עובד?",
+    "howItWorksDesc": "מכשירי PS5 נשלחים עם קושחה שמתאימה לתאריך הייצור.",
+    "disclaimer": "כתב ויתור",
+    "disclaimerDesc": "אתר זה אינו מזוהה עם Sony Interactive Entertainment. PlayStation ו-PS5 הם סימנים מסחריים רשומים של Sony Interactive Entertainment LLC."
+  },
+  "footer": {
+    "credits": "קרדיטים ותורמים",
+    "github": "צפה ב-GitHub",
+    "license": "רישיון MIT",
+    "madeWith": "נוצר עם ❤️",
+    "inspiredBy": "נתונים בהשראת",
+    "dataFrom": "נתוני מספרים סידוריים מ"
+  },
+  "seo": {
+    "pageTitle": "האם ה-PS5 שלי ניתן ל-jailbreak?",
+    "pageDescription": "בדוק אם ה-PS5 ניתן ל-jailbreak.",
+    "ogTitle": "בודק Jailbreak PS5",
+    "ogDescription": "כלי חינמי לבדיקת jailbreak PS5."
+  }
+}

@@ -32,10 +32,52 @@
       "firmware": "Estimasi firmware: sekitar {version}",
       "description": "PS5 ini diproduksi selama periode transisi. Firmware sebenarnya bisa berbeda. Periksa langsung di konsol."
     },
-    "confidence": { "high": "Keyakinan Tinggi", "medium": "Keyakinan Sedang", "low": "Keyakinan Rendah" },
+    "confidence": {
+      "high": "Keyakinan Tinggi",
+      "medium": "Keyakinan Sedang",
+      "low": "Keyakinan Rendah"
+    },
     "detectedRegion": "Wilayah: {region}",
     "detectedModel": "Model: {model}",
-    "manufacturedYear": "Diproduksi: {year}"
+    "manufacturedYear": "Diproduksi: {year}",
+    "details": {
+      "model": "Model",
+      "production": "Produksi",
+      "factoryFirmware": "Firmware pabrik",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Exploit tersedia",
+      "warning": "Peringatan penting",
+      "warningFactory": "Nomor seri hanya menampilkan firmware PABRIK. Konsol mungkin sudah diperbarui.",
+      "warningPSN": "JANGAN hubungkan ke PSN sebelum verifikasi — memicu pembaruan otomatis.",
+      "warningRefurbished": "Unit rekondisi tidak mengikuti tabel ini.",
+      "qualityBest": "Rentang terbaik — JB penuh dengan semua exploit",
+      "qualityGood": "Rentang bagus — JB penuh dengan beberapa exploit",
+      "qualityOk": "Dapat di-jailbreak — kernel exploit tersedia",
+      "qualityPartial": "Sebagian — hanya usermode, tanpa JB penuh",
+      "qualityNone": "Tidak ada jailbreak tersedia",
+      "usermodeOnly": "Hanya akses usermode (mast1c0re, Lua). Belum ada JB level kernel.",
+      "noRecord": "Tidak ada catatan di database"
+    },
+    "months": [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+    ],
+    "countries": {
+      "China": "Tiongkok",
+      "Malaysia": "Malaysia",
+      "Japan": "Jepang",
+      "Unknown": "Tidak diketahui"
+    }
   },
   "guide": {
     "title": "Di mana menemukan nomor seri?",
@@ -56,6 +98,18 @@
     "disclaimer": "Penafian",
     "disclaimerDesc": "Situs ini tidak berafiliasi dengan Sony Interactive Entertainment. PlayStation dan PS5 adalah merek dagang terdaftar dari Sony Interactive Entertainment LLC."
   },
-  "footer": { "credits": "Kredit & Kontributor", "github": "Lihat di GitHub", "license": "Lisensi MIT", "madeWith": "Dibuat dengan ❤️ oleh", "inspiredBy": "Data terinspirasi dari", "dataFrom": "Data nomor seri dari" },
-  "seo": { "pageTitle": "Apakah PS5 saya bisa di-jailbreak? | Pemeriksa Firmware Nomor Seri", "pageDescription": "Periksa apakah PS5 Anda bisa di-jailbreak dengan memasukkan nomor seri.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Alat gratis untuk memeriksa apakah PS5 Anda bisa di-jailbreak." }
+  "footer": {
+    "credits": "Kredit & Kontributor",
+    "github": "Lihat di GitHub",
+    "license": "Lisensi MIT",
+    "madeWith": "Dibuat dengan ❤️ oleh",
+    "inspiredBy": "Data terinspirasi dari",
+    "dataFrom": "Data nomor seri dari"
+  },
+  "seo": {
+    "pageTitle": "Apakah PS5 saya bisa di-jailbreak? | Pemeriksa Firmware Nomor Seri",
+    "pageDescription": "Periksa apakah PS5 Anda bisa di-jailbreak dengan memasukkan nomor seri.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Alat gratis untuk memeriksa apakah PS5 Anda bisa di-jailbreak."
+  }
 }

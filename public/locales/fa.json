@@ -1,1 +1,115 @@
-{"common":{"title":"شماره سریال\nخود را وارد کنید.","description":"بررسی کنید که آیا PlayStation 5 شما قابل jailbreak است","check":"بررسی","clear":"پاک کردن","loading":"در حال تحلیل...","serialNumber":"شماره سریال","learnMore":"بیشتر بدانید"},"form":{"label":"شماره سریال PS5 خود را وارد کنید","placeholder":"مثال S01-G2121W9D1234","hint":"شماره سریال در پشت/پایین PS5 قرار دارد","invalidFormat":"فرمت شماره سریال نامعتبر است.","tooShort":"شماره سریال بسیار کوتاه است. حداقل 10 کاراکتر وارد کنید.","required":"لطفاً شماره سریال را وارد کنید"},"results":{"jailbreakable":{"title":"خبر خوب!","firmware":"نرم‌افزار تخمینی: {version} یا پایین‌تر","description":"این PS5 احتمالاً قابل jailbreak است!"},"notJailbreakable":{"title":"قابل Jailbreak نیست","firmware":"نرم‌افزار تخمینی: {version}","description":"این PS5 احتمالاً در حال حاضر قابل jailbreak نیست."},"uncertain":{"title":"نامشخص","firmware":"نرم‌افزار تخمینی: حدود {version}","description":"این PS5 در دوره انتقالی ساخته شده است. مستقیماً روی کنسول بررسی کنید."},"confidence":{"high":"اطمینان بالا","medium":"اطمینان متوسط","low":"اطمینان پایین"},"detectedRegion":"منطقه: {region}","detectedModel":"مدل: {model}","manufacturedYear":"ساخت: {year}"},"guide":{"title":"شماره سریال را کجا پیدا کنم؟","subtitle":"قبل از خرید شماره سریال را بررسی کنید","step1Title":"مرحله 1: جعبه را بررسی کنید","step1Desc":"به پایین جعبه PS5 نگاه کنید. شماره سریال روی برچسب چاپ شده است.","step2Title":"مرحله 2: برچسب بارکد را پیدا کنید","step2Desc":"برچسب بارکد را روی جعبه پیدا کنید.","step3Title":"مرحله 3: شماره سریال را وارد کنید","step3Desc":"شماره سریال با 'S01-' شروع می‌شود. آن را در بالا تایپ کنید."},"about":{"title":"درباره این ابزار","whatIsThis":"این چیست؟","whatIsThisDesc":"این ابزار به شما کمک می‌کند تشخیص دهید که آیا PS5 قابل jailbreak است.","howItWorks":"چگونه کار می‌کند؟","howItWorksDesc":"دستگاه‌های PS5 با نرم‌افزار کارخانه که با تاریخ ساخت مطابقت دارد ارسال می‌شوند.","disclaimer":"سلب مسئولیت","disclaimerDesc":"این سایت وابسته به Sony Interactive Entertainment نیست. PlayStation و PS5 علائم تجاری ثبت شده Sony Interactive Entertainment LLC هستند."},"footer":{"credits":"اعتبارات و مشارکت‌کنندگان","github":"مشاهده در GitHub","license":"مجوز MIT","madeWith":"ساخته شده با ❤️","inspiredBy":"داده‌ها الهام گرفته از","dataFrom":"داده‌های شماره سریال از"},"seo":{"pageTitle":"آیا PS5 من قابل jailbreak است؟","pageDescription":"بررسی کنید که آیا PS5 قابل jailbreak است.","ogTitle":"بررسی‌کننده Jailbreak PS5","ogDescription":"ابزار رایگان برای بررسی jailbreak PS5."}}
+{
+  "common": {
+    "title": "شماره سریال\nخود را وارد کنید.",
+    "description": "بررسی کنید که آیا PlayStation 5 شما قابل jailbreak است",
+    "check": "بررسی",
+    "clear": "پاک کردن",
+    "loading": "در حال تحلیل...",
+    "serialNumber": "شماره سریال",
+    "learnMore": "بیشتر بدانید"
+  },
+  "form": {
+    "label": "شماره سریال PS5 خود را وارد کنید",
+    "placeholder": "مثال S01-G2121W9D1234",
+    "hint": "شماره سریال در پشت/پایین PS5 قرار دارد",
+    "invalidFormat": "فرمت شماره سریال نامعتبر است.",
+    "tooShort": "شماره سریال بسیار کوتاه است. حداقل 10 کاراکتر وارد کنید.",
+    "required": "لطفاً شماره سریال را وارد کنید"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "خبر خوب!",
+      "firmware": "نرم‌افزار تخمینی: {version} یا پایین‌تر",
+      "description": "این PS5 احتمالاً قابل jailbreak است!"
+    },
+    "notJailbreakable": {
+      "title": "قابل Jailbreak نیست",
+      "firmware": "نرم‌افزار تخمینی: {version}",
+      "description": "این PS5 احتمالاً در حال حاضر قابل jailbreak نیست."
+    },
+    "uncertain": {
+      "title": "نامشخص",
+      "firmware": "نرم‌افزار تخمینی: حدود {version}",
+      "description": "این PS5 در دوره انتقالی ساخته شده است. مستقیماً روی کنسول بررسی کنید."
+    },
+    "confidence": {
+      "high": "اطمینان بالا",
+      "medium": "اطمینان متوسط",
+      "low": "اطمینان پایین"
+    },
+    "detectedRegion": "منطقه: {region}",
+    "detectedModel": "مدل: {model}",
+    "manufacturedYear": "ساخت: {year}",
+    "details": {
+      "model": "مدل",
+      "production": "تولید",
+      "factoryFirmware": "فریمور کارخانه",
+      "kernelExploit": "اکسپلویت کرنل",
+      "availableExploits": "اکسپلویت‌های موجود",
+      "warning": "هشدار مهم",
+      "warningFactory": "شماره سریال فقط فریمور کارخانه را نشان می‌دهد. کنسول ممکن است آپدیت شده باشد.",
+      "warningPSN": "قبل از تأیید به PSN متصل نشوید — آپدیت خودکار را فعال می‌کند.",
+      "warningRefurbished": "دستگاه‌های بازسازی شده از این جدول پیروی نمی‌کنند.",
+      "qualityBest": "بهترین محدوده — جیلبریک کامل با تمام اکسپلویت‌ها",
+      "qualityGood": "محدوده خوب — جیلبریک کامل با چند اکسپلویت",
+      "qualityOk": "قابل جیلبریک — اکسپلویت کرنل موجود",
+      "qualityPartial": "جزئی — فقط حالت کاربر، بدون جیلبریک کامل",
+      "qualityNone": "جیلبریک موجود نیست",
+      "usermodeOnly": "فقط دسترسی حالت کاربر (mast1c0re, Lua). هنوز جیلبریک سطح کرنل موجود نیست.",
+      "noRecord": "رکوردی در پایگاه داده وجود ندارد"
+    },
+    "months": [
+      "ژانویه",
+      "فوریه",
+      "مارس",
+      "آوریل",
+      "مه",
+      "ژوئن",
+      "ژوئیه",
+      "اوت",
+      "سپتامبر",
+      "اکتبر",
+      "نوامبر",
+      "دسامبر"
+    ],
+    "countries": {
+      "China": "چین",
+      "Malaysia": "مالزی",
+      "Japan": "ژاپن",
+      "Unknown": "نامشخص"
+    }
+  },
+  "guide": {
+    "title": "شماره سریال را کجا پیدا کنم؟",
+    "subtitle": "قبل از خرید شماره سریال را بررسی کنید",
+    "step1Title": "مرحله 1: جعبه را بررسی کنید",
+    "step1Desc": "به پایین جعبه PS5 نگاه کنید. شماره سریال روی برچسب چاپ شده است.",
+    "step2Title": "مرحله 2: برچسب بارکد را پیدا کنید",
+    "step2Desc": "برچسب بارکد را روی جعبه پیدا کنید.",
+    "step3Title": "مرحله 3: شماره سریال را وارد کنید",
+    "step3Desc": "شماره سریال با 'S01-' شروع می‌شود. آن را در بالا تایپ کنید."
+  },
+  "about": {
+    "title": "درباره این ابزار",
+    "whatIsThis": "این چیست؟",
+    "whatIsThisDesc": "این ابزار به شما کمک می‌کند تشخیص دهید که آیا PS5 قابل jailbreak است.",
+    "howItWorks": "چگونه کار می‌کند؟",
+    "howItWorksDesc": "دستگاه‌های PS5 با نرم‌افزار کارخانه که با تاریخ ساخت مطابقت دارد ارسال می‌شوند.",
+    "disclaimer": "سلب مسئولیت",
+    "disclaimerDesc": "این سایت وابسته به Sony Interactive Entertainment نیست. PlayStation و PS5 علائم تجاری ثبت شده Sony Interactive Entertainment LLC هستند."
+  },
+  "footer": {
+    "credits": "اعتبارات و مشارکت‌کنندگان",
+    "github": "مشاهده در GitHub",
+    "license": "مجوز MIT",
+    "madeWith": "ساخته شده با ❤️",
+    "inspiredBy": "داده‌ها الهام گرفته از",
+    "dataFrom": "داده‌های شماره سریال از"
+  },
+  "seo": {
+    "pageTitle": "آیا PS5 من قابل jailbreak است؟",
+    "pageDescription": "بررسی کنید که آیا PS5 قابل jailbreak است.",
+    "ogTitle": "بررسی‌کننده Jailbreak PS5",
+    "ogDescription": "ابزار رایگان برای بررسی jailbreak PS5."
+  }
+}

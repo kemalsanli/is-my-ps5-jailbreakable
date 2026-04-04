@@ -39,7 +39,45 @@
     },
     "detectedRegion": "Region: {region}",
     "detectedModel": "Modell: {model}",
-    "manufacturedYear": "Produsert: {year}"
+    "manufacturedYear": "Produsert: {year}",
+    "details": {
+      "model": "Modell",
+      "production": "Produksjon",
+      "factoryFirmware": "Fabrikkfirmware",
+      "kernelExploit": "Kernel-exploit",
+      "availableExploits": "Tilgjengelige exploits",
+      "warning": "Viktig advarsel",
+      "warningFactory": "Serienummeret viser kun FABRIKK-firmware. Konsollen kan ha blitt oppdatert.",
+      "warningPSN": "IKKE koble til PSN før verifisering — det utløser automatisk oppdatering.",
+      "warningRefurbished": "Renoverte enheter følger ikke denne tabellen.",
+      "qualityBest": "Beste område — full JB med alle exploits",
+      "qualityGood": "Godt område — full JB med flere exploits",
+      "qualityOk": "Jailbreakbar — kernel-exploit tilgjengelig",
+      "qualityPartial": "Delvis — kun brukermodus, ingen full JB",
+      "qualityNone": "Ingen jailbreak tilgjengelig",
+      "usermodeOnly": "Kun brukermodusadgang (mast1c0re, Lua). Ingen kernel-nivå JB ennå.",
+      "noRecord": "Ingen oppføring i databasen"
+    },
+    "months": [
+      "Januar",
+      "Februar",
+      "Mars",
+      "April",
+      "Mai",
+      "Juni",
+      "Juli",
+      "August",
+      "September",
+      "Oktober",
+      "November",
+      "Desember"
+    ],
+    "countries": {
+      "China": "Kina",
+      "Malaysia": "Malaysia",
+      "Japan": "Japan",
+      "Unknown": "Ukjent"
+    }
   },
   "guide": {
     "title": "Hvor finner jeg serienummeret?",

@@ -32,10 +32,52 @@
       "firmware": "Becsült firmware: körülbelül {version}",
       "description": "Ezt a PS5-öt átmeneti időszakban gyártották. A tényleges firmware eltérhet. Ellenőrizd közvetlenül a konzolon."
     },
-    "confidence": { "high": "Magas bizonyosság", "medium": "Közepes bizonyosság", "low": "Alacsony bizonyosság" },
+    "confidence": {
+      "high": "Magas bizonyosság",
+      "medium": "Közepes bizonyosság",
+      "low": "Alacsony bizonyosság"
+    },
     "detectedRegion": "Régió: {region}",
     "detectedModel": "Modell: {model}",
-    "manufacturedYear": "Gyártási év: {year}"
+    "manufacturedYear": "Gyártási év: {year}",
+    "details": {
+      "model": "Modell",
+      "production": "Gyártás",
+      "factoryFirmware": "Gyári firmware",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Elérhető exploitok",
+      "warning": "Fontos figyelmeztetés",
+      "warningFactory": "A sorozatszám csak a GYÁRI firmware-t mutatja. A konzolt frissíthették.",
+      "warningPSN": "NE csatlakozzon a PSN-hez ellenőrzés előtt — automatikus frissítést indít.",
+      "warningRefurbished": "A felújított egységek nem követik ezt a táblázatot.",
+      "qualityBest": "Legjobb tartomány — teljes JB minden exploittal",
+      "qualityGood": "Jó tartomány — teljes JB több exploittal",
+      "qualityOk": "Jailbreakelthető — kernel exploit elérhető",
+      "qualityPartial": "Részleges — csak usermode, nincs teljes JB",
+      "qualityNone": "Nincs elérhető jailbreak",
+      "usermodeOnly": "Csak usermode hozzáférés (mast1c0re, Lua). Még nincs kernel szintű JB.",
+      "noRecord": "Nincs bejegyzés az adatbázisban"
+    },
+    "months": [
+      "Január",
+      "Február",
+      "Március",
+      "Április",
+      "Május",
+      "Június",
+      "Július",
+      "Augusztus",
+      "Szeptember",
+      "Október",
+      "November",
+      "December"
+    ],
+    "countries": {
+      "China": "Kína",
+      "Malaysia": "Malajzia",
+      "Japan": "Japán",
+      "Unknown": "Ismeretlen"
+    }
   },
   "guide": {
     "title": "Hol találom a sorozatszámot?",
@@ -56,6 +98,18 @@
     "disclaimer": "Jogi nyilatkozat",
     "disclaimerDesc": "Ez az oldal nem áll kapcsolatban a Sony Interactive Entertainment-tel. A PlayStation és PS5 a Sony Interactive Entertainment LLC bejegyzett védjegyei."
   },
-  "footer": { "credits": "Készítők és közreműködők", "github": "Megtekintés GitHubon", "license": "MIT Licenc", "madeWith": "Készítette ❤️-vel", "inspiredBy": "Adatok inspirálva", "dataFrom": "Sorozatszám adatok forrása" },
-  "seo": { "pageTitle": "Jailbreakelhető a PS5-öm? | Sorozatszám Firmware Ellenőrző", "pageDescription": "Ellenőrizd, hogy a PS5 jailbreakelhető-e a sorozatszám megadásával.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Ingyenes eszköz a PS5 jailbreakelhetőségének ellenőrzéséhez." }
+  "footer": {
+    "credits": "Készítők és közreműködők",
+    "github": "Megtekintés GitHubon",
+    "license": "MIT Licenc",
+    "madeWith": "Készítette ❤️-vel",
+    "inspiredBy": "Adatok inspirálva",
+    "dataFrom": "Sorozatszám adatok forrása"
+  },
+  "seo": {
+    "pageTitle": "Jailbreakelhető a PS5-öm? | Sorozatszám Firmware Ellenőrző",
+    "pageDescription": "Ellenőrizd, hogy a PS5 jailbreakelhető-e a sorozatszám megadásával.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Ingyenes eszköz a PS5 jailbreakelhetőségének ellenőrzéséhez."
+  }
 }

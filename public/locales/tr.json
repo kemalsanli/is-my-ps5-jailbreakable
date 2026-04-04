@@ -18,7 +18,7 @@
   },
   "results": {
     "jailbreakable": {
-      "title": "Harika Haber!",
+      "title": "Jailbreak Edilebilir",
       "firmware": "Tahmini Firmware: {version} veya altı",
       "description": "Bu PS5 muhtemelen jailbreak edilebilir! Tahmini fabrika yazılımı, exploit edilebilir aralıkta."
     },
@@ -39,7 +39,45 @@
     },
     "detectedRegion": "Bölge: {region}",
     "detectedModel": "Model: {model}",
-    "manufacturedYear": "Üretim: {year}"
+    "manufacturedYear": "Üretim: {year}",
+    "details": {
+      "model": "Model",
+      "production": "Üretim",
+      "factoryFirmware": "Fabrika Firmware",
+      "kernelExploit": "Kernel Exploit",
+      "availableExploits": "Kullanılabilir Exploitler",
+      "warning": "Önemli Uyarı",
+      "warningFactory": "Seri numarası yalnızca FABRİKA firmware'ini gösterir. Konsol güncellenmiş olabilir.",
+      "warningPSN": "Doğrulamadan önce PSN'e bağlanmayın — otomatik güncellemeye yol açar.",
+      "warningRefurbished": "Yenilenmiş / refurbished konsollar bu tabloya uymaz.",
+      "qualityBest": "En iyi aralık — tüm exploitlerle tam JB",
+      "qualityGood": "İyi aralık — birden fazla exploit ile tam JB",
+      "qualityOk": "Jailbreak edilebilir — kernel exploit mevcut",
+      "qualityPartial": "Kısmi — yalnızca usermode, tam JB yok",
+      "qualityNone": "Jailbreak mevcut değil",
+      "usermodeOnly": "Yalnızca usermode erişimi (mast1c0re, Lua). Henüz kernel seviyesinde jailbreak yok.",
+      "noRecord": "Veritabanında kayıt yok"
+    },
+    "months": [
+      "Ocak",
+      "Şubat",
+      "Mart",
+      "Nisan",
+      "Mayıs",
+      "Haziran",
+      "Temmuz",
+      "Ağustos",
+      "Eylül",
+      "Ekim",
+      "Kasım",
+      "Aralık"
+    ],
+    "countries": {
+      "China": "Çin",
+      "Malaysia": "Malezya",
+      "Japan": "Japonya",
+      "Unknown": "Bilinmiyor"
+    }
   },
   "guide": {
     "title": "Seri Numarası Nerede Bulunur?",

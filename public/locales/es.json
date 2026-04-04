@@ -39,7 +39,45 @@
     },
     "detectedRegion": "Región: {region}",
     "detectedModel": "Modelo: {model}",
-    "manufacturedYear": "Fabricado: {year}"
+    "manufacturedYear": "Fabricado: {year}",
+    "details": {
+      "model": "Modelo",
+      "production": "Producción",
+      "factoryFirmware": "Firmware de fábrica",
+      "kernelExploit": "Exploit de kernel",
+      "availableExploits": "Exploits disponibles",
+      "warning": "Advertencia importante",
+      "warningFactory": "El número de serie solo muestra el firmware de FÁBRICA. La consola puede haber sido actualizada.",
+      "warningPSN": "NO te conectes a PSN antes de verificar — activa la actualización automática.",
+      "warningRefurbished": "Las unidades reacondicionadas no siguen esta tabla.",
+      "qualityBest": "Mejor rango — JB completo con todos los exploits",
+      "qualityGood": "Buen rango — JB completo con múltiples exploits",
+      "qualityOk": "Jailbreakable — exploit de kernel disponible",
+      "qualityPartial": "Parcial — solo modo usuario, sin JB completo",
+      "qualityNone": "No hay jailbreak disponible",
+      "usermodeOnly": "Solo acceso en modo usuario (mast1c0re, Lua). Aún no hay JB a nivel de kernel.",
+      "noRecord": "Sin registro en la base de datos"
+    },
+    "months": [
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre"
+    ],
+    "countries": {
+      "China": "China",
+      "Malaysia": "Malasia",
+      "Japan": "Japón",
+      "Unknown": "Desconocido"
+    }
   },
   "guide": {
     "title": "¿Dónde encontrar el número de serie?",

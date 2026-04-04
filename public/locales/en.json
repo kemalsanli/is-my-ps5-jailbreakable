@@ -18,7 +18,7 @@
   },
   "results": {
     "jailbreakable": {
-      "title": "Great News!",
+      "title": "Jailbreakable",
       "firmware": "Estimated Firmware: {version} or lower",
       "description": "This PS5 is likely jailbreakable! The estimated factory firmware is within the exploitable range."
     },
@@ -39,7 +39,45 @@
     },
     "detectedRegion": "Region: {region}",
     "detectedModel": "Model: {model}",
-    "manufacturedYear": "Manufactured: {year}"
+    "manufacturedYear": "Manufactured: {year}",
+    "details": {
+      "model": "Model",
+      "production": "Production",
+      "factoryFirmware": "Factory Firmware",
+      "kernelExploit": "Kernel Exploit",
+      "availableExploits": "Available Exploits",
+      "warning": "Important Warning",
+      "warningFactory": "Serial number only shows FACTORY firmware. Console may have been updated.",
+      "warningPSN": "Do NOT connect to PSN before verifying — it triggers auto-update.",
+      "warningRefurbished": "Refurbished / renewed units do not follow this table.",
+      "qualityBest": "Best range — full JB with all exploits",
+      "qualityGood": "Good range — full JB with multiple exploits",
+      "qualityOk": "Jailbreakable — kernel exploit available",
+      "qualityPartial": "Partial — usermode only, no full JB",
+      "qualityNone": "No jailbreak available",
+      "usermodeOnly": "Only usermode access (mast1c0re, Lua). No kernel-level jailbreak yet.",
+      "noRecord": "No record in database"
+    },
+    "months": [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ],
+    "countries": {
+      "China": "China",
+      "Malaysia": "Malaysia",
+      "Japan": "Japan",
+      "Unknown": "Unknown"
+    }
   },
   "guide": {
     "title": "Where to Find the Serial Number",

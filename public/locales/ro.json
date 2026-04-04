@@ -32,10 +32,52 @@
       "firmware": "Firmware estimat: aproximativ {version}",
       "description": "Acest PS5 a fost fabricat într-o perioadă de tranziție. Firmware-ul real poate diferi. Verifică direct pe consolă."
     },
-    "confidence": { "high": "Certitudine ridicată", "medium": "Certitudine medie", "low": "Certitudine scăzută" },
+    "confidence": {
+      "high": "Certitudine ridicată",
+      "medium": "Certitudine medie",
+      "low": "Certitudine scăzută"
+    },
     "detectedRegion": "Regiune: {region}",
     "detectedModel": "Model: {model}",
-    "manufacturedYear": "Fabricat: {year}"
+    "manufacturedYear": "Fabricat: {year}",
+    "details": {
+      "model": "Model",
+      "production": "Producție",
+      "factoryFirmware": "Firmware fabrică",
+      "kernelExploit": "Exploit kernel",
+      "availableExploits": "Exploituri disponibile",
+      "warning": "Avertisment important",
+      "warningFactory": "Numărul de serie arată doar firmware-ul de FABRICĂ. Consola poate fi actualizată.",
+      "warningPSN": "NU vă conectați la PSN înainte de verificare — declanșează actualizarea automată.",
+      "warningRefurbished": "Unitățile recondiţionate nu urmează acest tabel.",
+      "qualityBest": "Cel mai bun interval — JB complet cu toate exploiturile",
+      "qualityGood": "Interval bun — JB complet cu mai multe exploituri",
+      "qualityOk": "Jailbreakabil — exploit kernel disponibil",
+      "qualityPartial": "Parțial — doar usermode, fără JB complet",
+      "qualityNone": "Nu este disponibil niciun jailbreak",
+      "usermodeOnly": "Doar acces usermode (mast1c0re, Lua). Încă nu există JB la nivel de kernel.",
+      "noRecord": "Niciun înregistrare în baza de date"
+    },
+    "months": [
+      "Ianuarie",
+      "Februarie",
+      "Martie",
+      "Aprilie",
+      "Mai",
+      "Iunie",
+      "Iulie",
+      "August",
+      "Septembrie",
+      "Octombrie",
+      "Noiembrie",
+      "Decembrie"
+    ],
+    "countries": {
+      "China": "China",
+      "Malaysia": "Malaezia",
+      "Japan": "Japonia",
+      "Unknown": "Necunoscut"
+    }
   },
   "guide": {
     "title": "Unde găsesc numărul de serie?",
@@ -56,6 +98,18 @@
     "disclaimer": "Declinare a responsabilității",
     "disclaimerDesc": "Acest site nu este afiliat cu Sony Interactive Entertainment. PlayStation și PS5 sunt mărci comerciale înregistrate ale Sony Interactive Entertainment LLC."
   },
-  "footer": { "credits": "Credite și contributori", "github": "Vezi pe GitHub", "license": "Licență MIT", "madeWith": "Făcut cu ❤️ de", "inspiredBy": "Date inspirate de", "dataFrom": "Date numere de serie de la" },
-  "seo": { "pageTitle": "PS5-ul meu poate fi jailbreak-uit? | Verificator Firmware Număr de Serie", "pageDescription": "Verifică dacă PlayStation 5 poate fi jailbreak-uit prin introducerea numărului de serie.", "ogTitle": "PS5 Jailbreak Checker", "ogDescription": "Instrument gratuit pentru verificarea jailbreak-uibilității PS5." }
+  "footer": {
+    "credits": "Credite și contributori",
+    "github": "Vezi pe GitHub",
+    "license": "Licență MIT",
+    "madeWith": "Făcut cu ❤️ de",
+    "inspiredBy": "Date inspirate de",
+    "dataFrom": "Date numere de serie de la"
+  },
+  "seo": {
+    "pageTitle": "PS5-ul meu poate fi jailbreak-uit? | Verificator Firmware Număr de Serie",
+    "pageDescription": "Verifică dacă PlayStation 5 poate fi jailbreak-uit prin introducerea numărului de serie.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Instrument gratuit pentru verificarea jailbreak-uibilității PS5."
+  }
 }

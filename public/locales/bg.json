@@ -1,1 +1,115 @@
-{"common":{"title":"Въведете вашия\nсериен номер.","description":"Проверете дали PlayStation 5 може да бъде jailbreak-нат чрез въвеждане на серийния номер","check":"Проверка","clear":"Изчистване","loading":"Анализиране...","serialNumber":"Сериен номер","learnMore":"Научете повече"},"form":{"label":"Въведете серийния номер на PS5","placeholder":"напр. S01-G2121W9D1234","hint":"Серийният номер се намира на гърба/дъното на PS5","invalidFormat":"Невалиден формат на сериен номер.","tooShort":"Серийният номер е твърде кратък. Въведете поне 10 символа.","required":"Моля, въведете сериен номер"},"results":{"jailbreakable":{"title":"Добри новини!","firmware":"Приблизителен фърмуер: {version} или по-нисък","description":"Този PS5 вероятно може да бъде jailbreak-нат!"},"notJailbreakable":{"title":"Не може да бъде Jailbreak-нат","firmware":"Приблизителен фърмуер: {version}","description":"Този PS5 вероятно не може да бъде jailbreak-нат в момента."},"uncertain":{"title":"Несигурно","firmware":"Приблизителен фърмуер: около {version}","description":"Този PS5 е произведен в преходен период. Проверете директно на конзолата."},"confidence":{"high":"Висока увереност","medium":"Средна увереност","low":"Ниска увереност"},"detectedRegion":"Регион: {region}","detectedModel":"Модел: {model}","manufacturedYear":"Произведен: {year}"},"guide":{"title":"Къде да намеря серийния номер?","subtitle":"Проверете серийния номер преди покупка","step1Title":"Стъпка 1: Проверете кутията","step1Desc":"Погледнете дъното на кутията на PS5. Серийният номер е отпечатан на етикет.","step2Title":"Стъпка 2: Намерете етикета с баркод","step2Desc":"Намерете етикета с баркод на кутията.","step3Title":"Стъпка 3: Въведете серийния номер","step3Desc":"Серийният номер започва с 'S01-'. Въведете го в проверката по-горе."},"about":{"title":"За този инструмент","whatIsThis":"Какво е това?","whatIsThisDesc":"Този инструмент помага да определите дали PS5 може да бъде jailbreak-нат.","howItWorks":"Как работи?","howItWorksDesc":"Конзолите PS5 се изпращат с фабричен фърмуер, който съответства на датата на производство.","disclaimer":"Отказ от отговорност","disclaimerDesc":"Този сайт не е свързан със Sony Interactive Entertainment. PlayStation и PS5 са регистрирани търговски марки на Sony Interactive Entertainment LLC."},"footer":{"credits":"Кредити и сътрудници","github":"Вижте в GitHub","license":"MIT Лиценз","madeWith":"Направено с ❤️","inspiredBy":"Данни вдъхновени от","dataFrom":"Данни за серийни номера от"},"seo":{"pageTitle":"Може ли PS5 да бъде jailbreak-нат?","pageDescription":"Проверете дали PS5 може да бъде jailbreak-нат.","ogTitle":"PS5 Jailbreak Checker","ogDescription":"Безплатен инструмент за проверка на jailbreak PS5."}}
+{
+  "common": {
+    "title": "Въведете вашия\nсериен номер.",
+    "description": "Проверете дали PlayStation 5 може да бъде jailbreak-нат чрез въвеждане на серийния номер",
+    "check": "Проверка",
+    "clear": "Изчистване",
+    "loading": "Анализиране...",
+    "serialNumber": "Сериен номер",
+    "learnMore": "Научете повече"
+  },
+  "form": {
+    "label": "Въведете серийния номер на PS5",
+    "placeholder": "напр. S01-G2121W9D1234",
+    "hint": "Серийният номер се намира на гърба/дъното на PS5",
+    "invalidFormat": "Невалиден формат на сериен номер.",
+    "tooShort": "Серийният номер е твърде кратък. Въведете поне 10 символа.",
+    "required": "Моля, въведете сериен номер"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Добри новини!",
+      "firmware": "Приблизителен фърмуер: {version} или по-нисък",
+      "description": "Този PS5 вероятно може да бъде jailbreak-нат!"
+    },
+    "notJailbreakable": {
+      "title": "Не може да бъде Jailbreak-нат",
+      "firmware": "Приблизителен фърмуер: {version}",
+      "description": "Този PS5 вероятно не може да бъде jailbreak-нат в момента."
+    },
+    "uncertain": {
+      "title": "Несигурно",
+      "firmware": "Приблизителен фърмуер: около {version}",
+      "description": "Този PS5 е произведен в преходен период. Проверете директно на конзолата."
+    },
+    "confidence": {
+      "high": "Висока увереност",
+      "medium": "Средна увереност",
+      "low": "Ниска увереност"
+    },
+    "detectedRegion": "Регион: {region}",
+    "detectedModel": "Модел: {model}",
+    "manufacturedYear": "Произведен: {year}",
+    "details": {
+      "model": "Модел",
+      "production": "Производство",
+      "factoryFirmware": "Фабричен фърмуер",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Налични exploit-и",
+      "warning": "Важно предупреждение",
+      "warningFactory": "Серийният номер показва само ФАБРИЧНИЯ фърмуер. Конзолата може да е актуализирана.",
+      "warningPSN": "НЕ се свързвайте с PSN преди проверка — задейства автоматично обновяване.",
+      "warningRefurbished": "Подновените устройства не следват тази таблица.",
+      "qualityBest": "Най-добър диапазон — пълен JB с всички exploit-и",
+      "qualityGood": "Добър диапазон — пълен JB с множество exploit-и",
+      "qualityOk": "Възможен jailbreak — kernel exploit наличен",
+      "qualityPartial": "Частичен — само usermode, без пълен JB",
+      "qualityNone": "Няма наличен jailbreak",
+      "usermodeOnly": "Само usermode достъп (mast1c0re, Lua). Все още няма JB на ниво ядро.",
+      "noRecord": "Няма запис в базата данни"
+    },
+    "months": [
+      "Януари",
+      "Февруари",
+      "Март",
+      "Април",
+      "Май",
+      "Юни",
+      "Юли",
+      "Август",
+      "Септември",
+      "Октомври",
+      "Ноември",
+      "Декември"
+    ],
+    "countries": {
+      "China": "Китай",
+      "Malaysia": "Малайзия",
+      "Japan": "Япония",
+      "Unknown": "Неизвестно"
+    }
+  },
+  "guide": {
+    "title": "Къде да намеря серийния номер?",
+    "subtitle": "Проверете серийния номер преди покупка",
+    "step1Title": "Стъпка 1: Проверете кутията",
+    "step1Desc": "Погледнете дъното на кутията на PS5. Серийният номер е отпечатан на етикет.",
+    "step2Title": "Стъпка 2: Намерете етикета с баркод",
+    "step2Desc": "Намерете етикета с баркод на кутията.",
+    "step3Title": "Стъпка 3: Въведете серийния номер",
+    "step3Desc": "Серийният номер започва с 'S01-'. Въведете го в проверката по-горе."
+  },
+  "about": {
+    "title": "За този инструмент",
+    "whatIsThis": "Какво е това?",
+    "whatIsThisDesc": "Този инструмент помага да определите дали PS5 може да бъде jailbreak-нат.",
+    "howItWorks": "Как работи?",
+    "howItWorksDesc": "Конзолите PS5 се изпращат с фабричен фърмуер, който съответства на датата на производство.",
+    "disclaimer": "Отказ от отговорност",
+    "disclaimerDesc": "Този сайт не е свързан със Sony Interactive Entertainment. PlayStation и PS5 са регистрирани търговски марки на Sony Interactive Entertainment LLC."
+  },
+  "footer": {
+    "credits": "Кредити и сътрудници",
+    "github": "Вижте в GitHub",
+    "license": "MIT Лиценз",
+    "madeWith": "Направено с ❤️",
+    "inspiredBy": "Данни вдъхновени от",
+    "dataFrom": "Данни за серийни номера от"
+  },
+  "seo": {
+    "pageTitle": "Може ли PS5 да бъде jailbreak-нат?",
+    "pageDescription": "Проверете дали PS5 може да бъде jailbreak-нат.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Безплатен инструмент за проверка на jailbreak PS5."
+  }
+}

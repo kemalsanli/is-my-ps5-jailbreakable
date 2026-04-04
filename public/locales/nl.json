@@ -39,7 +39,45 @@
     },
     "detectedRegion": "Regio: {region}",
     "detectedModel": "Model: {model}",
-    "manufacturedYear": "Geproduceerd: {year}"
+    "manufacturedYear": "Geproduceerd: {year}",
+    "details": {
+      "model": "Model",
+      "production": "Productie",
+      "factoryFirmware": "Fabrieksfirmware",
+      "kernelExploit": "Kernel-exploit",
+      "availableExploits": "Beschikbare exploits",
+      "warning": "Belangrijke waarschuwing",
+      "warningFactory": "Het serienummer toont alleen de FABRIEKSFIRMWARE. De console kan zijn bijgewerkt.",
+      "warningPSN": "Maak GEEN verbinding met PSN voordat u verifieert — dit activeert auto-update.",
+      "warningRefurbished": "Gereviseerde apparaten volgen deze tabel niet.",
+      "qualityBest": "Beste bereik — volledige JB met alle exploits",
+      "qualityGood": "Goed bereik — volledige JB met meerdere exploits",
+      "qualityOk": "Jailbreakbaar — kernel-exploit beschikbaar",
+      "qualityPartial": "Gedeeltelijk — alleen usermode, geen volledige JB",
+      "qualityNone": "Geen jailbreak beschikbaar",
+      "usermodeOnly": "Alleen usermode-toegang (mast1c0re, Lua). Nog geen kernel-level JB.",
+      "noRecord": "Geen record in database"
+    },
+    "months": [
+      "Januari",
+      "Februari",
+      "Maart",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Augustus",
+      "September",
+      "Oktober",
+      "November",
+      "December"
+    ],
+    "countries": {
+      "China": "China",
+      "Malaysia": "Maleisië",
+      "Japan": "Japan",
+      "Unknown": "Onbekend"
+    }
   },
   "guide": {
     "title": "Waar vind ik het serienummer?",

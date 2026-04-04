@@ -1,1 +1,115 @@
-{"common":{"title":"Įveskite savo\nserijos numerį.","description":"Patikrinkite, ar jūsų PlayStation 5 galima jailbreak'inti įvedant serijos numerį","check":"Tikrinti","clear":"Valyti","loading":"Analizuojama...","serialNumber":"Serijos numeris","learnMore":"Sužinoti daugiau"},"form":{"label":"Įveskite PS5 serijos numerį","placeholder":"pvz. S01-G2121W9D1234","hint":"Serijos numeris yra PS5 galinėje/apatinėje pusėje","invalidFormat":"Neteisingas serijos numerio formatas.","tooShort":"Serijos numeris per trumpas. Įveskite bent 10 simbolių.","required":"Prašome įvesti serijos numerį"},"results":{"jailbreakable":{"title":"Puikios naujienos!","firmware":"Numatoma programinė įranga: {version} arba žemesnė","description":"Šis PS5 tikriausiai gali būti jailbreak'intas!"},"notJailbreakable":{"title":"Negalima Jailbreak'inti","firmware":"Numatoma programinė įranga: {version}","description":"Šis PS5 šiuo metu tikriausiai negali būti jailbreak'intas."},"uncertain":{"title":"Neaišku","firmware":"Numatoma programinė įranga: apie {version}","description":"Šis PS5 pagamintas pereinamuoju laikotarpiu. Patikrinkite tiesiogiai konsolėje."},"confidence":{"high":"Didelis tikrumas","medium":"Vidutinis tikrumas","low":"Mažas tikrumas"},"detectedRegion":"Regionas: {region}","detectedModel":"Modelis: {model}","manufacturedYear":"Pagaminta: {year}"},"guide":{"title":"Kur rasti serijos numerį?","subtitle":"Patikrinkite serijos numerį prieš perkant","step1Title":"1 žingsnis: Patikrinkite dėžę","step1Desc":"Pažiūrėkite į PS5 dėžės apačią. Serijos numeris atspausdintas ant lipduko.","step2Title":"2 žingsnis: Raskite brūkšninio kodo lipduką","step2Desc":"Raskite brūkšninio kodo lipduką ant dėžės.","step3Title":"3 žingsnis: Įveskite serijos numerį","step3Desc":"Serijos numeris prasideda 'S01-'. Įveskite jį tikrintuve viršuje."},"about":{"title":"Apie šį įrankį","whatIsThis":"Kas tai?","whatIsThisDesc":"Šis įrankis padeda nustatyti, ar PS5 galima jailbreak'inti.","howItWorks":"Kaip tai veikia?","howItWorksDesc":"PS5 konsolės pristatoma su gamykline programine įranga, atitinkančia gamybos datą.","disclaimer":"Atsisakymas","disclaimerDesc":"Ši svetainė nesusijusi su Sony Interactive Entertainment. PlayStation ir PS5 yra registruoti Sony Interactive Entertainment LLC prekės ženklai."},"footer":{"credits":"Padėkos ir bendradarbiai","github":"Žiūrėti GitHub","license":"MIT Licencija","madeWith":"Sukurta su ❤️","inspiredBy":"Duomenys įkvėpti","dataFrom":"Serijos numerių duomenys iš"},"seo":{"pageTitle":"Ar galima jailbreak'inti mano PS5?","pageDescription":"Patikrinkite, ar PS5 galima jailbreak'inti.","ogTitle":"PS5 Jailbreak Checker","ogDescription":"Nemokamas PS5 jailbreak tikrinimo įrankis."}}
+{
+  "common": {
+    "title": "Įveskite savo\nserijos numerį.",
+    "description": "Patikrinkite, ar jūsų PlayStation 5 galima jailbreak'inti įvedant serijos numerį",
+    "check": "Tikrinti",
+    "clear": "Valyti",
+    "loading": "Analizuojama...",
+    "serialNumber": "Serijos numeris",
+    "learnMore": "Sužinoti daugiau"
+  },
+  "form": {
+    "label": "Įveskite PS5 serijos numerį",
+    "placeholder": "pvz. S01-G2121W9D1234",
+    "hint": "Serijos numeris yra PS5 galinėje/apatinėje pusėje",
+    "invalidFormat": "Neteisingas serijos numerio formatas.",
+    "tooShort": "Serijos numeris per trumpas. Įveskite bent 10 simbolių.",
+    "required": "Prašome įvesti serijos numerį"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Puikios naujienos!",
+      "firmware": "Numatoma programinė įranga: {version} arba žemesnė",
+      "description": "Šis PS5 tikriausiai gali būti jailbreak'intas!"
+    },
+    "notJailbreakable": {
+      "title": "Negalima Jailbreak'inti",
+      "firmware": "Numatoma programinė įranga: {version}",
+      "description": "Šis PS5 šiuo metu tikriausiai negali būti jailbreak'intas."
+    },
+    "uncertain": {
+      "title": "Neaišku",
+      "firmware": "Numatoma programinė įranga: apie {version}",
+      "description": "Šis PS5 pagamintas pereinamuoju laikotarpiu. Patikrinkite tiesiogiai konsolėje."
+    },
+    "confidence": {
+      "high": "Didelis tikrumas",
+      "medium": "Vidutinis tikrumas",
+      "low": "Mažas tikrumas"
+    },
+    "detectedRegion": "Regionas: {region}",
+    "detectedModel": "Modelis: {model}",
+    "manufacturedYear": "Pagaminta: {year}",
+    "details": {
+      "model": "Modelis",
+      "production": "Gamyba",
+      "factoryFirmware": "Gamyklinė programinė įranga",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Galimi exploit'ai",
+      "warning": "Svarbus įspėjimas",
+      "warningFactory": "Serijinis numeris rodo tik GAMYKLINĘ programinę įrangą. Konsolė galėjo būti atnaujinta.",
+      "warningPSN": "NESIJUNKITE prie PSN prieš patikrinimą — paleis automatinį naujinimą.",
+      "warningRefurbished": "Atnaujinti įrenginiai neatitinka šios lentelės.",
+      "qualityBest": "Geriausias diapazonas — pilnas JB su visais exploit'ais",
+      "qualityGood": "Geras diapazonas — pilnas JB su keliais exploit'ais",
+      "qualityOk": "Galimas jailbreak — kernel exploit prieinamas",
+      "qualityPartial": "Dalinis — tik usermode, be pilno JB",
+      "qualityNone": "Jailbreak neprieinamas",
+      "usermodeOnly": "Tik usermode prieiga (mast1c0re, Lua). Dar nėra kernel lygio JB.",
+      "noRecord": "Nėra įrašo duomenų bazėje"
+    },
+    "months": [
+      "Sausis",
+      "Vasaris",
+      "Kovas",
+      "Balandis",
+      "Gegužė",
+      "Birželis",
+      "Liepa",
+      "Rugpjūtis",
+      "Rugsėjis",
+      "Spalis",
+      "Lapkritis",
+      "Gruodis"
+    ],
+    "countries": {
+      "China": "Kinija",
+      "Malaysia": "Malaizija",
+      "Japan": "Japonija",
+      "Unknown": "Nežinoma"
+    }
+  },
+  "guide": {
+    "title": "Kur rasti serijos numerį?",
+    "subtitle": "Patikrinkite serijos numerį prieš perkant",
+    "step1Title": "1 žingsnis: Patikrinkite dėžę",
+    "step1Desc": "Pažiūrėkite į PS5 dėžės apačią. Serijos numeris atspausdintas ant lipduko.",
+    "step2Title": "2 žingsnis: Raskite brūkšninio kodo lipduką",
+    "step2Desc": "Raskite brūkšninio kodo lipduką ant dėžės.",
+    "step3Title": "3 žingsnis: Įveskite serijos numerį",
+    "step3Desc": "Serijos numeris prasideda 'S01-'. Įveskite jį tikrintuve viršuje."
+  },
+  "about": {
+    "title": "Apie šį įrankį",
+    "whatIsThis": "Kas tai?",
+    "whatIsThisDesc": "Šis įrankis padeda nustatyti, ar PS5 galima jailbreak'inti.",
+    "howItWorks": "Kaip tai veikia?",
+    "howItWorksDesc": "PS5 konsolės pristatoma su gamykline programine įranga, atitinkančia gamybos datą.",
+    "disclaimer": "Atsisakymas",
+    "disclaimerDesc": "Ši svetainė nesusijusi su Sony Interactive Entertainment. PlayStation ir PS5 yra registruoti Sony Interactive Entertainment LLC prekės ženklai."
+  },
+  "footer": {
+    "credits": "Padėkos ir bendradarbiai",
+    "github": "Žiūrėti GitHub",
+    "license": "MIT Licencija",
+    "madeWith": "Sukurta su ❤️",
+    "inspiredBy": "Duomenys įkvėpti",
+    "dataFrom": "Serijos numerių duomenys iš"
+  },
+  "seo": {
+    "pageTitle": "Ar galima jailbreak'inti mano PS5?",
+    "pageDescription": "Patikrinkite, ar PS5 galima jailbreak'inti.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Nemokamas PS5 jailbreak tikrinimo įrankis."
+  }
+}

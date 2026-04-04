@@ -1,1 +1,115 @@
-{"common":{"title":"Εισαγάγετε τον\nσειριακό αριθμό.","description":"Ελέγξτε αν το PlayStation 5 μπορεί να γίνει jailbreak εισάγοντας τον σειριακό αριθμό","check":"Έλεγχος","clear":"Καθαρισμός","loading":"Ανάλυση...","serialNumber":"Σειριακός Αριθμός","learnMore":"Μάθετε περισσότερα"},"form":{"label":"Εισαγάγετε τον σειριακό αριθμό PS5","placeholder":"π.χ. S01-G2121W9D1234","hint":"Ο σειριακός αριθμός βρίσκεται στο πίσω/κάτω μέρος του PS5","invalidFormat":"Μη έγκυρη μορφή σειριακού αριθμού.","tooShort":"Ο σειριακός αριθμός είναι πολύ μικρός. Εισαγάγετε τουλάχιστον 10 χαρακτήρες.","required":"Εισαγάγετε σειριακό αριθμό"},"results":{"jailbreakable":{"title":"Καλά νέα!","firmware":"Εκτιμώμενο firmware: {version} ή χαμηλότερο","description":"Αυτό το PS5 πιθανόν μπορεί να γίνει jailbreak!"},"notJailbreakable":{"title":"Δεν μπορεί να γίνει Jailbreak","firmware":"Εκτιμώμενο firmware: {version}","description":"Αυτό το PS5 πιθανόν δεν μπορεί να γίνει jailbreak αυτή τη στιγμή."},"uncertain":{"title":"Αβέβαιο","firmware":"Εκτιμώμενο firmware: περίπου {version}","description":"Αυτό το PS5 κατασκευάστηκε σε μεταβατική περίοδο. Ελέγξτε απευθείας στην κονσόλα."},"confidence":{"high":"Υψηλή βεβαιότητα","medium":"Μέτρια βεβαιότητα","low":"Χαμηλή βεβαιότητα"},"detectedRegion":"Περιοχή: {region}","detectedModel":"Μοντέλο: {model}","manufacturedYear":"Κατασκευή: {year}"},"guide":{"title":"Πού βρίσκω τον σειριακό αριθμό;","subtitle":"Ελέγξτε τον σειριακό αριθμό πριν την αγορά","step1Title":"Βήμα 1: Ελέγξτε το κουτί","step1Desc":"Κοιτάξτε στο κάτω μέρος του κουτιού PS5. Ο σειριακός αριθμός είναι τυπωμένος σε ετικέτα.","step2Title":"Βήμα 2: Βρείτε την ετικέτα barcode","step2Desc":"Βρείτε την ετικέτα barcode στο κουτί.","step3Title":"Βήμα 3: Εισαγάγετε τον σειριακό","step3Desc":"Ο σειριακός αριθμός ξεκινά με 'S01-'. Πληκτρολογήστε τον στον ελεγκτή."},"about":{"title":"Σχετικά με αυτό το εργαλείο","whatIsThis":"Τι είναι αυτό;","whatIsThisDesc":"Αυτό το εργαλείο βοηθά να προσδιορίσετε αν ένα PS5 μπορεί να γίνει jailbreak.","howItWorks":"Πώς λειτουργεί;","howItWorksDesc":"Τα PS5 αποστέλλονται με firmware που αντιστοιχεί στην ημερομηνία κατασκευής.","disclaimer":"Αποποίηση ευθύνης","disclaimerDesc":"Αυτός ο ιστότοπος δεν σχετίζεται με τη Sony Interactive Entertainment. Το PlayStation και το PS5 είναι κατοχυρωμένα εμπορικά σήματα της Sony Interactive Entertainment LLC."},"footer":{"credits":"Συντελεστές","github":"Δείτε στο GitHub","license":"Άδεια MIT","madeWith":"Φτιάχτηκε με ❤️","inspiredBy":"Δεδομένα εμπνευσμένα από","dataFrom":"Δεδομένα σειριακών αριθμών από"},"seo":{"pageTitle":"Μπορεί να γίνει jailbreak το PS5 μου;","pageDescription":"Ελέγξτε αν το PS5 μπορεί να γίνει jailbreak.","ogTitle":"PS5 Jailbreak Checker","ogDescription":"Δωρεάν εργαλείο ελέγχου jailbreak PS5."}}
+{
+  "common": {
+    "title": "Εισαγάγετε τον\nσειριακό αριθμό.",
+    "description": "Ελέγξτε αν το PlayStation 5 μπορεί να γίνει jailbreak εισάγοντας τον σειριακό αριθμό",
+    "check": "Έλεγχος",
+    "clear": "Καθαρισμός",
+    "loading": "Ανάλυση...",
+    "serialNumber": "Σειριακός Αριθμός",
+    "learnMore": "Μάθετε περισσότερα"
+  },
+  "form": {
+    "label": "Εισαγάγετε τον σειριακό αριθμό PS5",
+    "placeholder": "π.χ. S01-G2121W9D1234",
+    "hint": "Ο σειριακός αριθμός βρίσκεται στο πίσω/κάτω μέρος του PS5",
+    "invalidFormat": "Μη έγκυρη μορφή σειριακού αριθμού.",
+    "tooShort": "Ο σειριακός αριθμός είναι πολύ μικρός. Εισαγάγετε τουλάχιστον 10 χαρακτήρες.",
+    "required": "Εισαγάγετε σειριακό αριθμό"
+  },
+  "results": {
+    "jailbreakable": {
+      "title": "Καλά νέα!",
+      "firmware": "Εκτιμώμενο firmware: {version} ή χαμηλότερο",
+      "description": "Αυτό το PS5 πιθανόν μπορεί να γίνει jailbreak!"
+    },
+    "notJailbreakable": {
+      "title": "Δεν μπορεί να γίνει Jailbreak",
+      "firmware": "Εκτιμώμενο firmware: {version}",
+      "description": "Αυτό το PS5 πιθανόν δεν μπορεί να γίνει jailbreak αυτή τη στιγμή."
+    },
+    "uncertain": {
+      "title": "Αβέβαιο",
+      "firmware": "Εκτιμώμενο firmware: περίπου {version}",
+      "description": "Αυτό το PS5 κατασκευάστηκε σε μεταβατική περίοδο. Ελέγξτε απευθείας στην κονσόλα."
+    },
+    "confidence": {
+      "high": "Υψηλή βεβαιότητα",
+      "medium": "Μέτρια βεβαιότητα",
+      "low": "Χαμηλή βεβαιότητα"
+    },
+    "detectedRegion": "Περιοχή: {region}",
+    "detectedModel": "Μοντέλο: {model}",
+    "manufacturedYear": "Κατασκευή: {year}",
+    "details": {
+      "model": "Μοντέλο",
+      "production": "Παραγωγή",
+      "factoryFirmware": "Firmware εργοστασίου",
+      "kernelExploit": "Kernel exploit",
+      "availableExploits": "Διαθέσιμα exploits",
+      "warning": "Σημαντική προειδοποίηση",
+      "warningFactory": "Ο σειριακός αριθμός δείχνει μόνο το ΕΡΓΟΣΤΑΣΙΑΚΟ firmware. Η κονσόλα μπορεί να έχει ενημερωθεί.",
+      "warningPSN": "ΜΗΝ συνδέεστε στο PSN πριν την επαλήθευση — ενεργοποιεί αυτόματη ενημέρωση.",
+      "warningRefurbished": "Οι ανακαινισμένες μονάδες δεν ακολουθούν αυτόν τον πίνακα.",
+      "qualityBest": "Καλύτερο εύρος — πλήρες JB με όλα τα exploits",
+      "qualityGood": "Καλό εύρος — πλήρες JB με πολλαπλά exploits",
+      "qualityOk": "Jailbreakable — kernel exploit διαθέσιμο",
+      "qualityPartial": "Μερικό — μόνο usermode, χωρίς πλήρες JB",
+      "qualityNone": "Δεν υπάρχει διαθέσιμο jailbreak",
+      "usermodeOnly": "Μόνο πρόσβαση usermode (mast1c0re, Lua). Δεν υπάρχει ακόμα JB σε επίπεδο kernel.",
+      "noRecord": "Δεν βρέθηκε εγγραφή στη βάση δεδομένων"
+    },
+    "months": [
+      "Ιανουάριος",
+      "Φεβρουάριος",
+      "Μάρτιος",
+      "Απρίλιος",
+      "Μάιος",
+      "Ιούνιος",
+      "Ιούλιος",
+      "Αύγουστος",
+      "Σεπτέμβριος",
+      "Οκτώβριος",
+      "Νοέμβριος",
+      "Δεκέμβριος"
+    ],
+    "countries": {
+      "China": "Κίνα",
+      "Malaysia": "Μαλαισία",
+      "Japan": "Ιαπωνία",
+      "Unknown": "Άγνωστο"
+    }
+  },
+  "guide": {
+    "title": "Πού βρίσκω τον σειριακό αριθμό;",
+    "subtitle": "Ελέγξτε τον σειριακό αριθμό πριν την αγορά",
+    "step1Title": "Βήμα 1: Ελέγξτε το κουτί",
+    "step1Desc": "Κοιτάξτε στο κάτω μέρος του κουτιού PS5. Ο σειριακός αριθμός είναι τυπωμένος σε ετικέτα.",
+    "step2Title": "Βήμα 2: Βρείτε την ετικέτα barcode",
+    "step2Desc": "Βρείτε την ετικέτα barcode στο κουτί.",
+    "step3Title": "Βήμα 3: Εισαγάγετε τον σειριακό",
+    "step3Desc": "Ο σειριακός αριθμός ξεκινά με 'S01-'. Πληκτρολογήστε τον στον ελεγκτή."
+  },
+  "about": {
+    "title": "Σχετικά με αυτό το εργαλείο",
+    "whatIsThis": "Τι είναι αυτό;",
+    "whatIsThisDesc": "Αυτό το εργαλείο βοηθά να προσδιορίσετε αν ένα PS5 μπορεί να γίνει jailbreak.",
+    "howItWorks": "Πώς λειτουργεί;",
+    "howItWorksDesc": "Τα PS5 αποστέλλονται με firmware που αντιστοιχεί στην ημερομηνία κατασκευής.",
+    "disclaimer": "Αποποίηση ευθύνης",
+    "disclaimerDesc": "Αυτός ο ιστότοπος δεν σχετίζεται με τη Sony Interactive Entertainment. Το PlayStation και το PS5 είναι κατοχυρωμένα εμπορικά σήματα της Sony Interactive Entertainment LLC."
+  },
+  "footer": {
+    "credits": "Συντελεστές",
+    "github": "Δείτε στο GitHub",
+    "license": "Άδεια MIT",
+    "madeWith": "Φτιάχτηκε με ❤️",
+    "inspiredBy": "Δεδομένα εμπνευσμένα από",
+    "dataFrom": "Δεδομένα σειριακών αριθμών από"
+  },
+  "seo": {
+    "pageTitle": "Μπορεί να γίνει jailbreak το PS5 μου;",
+    "pageDescription": "Ελέγξτε αν το PS5 μπορεί να γίνει jailbreak.",
+    "ogTitle": "PS5 Jailbreak Checker",
+    "ogDescription": "Δωρεάν εργαλείο ελέγχου jailbreak PS5."
+  }
+}
