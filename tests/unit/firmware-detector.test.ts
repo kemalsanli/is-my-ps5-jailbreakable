@@ -50,8 +50,8 @@ function makeModelResult(
 
 describe('Firmware Detector', () => {
   describe('MAX_EXPLOITABLE_FIRMWARE', () => {
-    it('should be 12.00', () => {
-      expect(MAX_EXPLOITABLE_FIRMWARE).toBe('12.00');
+    it('should be 12.40', () => {
+      expect(MAX_EXPLOITABLE_FIRMWARE).toBe('12.40');
     });
   });
 
@@ -73,21 +73,21 @@ describe('Firmware Detector', () => {
       });
 
       it('should detect FAT CFI-11xx Nov 2022 (22B) as JAILBREAKABLE', () => {
-        // 22B → FW 6.02 — exploitable (≤ 12.00)
+        // 22B → FW 6.02 — exploitable (≤ 12.40)
         const result = detectFirmware(makeBarcodeResult('22B', 'CFI-11xx', 2022, 11));
         expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('6.02');
       });
 
       it('should detect FAT CFI-12xx Aug 2023 (338) as JAILBREAKABLE', () => {
-        // 338 → FW 7.60 / 7.61 — exploitable (≤ 12.00)
+        // 338 → FW 7.60 / 7.61 — exploitable (≤ 12.40)
         const result = detectFirmware(makeBarcodeResult('338', 'CFI-12xx', 2023, 8));
         expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('7.60');
       });
 
       it('should detect Slim CFI-20xx Aug 2024 (448) as JAILBREAKABLE', () => {
-        // 448 → FW 9.40 / 9.60 — now exploitable with Lapse kernel exploit (≤ 12.00)
+        // 448 → FW 9.40 / 9.60 — exploitable with Lapse kernel exploit (≤ 12.40)
         const result = detectFirmware(makeBarcodeResult('448', 'CFI-20xx', 2024, 8));
         expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('9.40');
@@ -107,25 +107,25 @@ describe('Firmware Detector', () => {
         expect(result.firmware).toContain('9.05');
       });
 
-      it('should detect Pro 2nd gen CFI-71xx (25B) as UNCERTAIN', () => {
-        // 25B → FW 12.00 / 12.02 — crosses the 12.00 boundary
+      it('should detect Pro 2nd gen CFI-71xx (25B) as JAILBREAKABLE', () => {
+        // 25B → FW 12.00 / 12.02 — both ≤ 12.40 (kqueueex kernel + Y2JB/Netflix/BD-JB-EX entry)
         const result = detectFirmware(makeBarcodeResult('25B', 'CFI-71xx', 2025, 11));
-        expect(result.status).toBe('UNCERTAIN');
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('12.00');
         expect(result.firmware).toContain('12.02');
       });
 
-      it('should detect Pro 2nd gen CFI-71xx (25C) as NOT_JAILBREAKABLE', () => {
-        // 25C → FW 12.02 / 12.20 — both > 12.00
+      it('should detect Pro 2nd gen CFI-71xx (25C) as JAILBREAKABLE', () => {
+        // 25C → FW 12.02 / 12.20 — both ≤ 12.40
         const result = detectFirmware(makeBarcodeResult('25C', 'CFI-71xx', 2025, 12));
-        expect(result.status).toBe('NOT_JAILBREAKABLE');
+        expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toContain('12.02');
       });
 
-      it('should detect Slim 2nd gen CFI-21xx (55B) as NOT_JAILBREAKABLE', () => {
-        // 55B → FW 12.02 / 12.20 — both > 12.00
+      it('should detect Slim 2nd gen CFI-21xx (55B) as JAILBREAKABLE', () => {
+        // 55B → FW 12.02 / 12.20 — both ≤ 12.40
         const result = detectFirmware(makeBarcodeResult('55B', 'CFI-21xx', 2025, 11));
-        expect(result.status).toBe('NOT_JAILBREAKABLE');
+        expect(result.status).toBe('JAILBREAKABLE');
       });
     });
 
@@ -160,6 +160,14 @@ describe('Firmware Detector', () => {
         const result = detectFirmware(makeBarcodeResult('44B', 'CFI-20xx', 2024, 11));
         expect(result.jailbreakInfo.quality).toBe('OK');
         expect(result.jailbreakInfo.kernelExploit).toBe('NetControl UAF');
+      });
+
+      it('should return OK quality for FW 12.02-12.40 (kqueueex UaF)', () => {
+        // 55B → FW 12.02 / 12.20 — kqueueex kernel + Y2JB/Netflix/BD-JB-EX entry
+        const result = detectFirmware(makeBarcodeResult('55B', 'CFI-21xx', 2025, 11));
+        expect(result.jailbreakInfo.quality).toBe('OK');
+        expect(result.jailbreakInfo.kernelExploit).toBe('kqueueex UaF');
+        expect(result.jailbreakInfo.hasFullJB).toBe(true);
       });
 
       it('should include model type info', () => {
@@ -197,14 +205,14 @@ describe('Firmware Detector', () => {
       });
 
       it('should detect CFI-2008A as JAILBREAKABLE (FW 10.00, Lapse exploit)', () => {
-        // With MAX=12.00, FW 10.00 is exploitable
+        // With MAX=12.40, FW 10.00 is exploitable
         const result = detectFirmware(makeModelResult('CFI-2008A'));
         expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toBe('10.00');
       });
 
       it('should detect CFI-2010A as JAILBREAKABLE (FW 11.00, NetControl UAF)', () => {
-        // With MAX=12.00, FW 11.00 is exploitable
+        // With MAX=12.40, FW 11.00 is exploitable
         const result = detectFirmware(makeModelResult('CFI-2010A'));
         expect(result.status).toBe('JAILBREAKABLE');
         expect(result.firmware).toBe('11.00');
