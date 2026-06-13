@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { detectFirmware, MAX_EXPLOITABLE_FIRMWARE } from '@/lib/serial-validator/firmware-detector';
+import { detectFirmware, getJailbreakInfoForFirmware, MAX_EXPLOITABLE_FIRMWARE } from '@/lib/serial-validator/firmware-detector';
 import type { SerialParseResult } from '@/types/serial';
 
 /**
@@ -50,8 +50,51 @@ function makeModelResult(
 
 describe('Firmware Detector', () => {
   describe('MAX_EXPLOITABLE_FIRMWARE', () => {
-    it('should be 12.40', () => {
-      expect(MAX_EXPLOITABLE_FIRMWARE).toBe('12.40');
+    it('should be 12.70', () => {
+      expect(MAX_EXPLOITABLE_FIRMWARE).toBe('12.70');
+    });
+  });
+
+  // ── Per-firmware jailbreak mapping (direct) ──
+  // The 2026 CFI-21xx/71xx rows do exercise the 12.60–12.70 and 13.00+ branches
+  // via serial lookup (see crosscheck suite), but test getJailbreakInfoForFirmware()
+  // directly here to lock in each boundary independently of the lookup table.
+  describe('getJailbreakInfoForFirmware — high firmware boundaries', () => {
+    it('FW 12.40 → kqueueex, full JB (free Y2JB entry)', () => {
+      const jb = getJailbreakInfoForFirmware('12.40');
+      expect(jb.kernelExploit).toBe('kqueueex UaF');
+      expect(jb.hasFullJB).toBe(true);
+      expect(jb.quality).toBe('OK');
+    });
+
+    it('FW 12.60 → kqueueex, JAILBREAKABLE (P2JB + game-based Lua entry; YouTube Y2JB patched)', () => {
+      const jb = getJailbreakInfoForFirmware('12.60');
+      expect(jb.kernelExploit).toBe('kqueueex UaF');
+      expect(jb.hasFullJB).toBe(true);
+      expect(jb.quality).toBe('OK');
+      // Free YouTube-app Y2JB is patched from 12.60 — entry here is game-based Lua only.
+      expect(jb.exploits).toContain('mast1c0re');
+      expect(jb.exploits).not.toContain('Y2JB');
+    });
+
+    it('FW 12.70 → kqueueex, JAILBREAKABLE (ceiling)', () => {
+      const jb = getJailbreakInfoForFirmware('12.70');
+      expect(jb.kernelExploit).toBe('kqueueex UaF');
+      expect(jb.hasFullJB).toBe(true);
+      expect(jb.quality).toBe('OK');
+    });
+
+    it('FW 13.00 → no exploit (kqueueex patched in 13.00)', () => {
+      const jb = getJailbreakInfoForFirmware('13.00');
+      expect(jb.kernelExploit).toBe('None');
+      expect(jb.hasFullJB).toBe(false);
+      expect(jb.quality).toBe('NONE');
+    });
+
+    it('FW 13.40 (latest Sony) → no exploit', () => {
+      const jb = getJailbreakInfoForFirmware('13.40');
+      expect(jb.hasFullJB).toBe(false);
+      expect(jb.quality).toBe('NONE');
     });
   });
 

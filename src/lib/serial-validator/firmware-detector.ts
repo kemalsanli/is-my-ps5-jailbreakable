@@ -21,16 +21,21 @@ import type {
 /**
  * Maximum exploitable firmware version (current known jailbreak ceiling).
  *
- * FW ≤ 12.40 has a public end-to-end chain:
- *   - kernel: sys_kqueueex ucred UaF (Gezine, 2026-05-02, works ≤ 12.70)
- *   - entry:  Y2JB (YouTube, ≤ 12.40), Netflix-N-Hack (≤ 12.40), or BD-JB-EX (≤ 12.40)
+ * FW ≤ 12.70 has a public end-to-end kernel jailbreak:
+ *   - kernel: sys_kqueueex ucred reference-leak UaF — "P2JB" (Gezine). Works ≤ 12.70,
+ *             patched in FW 13.00. Supersedes the older sys_netcontrol double-fdrop (≤ 12.00).
+ *   - entry:  ≤ 12.40 — free Y2JB (PS5 YouTube app; the YouTube-app entry is patched
+ *             from 12.60), Netflix-N-Hack, BD-JB-EX, plus game-based Lua.
+ *             12.50–12.70 — game-based Lua entries only: mast1c0re / Luac0re /
+ *             Artemis-engine Lua / Ren'Py savedata (needs a compatible game).
+ *   - kstuff: PS4 fpkg / PS5 game-dump support reaches 12.70 (PSDevWiki changelog 2026-05-16),
+ *             so 12.50–12.70 is a full jailbreak once a game-based entry is used.
  *
- * FW 12.60+ patches all known usermode entry points (Y2JB, Netflix, BD-JB-EX),
- * so even though the kernel exploit still works up to 12.70, there is no
- * publicly released way to reach it on a stock 12.60/12.70 console.
- * FW 13.00+ patches the kqueueex kernel exploit itself.
+ * FW 13.00+ patches the kqueueex kernel exploit itself → not jailbreakable.
+ *
+ * Sources: psdevwiki.com/ps5/Vulnerabilities and /ps5/Serial_Number_guide (live, June 2026).
  */
-export const MAX_EXPLOITABLE_FIRMWARE = '12.40';
+export const MAX_EXPLOITABLE_FIRMWARE = '12.70';
 
 // ─── Month Names ─────────────────────────────────────────────────────
 const MONTH_NAMES = [
@@ -53,7 +58,7 @@ function getModelType(series: string): string {
  * Returns detailed jailbreak exploit information for a given firmware version.
  * Based on the comprehensive jailbreak status table.
  */
-function getJailbreakInfoForFirmware(fw: string): JailbreakExploitInfo {
+export function getJailbreakInfoForFirmware(fw: string): JailbreakExploitInfo {
   const fwNum = parseFirmwareToNumber(fw);
 
   // FW 1.00–1.14
@@ -138,8 +143,9 @@ function getJailbreakInfoForFirmware(fw: string): JailbreakExploitInfo {
     };
   }
   // FW 12.02–12.40
-  // sys_netcontrol patched in 12.02, but sys_kqueueex (Gezine 2026-05-02) works ≤ 12.70.
-  // Public usermode entries — Y2JB, Netflix-N-Hack, BD-JB-EX — all reach 12.40.
+  // sys_netcontrol patched in 12.02; sys_kqueueex (P2JB, Gezine) takes over and works ≤ 12.70.
+  // Free usermode entries available here: Y2JB (PS5 YouTube app, patched from 12.60),
+  // Netflix-N-Hack, BD-JB-EX — plus game-based Lua (mast1c0re / Artemis).
   if (fwNum <= 12.40) {
     return {
       kernelExploit: 'kqueueex UaF',
@@ -149,18 +155,19 @@ function getJailbreakInfoForFirmware(fw: string): JailbreakExploitInfo {
     };
   }
   // FW 12.60–12.70
-  // Kernel exploit (kqueueex) still works on 12.70, but all known usermode entry points
-  // (Y2JB, Netflix-N-Hack) were patched in 12.60 via the new "Media app" license requirement.
-  // No public way to reach the kernel exploit on a stock console here.
+  // kqueueex (P2JB) kernel works ≤ 12.70, reachable on a stock console via a game-based
+  // Lua entry: mast1c0re / Luac0re / Artemis-engine Lua / Ren'Py savedata. The free
+  // YouTube-app Y2JB entry is patched from 12.60, so a compatible game is required here.
+  // kstuff reaches 12.70, so PS4 fpkg / PS5 game-dumps work → full jailbreak.
   if (fwNum <= 12.70) {
     return {
-      kernelExploit: 'kqueueex UaF (no entry)',
-      hasFullJB: false,
-      exploits: ['mast1c0re (game disc)'],
-      quality: 'PARTIAL',
+      kernelExploit: 'kqueueex UaF',
+      hasFullJB: true,
+      exploits: ['kqueueex UaF Kernel', 'Luac0re', 'mast1c0re', 'Artemis Lua', "Ren'Py"],
+      quality: 'OK',
     };
   }
-  // FW 13.00+
+  // FW 13.00+ — kqueueex patched in 13.00; no public kernel jailbreak.
   return {
     kernelExploit: 'None',
     hasFullJB: false,
@@ -292,6 +299,14 @@ const FIRMWARE_TABLE: Record<string, { fw: string[]; series: string; estimated?:
   '55B': { fw: ['12.02', '12.20'], series: 'CFI-21xx' },
   '55C': { fw: ['12.02', '12.20'], series: 'CFI-21xx' },
 
+  // --- Slim 2nd gen — CFI-21xx (2026 production) ---
+  // 564/565 ship above the 12.70 ceiling (13.00+) → NOT exploitable.
+  '561': { fw: ['12.40', '12.60'], series: 'CFI-21xx' },
+  '562': { fw: ['12.60', '12.70'], series: 'CFI-21xx' },
+  '563': { fw: ['12.70', '13.00'], series: 'CFI-21xx' },
+  '564': { fw: ['13.00', '13.20'], series: 'CFI-21xx' },
+  '565': { fw: ['13.20'], series: 'CFI-21xx' },
+
   // --- Pro — CFI-70xx (2024 production, 1st gen Pro) ---
   '145': { fw: ['9.05'], series: 'CFI-70xx' },
   '146': { fw: ['9.05', '9.40'], series: 'CFI-70xx' },
@@ -322,6 +337,14 @@ const FIRMWARE_TABLE: Record<string, { fw: string[]; series: string; estimated?:
   '25A': { fw: ['11.60', '12.00'], series: 'CFI-71xx' },
   '25B': { fw: ['12.00', '12.02'], series: 'CFI-71xx' },
   '25C': { fw: ['12.02', '12.20'], series: 'CFI-71xx' },
+
+  // --- Pro 2nd gen — CFI-71xx (2026 production) ---
+  // 264/265 ship above the 12.70 ceiling (13.00+) → NOT exploitable.
+  '261': { fw: ['12.40', '12.60'], series: 'CFI-71xx' },
+  '262': { fw: ['12.60', '12.70'], series: 'CFI-71xx' },
+  '263': { fw: ['12.70', '13.00'], series: 'CFI-71xx' },
+  '264': { fw: ['13.00', '13.20'], series: 'CFI-71xx' },
+  '265': { fw: ['13.20'], series: 'CFI-71xx' },
 };
 
 /**
@@ -421,10 +444,10 @@ function getJailbreakInfoForRange(fwList: string[]): JailbreakExploitInfo {
 /**
  * Determine the jailbreak status from firmware range.
  *
- * Decision logic (with MAX_EXPLOITABLE_FIRMWARE = 12.40):
- * 1. ALL values ≤ 12.40 → ✅ JAILBREAKABLE
- * 2. Range crosses 12.40 (e.g. 12.40/12.60) → ⚠️ UNCERTAIN
- * 3. Lowest value > 12.40 → ❌ NOT_JAILBREAKABLE
+ * Decision logic (with MAX_EXPLOITABLE_FIRMWARE = 12.70):
+ * 1. ALL values ≤ 12.70 → ✅ JAILBREAKABLE
+ * 2. Range crosses 12.70 (e.g. 12.70/13.00) → ⚠️ UNCERTAIN
+ * 3. Lowest value > 12.70 → ❌ NOT_JAILBREAKABLE
  */
 function determineStatus(fwList: string[]): {
   status: FirmwareDetectionResult['status'];
@@ -622,28 +645,28 @@ function fallbackEstimate(parsed: SerialParseResult): FirmwareDetectionResult {
     description = `FAT 3rd gen (CFI-12xx). FW range 5.10-8.40. All factory firmware versions are exploitable.`;
     jbInfo = getJailbreakInfoForFirmware('5.10');
   } else if (series.includes('20xx')) {
-    firmware = '7.00 - 12.40';
+    firmware = '7.00 - 12.20';
     status = 'UNCERTAIN';
     confidence = 'LOW';
-    description = `Slim (CFI-20xx). FW range 7.00-12.40. Early units are fully exploitable; units on 12.60+ are not.`;
+    description = `Slim (CFI-20xx). Known factory FW 7.00-12.20 — all within the exploit range (≤ 12.70). If the console was updated to FW 13.00+, it is NOT exploitable. Verify the firmware on the console.`;
     jbInfo = getJailbreakInfoForFirmware('7.00');
   } else if (series.includes('21xx')) {
-    firmware = '11.20 - 12.40';
+    firmware = '11.20 - 13.20';
     status = 'UNCERTAIN';
     confidence = 'LOW';
-    description = `Slim 2nd gen (CFI-21xx). FW range 11.20-12.40. All factory firmware versions are exploitable (≤ 12.40).`;
+    description = `Slim 2nd gen (CFI-21xx). Factory FW spans 11.20-13.20. Units ≤ 12.70 are exploitable; the newest 2026 production on FW 13.00+ is NOT. Verify the firmware on the console.`;
     jbInfo = getJailbreakInfoForFirmware('11.20');
   } else if (series.includes('70xx')) {
-    firmware = '9.05 - 12.40';
+    firmware = '9.05 - 12.20';
     status = 'UNCERTAIN';
     confidence = 'LOW';
-    description = `Pro (CFI-70xx). FW range 9.05-12.40. Early units are fully exploitable; units on 12.60+ are not.`;
+    description = `Pro (CFI-70xx). Known factory FW 9.05-12.20 — all within the exploit range (≤ 12.70). If the console was updated to FW 13.00+, it is NOT exploitable. Verify the firmware on the console.`;
     jbInfo = getJailbreakInfoForFirmware('9.05');
   } else if (series.includes('71xx')) {
-    firmware = '11.20 - 12.40';
+    firmware = '11.20 - 13.20';
     status = 'UNCERTAIN';
     confidence = 'LOW';
-    description = `Pro 2nd gen (CFI-71xx). FW range 11.20-12.40. All factory firmware versions are exploitable (≤ 12.40).`;
+    description = `Pro 2nd gen (CFI-71xx). Factory FW spans 11.20-13.20. Units ≤ 12.70 are exploitable; the newest 2026 production on FW 13.00+ is NOT. Verify the firmware on the console.`;
     jbInfo = getJailbreakInfoForFirmware('11.20');
   } else {
     description = `Unknown model series. Manufactured ${year}. Check firmware directly on console.`;

@@ -7,9 +7,11 @@
  * Source: https://www.psdevwiki.com/ps5/Serial_Number_guide
  * Last wiki update: 26 May 2026
  *
- * MAX_EXPLOITABLE_FIRMWARE = 12.40
- *   - kernel: sys_kqueueex ucred UaF (Gezine 2026-05-02, works ≤ 12.70)
- *   - entry:  Y2JB / Netflix-N-Hack / BD-JB-EX (all ≤ 12.40, patched 12.60)
+ * MAX_EXPLOITABLE_FIRMWARE = 12.70
+ *   - kernel: sys_kqueueex ucred reference-leak UaF — "P2JB" (Gezine), works ≤ 12.70,
+ *             patched in FW 13.00
+ *   - entry:  ≤ 12.40 — free Y2JB (YouTube app, patched from 12.60), Netflix-N-Hack, BD-JB-EX
+ *             12.50–12.70 — game-based Lua only (mast1c0re / Luac0re / Artemis / Ren'Py)
  */
 
 import { describe, it, expect } from 'vitest';
@@ -26,9 +28,9 @@ function testSerial(factory: string, code: string) {
 }
 
 describe('PSDevWiki Crosscheck — Full Lookup Table Verification', () => {
-  // Verify MAX_EXPLOITABLE_FIRMWARE is 12.40 (kqueueex UaF + Y2JB/Netflix/BD-JB-EX entry)
-  it('should have MAX_EXPLOITABLE_FIRMWARE = 12.40', () => {
-    expect(MAX_EXPLOITABLE_FIRMWARE).toBe('12.40');
+  // Verify MAX_EXPLOITABLE_FIRMWARE is 12.70 (kqueueex/P2JB kernel ≤ 12.70, patched 13.00)
+  it('should have MAX_EXPLOITABLE_FIRMWARE = 12.70', () => {
+    expect(MAX_EXPLOITABLE_FIRMWARE).toBe('12.70');
   });
 
   describe('Step-by-step decode example from doc', () => {
@@ -150,10 +152,10 @@ describe('PSDevWiki Crosscheck — Full Lookup Table Verification', () => {
 
   // ============================================================
   // FULL FIRMWARE LOOKUP TABLE VERIFICATION
-  // With MAX_EXPLOITABLE_FIRMWARE = 12.40, all entries with
-  // FW ≤ 12.40 are JAILBREAKABLE.
-  // Only entries where lowest FW > 12.40 are NOT_JAILBREAKABLE.
-  // Entries crossing 12.40 boundary are UNCERTAIN.
+  // With MAX_EXPLOITABLE_FIRMWARE = 12.70, all entries with
+  // FW ≤ 12.70 are JAILBREAKABLE.
+  // Only entries where lowest FW > 12.70 are NOT_JAILBREAKABLE.
+  // Entries crossing 12.70 boundary are UNCERTAIN.
   // ============================================================
 
   describe('FAT — CFI-11xx (2021 production) — 9 entries', () => {
@@ -328,7 +330,7 @@ describe('PSDevWiki Crosscheck — Full Lookup Table Verification', () => {
   });
 
   describe('Slim — CFI-20xx (2025 production) — 10 entries', () => {
-    // With MAX = 12.40, entries up to 12.00 are JAILBREAKABLE
+    // With MAX = 12.70, entries up to 12.20 are JAILBREAKABLE
     const entries: [string, string[], string][] = [
       ['451', ['10.40'], 'JAILBREAKABLE'],
       ['452', ['10.40', '10.60'], 'JAILBREAKABLE'],
@@ -355,7 +357,7 @@ describe('PSDevWiki Crosscheck — Full Lookup Table Verification', () => {
   });
 
   describe('Slim 2nd gen — CFI-21xx (2025 production) — 7 entries', () => {
-    // With MAX = 12.40, every factory FW (11.20-12.20) is ≤ 12.40 → all JAILBREAKABLE
+    // With MAX = 12.70, every factory FW (11.20-12.20) is ≤ 12.70 → all JAILBREAKABLE
     const entries: [string, string[], string][] = [
       ['556', ['11.20'], 'JAILBREAKABLE'],
       ['557', ['11.20', '11.40'], 'JAILBREAKABLE'],
@@ -378,8 +380,52 @@ describe('PSDevWiki Crosscheck — Full Lookup Table Verification', () => {
     }
   });
 
+  describe('Slim 2nd gen — CFI-21xx (2026 production) — 5 entries', () => {
+    // 2026 production crosses the 12.70 ceiling: 564/565 ship on 13.00+ → NOT_JAILBREAKABLE.
+    const entries: [string, string[], string][] = [
+      ['561', ['12.40', '12.60'], 'JAILBREAKABLE'],
+      ['562', ['12.60', '12.70'], 'JAILBREAKABLE'],
+      ['563', ['12.70', '13.00'], 'UNCERTAIN'],
+      ['564', ['13.00', '13.20'], 'NOT_JAILBREAKABLE'],
+      ['565', ['13.20'], 'NOT_JAILBREAKABLE'],
+    ];
+
+    for (const [code, expectedFws, expectedStatus] of entries) {
+      it(`X${code} → ${expectedFws.join(' / ')} → ${expectedStatus}`, () => {
+        const result = checkSerial(testSerial('G', code));
+        expect(result).not.toBeNull();
+        for (const fw of expectedFws) {
+          expect(result!.firmware).toContain(fw);
+        }
+        expect(result!.status).toBe(expectedStatus);
+      });
+    }
+  });
+
+  describe('Pro 2nd gen — CFI-71xx (2026 production) — 5 entries', () => {
+    // 2026 production crosses the 12.70 ceiling: 264/265 ship on 13.00+ → NOT_JAILBREAKABLE.
+    const entries: [string, string[], string][] = [
+      ['261', ['12.40', '12.60'], 'JAILBREAKABLE'],
+      ['262', ['12.60', '12.70'], 'JAILBREAKABLE'],
+      ['263', ['12.70', '13.00'], 'UNCERTAIN'],
+      ['264', ['13.00', '13.20'], 'NOT_JAILBREAKABLE'],
+      ['265', ['13.20'], 'NOT_JAILBREAKABLE'],
+    ];
+
+    for (const [code, expectedFws, expectedStatus] of entries) {
+      it(`X${code} → ${expectedFws.join(' / ')} → ${expectedStatus}`, () => {
+        const result = checkSerial(testSerial('G', code));
+        expect(result).not.toBeNull();
+        for (const fw of expectedFws) {
+          expect(result!.firmware).toContain(fw);
+        }
+        expect(result!.status).toBe(expectedStatus);
+      });
+    }
+  });
+
   describe('Pro — CFI-70xx (2024 production) — 8 entries', () => {
-    // With MAX = 12.40, all Pro 2024 have FW ≤ 10.40 → all JAILBREAKABLE
+    // With MAX = 12.70, all Pro 2024 have FW ≤ 10.40 → all JAILBREAKABLE
     const entries: [string, string[]][] = [
       ['145', ['9.05']],
       ['146', ['9.05', '9.40']],
@@ -405,7 +451,7 @@ describe('PSDevWiki Crosscheck — Full Lookup Table Verification', () => {
   });
 
   describe('Pro — CFI-70xx (2025 production) — 10 entries', () => {
-    // With MAX = 12.40, all entries have FW ≤ 12.00 → all JAILBREAKABLE
+    // With MAX = 12.70, all entries have FW ≤ 12.00 → all JAILBREAKABLE
     const entries: [string, string[]][] = [
       ['151', ['10.40']],
       ['152', ['10.40', '10.60']],
@@ -432,7 +478,7 @@ describe('PSDevWiki Crosscheck — Full Lookup Table Verification', () => {
   });
 
   describe('Pro 2nd gen — CFI-71xx (2025 production) — 7 entries', () => {
-    // With MAX = 12.40, every factory FW (11.20-12.20) is ≤ 12.40 → all JAILBREAKABLE
+    // With MAX = 12.70, every factory FW (11.20-12.20) is ≤ 12.70 → all JAILBREAKABLE
     const entries: [string, string[], string][] = [
       ['256', ['11.20'], 'JAILBREAKABLE'],
       ['257', ['11.20', '11.40'], 'JAILBREAKABLE'],
@@ -488,11 +534,13 @@ describe('PSDevWiki Crosscheck — Full Lookup Table Verification', () => {
       // Slim CFI-20xx 2024: 12
       // Slim CFI-20xx 2025: 10
       // Slim CFI-21xx 2025: 7
+      // Slim CFI-21xx 2026: 5
       // Pro CFI-70xx 2024: 8
       // Pro CFI-70xx 2025: 10
       // Pro CFI-71xx 2025: 7
-      // Total: 105
-      const expectedTotal = 105;
+      // Pro CFI-71xx 2026: 5
+      // Total: 115
+      const expectedTotal = 115;
       expect(expectedTotal).toBeGreaterThan(93);
     });
   });
